@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var a = document.querySelectorAll('li')
 
     for (i = 0; i < a.length; i++) {

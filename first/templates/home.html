@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
-{% block content %}
+{% block base1 %}
+<div class="jumbotron">
     <h1>home</h1>
     <br><br>
     {% for post in posts %}
     <div>
         <div>
-        <a href='#f'><h1>{{post.author}}</h1></a>
-        <p>{{ post.date_posted}}</p>
+            <a href='#f'>
+                <h1>{{post.author}}</h1>
+            </a>
+            <p>{{ post.date_posted}}</p>
         </div>
         <h2>{{post.title}}</h2>
         <p>{{post.content}}</p>
         <br>
     </div>
     {% endfor %}
-{% endblock %}
+    {% endblock %}
+</div>

@@ -1,8 +1,9 @@
-
 <!DOCTYPE html>
+{% extends "base1.html" %}
+{% block base2 %}
 <html lang="en">
 
-{% load staticfiles %}
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -10,24 +11,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel='stylesheet' href=" {% static  'register.css' %} ">
-</head>
-<body>
-    {% load staticfiles %}
-
     <script src=" {% static 'register.js' %} "></script>
-    <center>
-    <div class='form-box'>
-    {% load staticfiles %}
-    <img src="{% static 'profile.png' %}">
-        <form method='POST'>
-            {% csrf_token %}  
-                {{ form.as_p }}
-            <div>
-                <button class='signup-button' type='submit'>SIGN UP</button>
-            </div>
-        </form>
-    <div>
-        <p>Already have an account?</p><a href="#" style="color:#FFFFF;font-size:14px;">SIGN IN</a>
-    <center>
+</head>
+
+<body>
+
+
+
+    <div class="jumbotron">
+        <center>
+            <div class='form-box'>
+
+                <img src="{% static 'profile.png' %}">
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div>
+                        <button class='signup-button' type='submit'>SIGN UP</button>
+                    </div>
+                </form>
+                <div>
+                    <p>Already have an account?</p><a href="#" style="color:#FFFFFF;font-size:14px;">SIGN IN</a>
+        </center>
+    </div>
+
+
+
 </body>
+
 </html>
+{% endblock %}
