@@ -1,8 +1,6 @@
 body {
-    margin: auto;
     background-repeat: no-repeat;
     background-size: 100% 850px;
-    font-family: monospace;
 }
 
 .form-box input {
@@ -40,8 +38,12 @@ body {
     border: none;
     background-color: #2ECC71;
     font-weight: bolder;
-    padding: 15px 30px;
+    padding: 5px 30px;
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
+}
+
+.jumbotron {
+    height: 100vh;
 }
