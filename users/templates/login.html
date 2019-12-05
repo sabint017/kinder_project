@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel='stylesheet' href=" {% static  'register.css' %} ">
-    <script src=" {% static 'register.js' %} "></script>
 </head>
 
 <body>
@@ -27,12 +26,13 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div>
-                        <button class='signup-button' type='submit'>SIGN UP</button>
+                        <button class='signup-button' type='submit'>SIGN IN</button>
                     </div>
                 </form>
                 <div>
-                    <p>Already have an account?</p><a href="{% url 'login' %}"
-                        style="color:#FFFFFF;font-size:14px;">SIGN IN</a>
+                    <p>Don't have an account? Create one</p><a href="{% url 'register' %}"
+                        style="color:#FFFFFF;font-size:14px;">SIGN
+                        UP</a>
         </center>
     </div>
 

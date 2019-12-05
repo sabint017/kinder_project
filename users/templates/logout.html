@@ -20,19 +20,8 @@
 
     <div class="jumbotron">
         <center>
-            <div class='form-box'>
-
-                <img src="{% static 'profile.png' %}">
-                <form method='POST'>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <div>
-                        <button class='signup-button' type='submit'>SIGN UP</button>
-                    </div>
-                </form>
-                <div>
-                    <p>Already have an account?</p><a href="{% url 'login' %}"
-                        style="color:#FFFFFF;font-size:14px;">SIGN IN</a>
+            <h2>You have been logged out</h2>
+            <a href="{% url 'login' %}" style="color:rgb(245, 17, 17);font-size:14px;">Log In Again</a>
         </center>
     </div>
 

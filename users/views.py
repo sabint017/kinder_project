@@ -4,15 +4,15 @@ from .forms import UserRegistrationForm
 
 
 def register(request):
-    if request.method=='POST':
-        form=UserRegistrationForm(request.POST)
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            username=form.cleaned_data.get('username')
-            messages.success(request,f'Account created for {username}')
-            return redirect('first-home')
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
+            return redirect('login')
     else:
-        form=UserRegistrationForm()
-    return render(request, 'register.html',{'form':form})
+        form = UserRegistrationForm()
+    return render(request, 'register.html', {'form': form})
 
 # Create your views here.
