@@ -12,6 +12,12 @@
 
         <p>{{object.content}}</p>
         <br>
+
+        <a href="{% url 'post-update' object.id %}">Update Post</a>
+        <a href="{% url 'post-delete' object.id %}">Delete Post</a>
+
+
+
     </div>
 
 

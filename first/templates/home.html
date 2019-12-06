@@ -1,7 +1,9 @@
+{% extends "base1.html" %}
+{% block base2 %}
 <div class="jumbotron">
     <h1>home</h1>
     <br><br>
-    <a href="{% url 'post-create' %}">Create Post</a>
+    <a class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
     <br>
     {% for post in posts %}
     <div>
@@ -16,6 +18,8 @@
 
     </div>
     {% endfor %}
-    <a href="{% url 'logout' %}">Log Out</a>
+    <a class='btn btn-outline-danger' href="{% url 'logout' %}">Log Out</a>
+
 
 </div>
+{% endblock %}

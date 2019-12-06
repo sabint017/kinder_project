@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block base1 %}
+{% extends "base1.html" %}
+{% block base2 %}
 <html lang="en">
 
 {% load static %}
@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel='stylesheet' href=" {% static  'register.css' %} ">
 </head>
 
 <body>
@@ -21,18 +20,17 @@
         <center>
             <div class='form-box'>
 
-                <img src="{% static 'profile.png' %}">
                 <form method='POST'>
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div>
-                        <button class='signup-button' type='submit'>SIGN IN</button>
+                        <h1>Are you sure you want to delete {{object.title}} permanently?</h1>
+                        <button class='btn btn-outline-danger' type='submit'>Yes, Delete</button>
+                        <button class='btn btn-secondary'>NO</button>
                     </div>
                 </form>
-                <div>
-                    <p>Don't have an account? Create one</p><a href="{% url 'register' %}"
-                        style="color:#FFFFFF;font-size:14px;">SIGN
-                        UP</a>
+            </div>
+
         </center>
     </div>
 
