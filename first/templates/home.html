@@ -1,20 +1,21 @@
 <div class="jumbotron">
     <h1>home</h1>
     <br><br>
+    <a href="{% url 'post-create' %}">Create Post</a>
+    <br>
     {% for post in posts %}
     <div>
-        <div>
-            <a href='#f'>
-                <h1>{{post.author}}</h1>
+        <div><a href="{% url 'post-detail' post.id %}">
+                <h1>{{post.title}}</h1>
             </a>
             <p>{{ post.date_posted}}</p>
         </div>
-        <h2>{{post.title}}</h2>
+        <h2>{{post.author}}</h2>
         <p>{{post.content}}</p>
         <br>
 
-        <a href="{% url 'logout' %}">Log Out</a>
     </div>
     {% endfor %}
+    <a href="{% url 'logout' %}">Log Out</a>
 
 </div>
