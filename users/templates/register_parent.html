@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel='stylesheet' href=" {% static  'register.css' %} ">
-    <script src=" {% static 'register.js' %} "></script>
+    {% comment %} <link rel='stylesheet' href=" {% static  'register.css' %} "> {% endcomment %}
+    {% comment %} <script src=" {% static 'register.js' %} "></script> {% endcomment %}
 </head>
 
 <body>
@@ -25,7 +25,10 @@
                 <img src="{% static 'profile.png' %}">
                 <form method='POST'>
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form1.as_p }}
+                    
+                    {{ form_parents.as_p }}
+                   
                     <div>
                         <button class='signup-button' type='submit'>SIGN UP</button>
                     </div>
@@ -33,6 +36,7 @@
                 <div>
                     <p>Already have an account?</p><a href="{% url 'login' %}"
                         style="color:#FFFFFF;font-size:14px;">SIGN IN</a>
+                </div>
         </center>
     </div>
 

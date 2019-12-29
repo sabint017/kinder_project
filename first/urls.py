@@ -15,5 +15,7 @@ urlpatterns = [
     path('dev.html', views.dev, name='dev'),
     path('queries.html', views.queries, name='queries'),
     path('services.html', views.services, name='services'),
-    path('register.html', users_views.register, name="register"),
+    path('register_parent.html', users_views.register_parent, name="register_parent"),
+    path('register_teacher.html', users_views.register_teacher, name="register_teacher"),
+    path('signup.html', views.signup, name='signup'),
 ]

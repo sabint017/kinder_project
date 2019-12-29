@@ -26,6 +26,9 @@ def dev(request):
 def services(request):
     return render(request, 'services.html')
 
+def signup(request):
+    return render(request, 'signup.html')
+
 
 # Create your views here.
 class PostListView(ListView):
