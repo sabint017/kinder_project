@@ -9,7 +9,7 @@ class User_parents(models.Model):
     age=models.IntegerField()
     occupation = models.CharField(max_length=200)
     ChildName=models.CharField(max_length=200)
-    ChildId=models.IntegerField()
+   
     RelationToChild=models.CharField(max_length=200)
 
     def __str__(self):

@@ -34,8 +34,8 @@ class User_p(forms.ModelForm):
             'age',
             'occupation',
             'ChildName',
-            'ChildId',
-            'RelationToChild'
+            
+            'RelationToChild',
         )
 
 class User_t(forms.ModelForm):
