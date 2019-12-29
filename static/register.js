@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     var a = document.querySelectorAll('li')
 
     for (i = 0; i < a.length; i++) {
@@ -13,13 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var labels = document.querySelectorAll('label')
 
-    for (i = 0; i < labels.length; i++) {
-        labels[i].style.display = 'none'
-    }
+    var boxlength = labels.length * 80 + 'px'
 
-    var inputs = document.querySelectorAll('input')
-    var placeholder = ['', 'Enter Your Username', 'Enter Your Occupation', 'Enter Your Age', 'Enter your childs name','Enter your relation to the child','Enter Your Email', 'Enter Your Password', 'Enter Your Password Again']
-    for (i = 1; i < inputs.length; i++) {
-        inputs[i].placeholder = placeholder[i]
-    }
+    document.querySelectorAll('div')[1].style.height = boxlength;
 })
