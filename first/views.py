@@ -3,7 +3,6 @@ from .models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-
 def home(request):
     context = {
         'posts': Post.objects.all()
