@@ -46,6 +46,4 @@ def register_teacher(request):
 
     return render(request, 'register_teacher.html', {'form2': form2, 'form_teachers':form_teachers})
 
-
-
 # Create your views here.

@@ -12,10 +12,10 @@
 
         <p>{{object.content}}</p>
         <br>
-        {% ifequal '{{user.usertype}}' 'teacher'%}
-            <a href="{% url 'post-update' object.id %}">Update Post</a>
-            <a href="{% url 'post-delete' object.id %}">Delete Post</a>
-        {% endifequal %}
+
+        <a href="{% url 'post-update' object.id %}">Update Post</a>
+        <a href="{% url 'post-delete' object.id %}">Delete Post</a>
+
 
 
     </div>

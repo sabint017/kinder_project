@@ -13,8 +13,12 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model=User
+<<<<<<< HEAD
        
         fields=('username','email','first_name','last_name','password1','password2',)
+=======
+        fields=['username','email','first_name','last_name','password1','password2']
+>>>>>>> daca6a27958b2110c11aeb68308a22879aef305b
 
     def save(self, commit=True):
         user=super().save(commit=False)
@@ -37,7 +41,8 @@ class User_p(forms.ModelForm):
             'occupation',
             'Utype',
             'ChildName',
-            'RelationToChild',
+            'ChildId',
+            'RelationToChild'
         )
 
 class User_t(forms.ModelForm):

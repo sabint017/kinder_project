@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import User_parents, User_teachers
 
+
 def home(request):
     context = {
         'posts': Post.objects.all()
