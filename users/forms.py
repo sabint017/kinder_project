@@ -13,6 +13,7 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model=User
+       
         fields=('username','email','first_name','last_name','password1','password2',)
 
     def save(self, commit=True):
@@ -30,9 +31,11 @@ class UserRegistrationForm(UserCreationForm):
 class User_p(forms.ModelForm):
     class Meta:
         model= User_parents
+        exclude = [ "Utype"]
         fields=(
             'age',
             'occupation',
+            'Utype',
             'ChildName',
             'RelationToChild',
         )
@@ -40,7 +43,10 @@ class User_p(forms.ModelForm):
 class User_t(forms.ModelForm):
     class Meta:
         model = User_teachers
+        exclude = [ "Utype"]
+
         fields=(
             'age',
-            'grade'
+            'grade',
+            'Utype'
         )

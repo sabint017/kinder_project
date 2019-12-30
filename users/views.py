@@ -10,6 +10,7 @@ def register_parent(request):
 
         if form1.is_valid() and form_parents.is_valid():
             user=form1.save()
+
             profile= form_parents.save(commit=False)
             profile.user=user
             profile.save()
