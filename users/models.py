@@ -9,10 +9,6 @@ class User_parents(models.Model):
     age=models.IntegerField()
     occupation = models.CharField(max_length=200)
     ChildName=models.CharField(max_length=200)
-<<<<<<< HEAD
-=======
-    ChildId=models.IntegerField()
->>>>>>> daca6a27958b2110c11aeb68308a22879aef305b
     RelationToChild=models.CharField(max_length=200)
 
     def __str__(self):
