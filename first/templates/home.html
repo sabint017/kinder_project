@@ -3,12 +3,7 @@
 <div class="jumbotron">
     <h1>home</h1>
     <br><br>
-    {% for teacher in teachers %}
-    {% if  %}
-    
-        <a class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
-    {% endif %}
-    {% endfor %}
+    <a class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
     <br>
     {% for post in posts %}
     <div>
