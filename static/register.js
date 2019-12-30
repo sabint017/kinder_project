@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var a = document.querySelectorAll('li')
+    var list = document.querySelectorAll('div')[0].querySelectorAll('li')
 
-    for (i = 0; i < a.length; i++) {
-        a[i].style.display = 'none'
+    for (i = 0; i < list.length; i++) {
+        list[i].style.display = 'none'
     }
 
-    var b = document.querySelectorAll('span')
+    var sp = document.querySelectorAll('div')[0].querySelectorAll('span')
 
-    for (i = 0; i < b.length; i++) {
-        b[i].textContent = ''
+    for (i = 0; i < sp.length; i++) {
+        sp[i].textContent = ''
     }
 
     var labels = document.querySelectorAll('label')
