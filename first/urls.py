@@ -1,17 +1,12 @@
 from . import views
 from django.urls import path
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
-
 from users import views as users_views
+from second import views as second_views
+
 urlpatterns = [
     path('', views.index, name='index'),
 
-    path('home/', PostListView.as_view(), name='home'),
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-    path('post/new/', PostCreateView.as_view(), name='post-create'),
-    path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),
-    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),
-
+    path('home.html',second_views.home, name='home'),
     path('dev.html', views.dev, name='dev'),
     path('queries.html', views.queries, name='queries'),
     path('services.html', views.services, name='services'),
