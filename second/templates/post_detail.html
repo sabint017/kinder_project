@@ -10,12 +10,12 @@
             displays('none')
         }
     })
-    
+{% comment %}     
     function displays(i=''){
         for(j=0;j<createpost.length;j++){
             createpost[j].style.display=i
         }
-    }
+    } {% endcomment %}
     </script>
     <h1> <a href="{% url 'home' %}">Home</a></h1>
     <div>

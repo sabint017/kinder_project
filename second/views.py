@@ -28,7 +28,7 @@ class PostDetailView(DetailView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = "/home"
+    success_url = "/home/home"
 
     def test_func(self):
         post = self.get_object()
