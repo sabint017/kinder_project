@@ -7,13 +7,11 @@ from users.models import User_parents, User_teachers
 
 def home(request):
     context = {
-        'posts': Post.objects.all()
-    }
-    user={
+        'posts': Post.objects.all(),
         'teachers':User_teachers.objects.all(),
-        'parents': User_parents.objects.all()
+        'parents': User_parents.objects.all(),
     }
-    return render(request, 'home.html', context,user)
+    return render(request, 'home.html', context)
 
 
 def index(request):

@@ -30,23 +30,18 @@ class UserRegistrationForm(UserCreationForm):
 class User_p(forms.ModelForm):
     class Meta:
         model= User_parents
-        exclude = [ "Utype"]
         fields=(
             'age',
             'occupation',
-            'Utype',
             'ChildName',
-           
             'RelationToChild'
         )
 
 class User_t(forms.ModelForm):
     class Meta:
         model = User_teachers
-        exclude = [ "Utype"]
 
         fields=(
             'age',
             'grade',
-            'Utype'
         )

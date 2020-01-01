@@ -23,13 +23,13 @@ def update_contact(tch, contact):
     with conn:
         c.execute("""UPDATE teacher SET contact = :contact
                     WHERE first = :first AND last = :last""",
-                  {'first': tch.first, 'last': tch.last, 'contact': contact})
+                    {'first': tch.first, 'last': tch.last, 'contact': contact})
 
 
 def remove_teacher(tch):
     with conn:
         c.execute("DELETE from teacher WHERE first = :first AND last = :last",
-                  {'first': tch.first, 'last': tch.last})
+                {'first': tch.first, 'last': tch.last})
 teacher_1 = Teacher('ABC','Thapa','98454')
 teacher_2 = Teacher('AB','Mahat','968454')
 
