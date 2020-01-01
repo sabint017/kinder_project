@@ -1,7 +1,7 @@
 {% extends "base1.html" %}
 {% block base2 %}
 <div class="jumbotron">
-<script>
+    <script>
     var createpost=document.getElementsByName("createpost")
     document.addEventListener('DOMContentLoaded', function(){
         if (document.getElementById("usertype").innerText=='teacher'){
@@ -17,27 +17,25 @@
         }
     }
     </script>
-    <h1 style="color:#007BFF;">Home</h1>
-    <br><br>
+    <h1> <a href="{% url 'home' %}">Home</a></h1>
     <div>
     <p id="usertype" style="display:none;">{{user.last_name}}</p>
-    <a name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
-    </div>
-    <br>
-    {% for post in posts %}
-    <div>
-        <div><a href="{% url 'post-detail' post.id %}">
-                <h1>{{post.title}}</h1>
-            </a>
-            <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
+        <div>
+            <h1>{{object.title}}</h1>
+            <h3>{{object.author}}</h3>
+
+            <p>{{ object.date_posted}}</p>
         </div>
-        <h3>{{post.author}}</h3>
-        <p><b>{{post.content}}</b></p>
+
+        <p><b>{{object.content}}</b></p>
         <br>
 
+        <a class='btn btn-secondary' name="createpost" href="{% url 'post-update' object.id %}">Update Post</a>
+        <a class='btn btn-outline-danger' name="createpost" href="{% url 'post-delete' object.id %}">Delete Post</a>
+
+
+
     </div>
-    {% endfor %}
-    <a class='btn btn-outline-danger' href="{% url 'logout' %}">Log Out</a>
 
 
 </div>

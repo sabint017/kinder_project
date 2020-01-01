@@ -2,15 +2,12 @@ from django.shortcuts import render
 from second.models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from users.models import User_parents, User_teachers
 # Create your views here.
 
 
 def home(request):
     context = {
         'posts': Post.objects.all(),
-        'teachers':User_teachers.objects.all(),
-        'parents': User_parents.objects.all(),
     }
     return render(request, 'home.html', context)
 
