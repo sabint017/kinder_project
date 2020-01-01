@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm, User_p, User_t
 from django.contrib.auth.models import User
+#from django.contrib.auth.decorators import login_required
 
 
 
@@ -47,3 +48,6 @@ def register_teacher(request):
     return render(request, 'register_teacher.html', {'form2': form2, 'form_teachers':form_teachers})
 
 # Create your views here.
+#@login_required
+#def profile(request):
+  #  return render(request,'profile.html')

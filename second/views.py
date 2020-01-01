@@ -3,6 +3,7 @@ from second.models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import User_parents, User_teachers
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -66,3 +67,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 
+#def profile(request):
+   # return render(request,'users/profile.html')
+
+@login_required
+def profile(request):
+    return render(request,'profile.html')
