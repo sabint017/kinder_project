@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+{% block base2 %}
+<div class="jumbotron">
+    <script>
+    var createpost=document.getElementsByName("createpost")
+    document.addEventListener('DOMContentLoaded', function(){
+        if (document.getElementById("usertype").innerText=='teacher'){
+            displays()
+        }else{
+            displays('none')
+        }
+    })    
+    function displays(i=''){
+        for(j=0;j<createpost.length;j++){
+            createpost[j].style.display=i
+        }
+    } 
+    </script>
+    <h1> <a href="{% url 'home' %}">Home</a></h1>
+    <div>
+    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+        <div>
+            <h1>{{object.title}}</h1>
+            <h3>{{object.author}}</h3>
+
+            <p>{{ object.date_posted}}</p>
+        </div>
+
+        <p><b>{{object.content}}</b></p>
+        <br>
+
+        <a class='btn btn-secondary' name="createpost" href="{% url 'post-update' object.id %}">Update Post</a>
+        <a class='btn btn-outline-danger' name="createpost" href="{% url 'post-delete' object.id %}">Delete Post</a>
+
+
+
+    </div>
+
+
+</div>
+{% endblock %}

@@ -1,15 +1,31 @@
 {% extends "base1.html" %}
 {% block base2 %}
 <div class="jumbotron">
+<<<<<<< HEAD
     <h1>HOME</h1>
+=======
+<script>
+    var createpost=document.getElementsByName("createpost")
+    document.addEventListener('DOMContentLoaded', function(){
+        if (document.getElementById("usertype").innerText=='teacher'){
+            displays()
+        }else{
+            displays('none')
+        }
+    })
+    
+    function displays(i=''){
+        for(j=0;j<createpost.length;j++){
+            createpost[j].style.display=i
+        }
+    }
+    </script>
+    <h1 style="color:#007BFF;">Home</h1>
+>>>>>>> b0b85583e640e0876e2688156392cc8933d9c656
     <br><br>
     <div>
-    {% for teacher in teachers %}
-    <h1>1</h1>
-    {% if teacher.user.username == '{{user.username}}' %}
-        <a class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
-    {% endif %}
-    {% endfor %}
+    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+    <a name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
     </div>
     <br>
     {% for post in posts %}
@@ -19,8 +35,8 @@
             </a>
             <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
         </div>
-        <h2>{{post.author}}</h2>
-        <p>{{post.content}}</p>
+        <h3>{{post.author}}</h3>
+        <p><b>{{post.content}}</b></p>
         <br>
 
     </div>

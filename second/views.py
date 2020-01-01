@@ -2,16 +2,17 @@ from django.shortcuts import render
 from second.models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+<<<<<<< HEAD
 from users.models import User_parents, User_teachers
 from django.contrib.auth.decorators import login_required
+=======
+>>>>>>> b0b85583e640e0876e2688156392cc8933d9c656
 # Create your views here.
 
 
 def home(request):
     context = {
         'posts': Post.objects.all(),
-        'teachers':User_teachers.objects.all(),
-        'parents': User_parents.objects.all(),
     }
     return render(request, 'home.html', context)
 
@@ -32,7 +33,7 @@ class PostDetailView(DetailView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = "/home"
+    success_url = "/home/home"
 
     def test_func(self):
         post = self.get_object()

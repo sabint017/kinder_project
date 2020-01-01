@@ -6,21 +6,21 @@ from .models import User_parents,User_teachers
 class UserRegistrationForm(UserCreationForm):
 
     email=forms.EmailField() 
-    first_name=forms.CharField(max_length=20)
-    last_name=forms.CharField(max_length=20)
+    name=forms.CharField(max_length=20)
+    user_type=forms.CharField(max_length=20)
 
     
 
     class Meta:
         model=User
-        fields=['username','email','first_name','last_name','password1','password2']
+        fields=['username','email','name','user_type','password1','password2']
 
     def save(self, commit=True):
         user=super().save(commit=False)
 
         user.email = self.cleaned_data["email"]
-        user.first_name=self.cleaned_data["first_name"]
-        user.last_name=self.cleaned_data["last_name"]
+        user.name=self.cleaned_data["name"]
+        user.usertype=self.cleaned_data["user_type"]
 
         if commit:
             user.save()
