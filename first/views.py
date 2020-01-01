@@ -33,6 +33,8 @@ def signup(request):
     return render(request, 'signup.html')
 
 
+
+
 # Create your views here.
 class PostListView(ListView):
     model = Post
