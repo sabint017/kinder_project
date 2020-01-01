@@ -5,6 +5,7 @@
     <br><br>
     <div>
     {% for teacher in teachers %}
+    <h1>1</h1>
     {% if teacher.user.username == '{{user.username}}' %}
         <a class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
     {% endif %}

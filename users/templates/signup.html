@@ -11,21 +11,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     
-    
+    <style>
+        #button{
+            width: 100px;
+            height: 60px;
+            border: none;
+            background-color: #2ECC71;
+            font-weight: bolder;
+            padding: 5px 30px;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            margin-left:10px;
+    }
+    </style>
 </head>
 
 <body>
 
 
 
-    <div class="jumbotron">
+
+    <div class="jumbotron" >
         <center>
-        <h1>Who Are You?</h1>
+        <h2>Who Are You?</h2>
         <br>
         <br>
-        <a href="{% url 'register_parent' %}">A Parent</a>
+        <button id="button" onclick="location.href='{% url 'register_parent' %}'">Parent</a>
         <br>
-        <a href="{% url 'register_teacher' %}">A Teacher</a>
+        <button id="button" onclick="location.href='{% url 'register_teacher' %}'">Teacher</a>
         </center>
     </div>
 
