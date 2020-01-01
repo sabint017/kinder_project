@@ -16,7 +16,7 @@
         <div><a href="{% url 'post-detail' post.id %}">
                 <h1>{{post.title}}</h1>
             </a>
-            <p>{{ post.date_posted}}</p>
+            <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
         </div>
         <h2>{{post.author}}</h2>
         <p>{{post.content}}</p>
