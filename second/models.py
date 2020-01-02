@@ -40,3 +40,13 @@ class Profile(models.Model):
             output_size = (300,200)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+
+class StudentId(models.Model):
+    full_name = models.CharField(max_length=30)
+    roll = models.IntegerField()
+    childid = models.IntegerField()
+
+    def __str__(self):
+        return self.full_name
