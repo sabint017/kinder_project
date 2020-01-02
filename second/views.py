@@ -3,7 +3,6 @@ from second.models import Post
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from users.models import User_parents, User_teachers
 from django.contrib.auth.decorators import login_required
 #Create your views here.
 from .forms import UserUpdateForm, ProfileUpdateForm

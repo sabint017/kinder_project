@@ -3,30 +3,47 @@
 <div class="jumbotron">
     <script>
     var createpost=document.getElementsByName("createpost")
+    var posts=document.getElementsByName("posts")
+
+
     document.addEventListener('DOMContentLoaded', function(){
-        if (document.getElementById("usertype").innerText=='teacher'){
-            displays()
-        }else{
-            displays('none')
+        for(i=0;i<posts.length;i++){
+            if (posts[i].querySelector('span').textContent =='teacher'){
+                posts[i].style.display=''
+            }else{
+                posts[i].style.display='none'
+            }
         }
-    })    
-    function displays(i=''){
+        if (document.getElementById("usertype").innerText=='teacher'){
+                displays1()
+            }else{
+                displays1('none')
+            }
+    })
+    
+    function displays1(i=''){
         for(j=0;j<createpost.length;j++){
             createpost[j].style.display=i
         }
-    } 
+    }
     </script>
     <div>
     <p id="usertype" style="display:none;">{{user.last_name}}</p>
-        <div>
-            <h1>{{object.title}}</h1>
-            <h3>{{object.author}}</h3>
+        <div name='posts'>
+    <span style="display:none;">{{post.author.last_name}}</span>
+        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
+        {{post.author}}</p></b>
+        <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
 
-            <p>{{ object.date_posted}}</p>
+        <div><a href="{% url 'post-detail' post.id %}">
+                <h1>{{post.title}}</h1>
+            </a>
         </div>
-
-        <p><b>{{object.content}}</b></p>
+        <div>
+        </div>
+        <p><b>{{post.content}}</b></p>
         <br>
+    </div>
 
         <a class='btn btn-secondary' name="createpost" href="{% url 'post-update' object.id %}">Update Post</a>
         <a class='btn btn-outline-danger' name="createpost" href="{% url 'post-delete' object.id %}">Delete Post</a>

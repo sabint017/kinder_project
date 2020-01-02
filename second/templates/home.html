@@ -3,15 +3,25 @@
 <div class="jumbotron">
 <script>
     var createpost=document.getElementsByName("createpost")
+    var posts=document.getElementsByName("posts")
+
+
     document.addEventListener('DOMContentLoaded', function(){
-        if (document.getElementById("usertype").innerText=='teacher'){
-            displays()
-        }else{
-            displays('none')
+        for(i=0;i<posts.length;i++){
+            if (posts[i].querySelector('span').textContent =='teacher'){
+                posts[i].style.display=''
+            }else{
+                posts[i].style.display='none'
+            }
         }
+        if (document.getElementById("usertype").innerText=='teacher'){
+                displays1()
+            }else{
+                displays1('none')
+            }
     })
     
-    function displays(i=''){
+    function displays1(i=''){
         for(j=0;j<createpost.length;j++){
             createpost[j].style.display=i
         }
@@ -23,22 +33,23 @@
     </div>
     <br>
     {% for post in posts %}
-    <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" height="40px" width="40pxs">
-    <div>
-    
+    <div name='posts'>
+    <span style="display:none;">{{post.author.last_name}}</span>
+        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
+        {{post.author}}</p></b>
+        <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
+
         <div><a href="{% url 'post-detail' post.id %}">
                 <h1>{{post.title}}</h1>
             </a>
-            <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
         </div>
-        <h3>{{post.author}}</h3>
+        <div>
+        </div>
         <p><b>{{post.content}}</b></p>
         <br>
-
     </div>
     {% endfor %}
-  
+
 
 
 </div>
