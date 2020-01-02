@@ -20,7 +20,7 @@ class UserRegistrationForm(UserCreationForm):
 
         user.email = self.cleaned_data["email"]
         user.name=self.cleaned_data["name"]
-        user.usertype=self.cleaned_data["user_type"]
+        user.user_type=self.cleaned_data["user_type"]
 
         if commit:
             user.save()

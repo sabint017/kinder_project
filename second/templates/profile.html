@@ -1,16 +1,19 @@
+<<<<<<< HEAD
 {% extends "base.html" %} 
 {% block content %}
+=======
+{% extends "base1.html" %} 
+{% block base2 %}
+<br>
+<br>
+>>>>>>> e708987c27805f46cada468361abc3eb423e8a7e
     <div class="content-section">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
-
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
         </div>
       </div>
-      <!-- FORM HERE -->
     </div>
-{% endblock content %}
+{% endblock %}
