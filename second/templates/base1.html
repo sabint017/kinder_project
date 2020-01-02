@@ -29,6 +29,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'profile' %}" style="padding-right: 20px;">Profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class='btn btn-outline-danger' href="{% url 'logout' %}">Log Out</a>
+                            </li>
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'index' %}" style="padding-right: 20px;">Home <span

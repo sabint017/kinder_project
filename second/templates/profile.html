@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-{% extends "base.html" %} 
-{% block content %}
-=======
 {% extends "base1.html" %} 
 {% block base2 %}
 <br>
 <br>
->>>>>>> e708987c27805f46cada468361abc3eb423e8a7e
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" height = "180px", width="180px">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
