@@ -1,17 +1,33 @@
 from django.shortcuts import render, redirect
-from second.models import Post
+from second.models import Post,StudentId
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 #Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm
+from .forms import UserUpdateForm, ProfileUpdateForm,StudentRegisterForm
 
 def home(request):
     context = {
         'posts': Post.objects.all(),
     }
     return render(request, 'home.html', context)
+
+
+def registerchild(request):
+    formreg = StudentRegisterForm(request.POST)
+    if request.method == 'POST':
+        if formreg.is_valid():
+            formreg.save()
+            name = formreg.cleaned_data.get('full_name')
+            roll = formreg.cleaned_data.get('roll')
+            childid=formreg.cleaned_data.get('childid')
+            return redirect('registerchild')
+    context = {
+        'stid': StudentId.objects.all(),
+        'formreg': formreg,
+    }
+    return render(request, 'registerchild.html', context)
 
 
 class PostListView(ListView):

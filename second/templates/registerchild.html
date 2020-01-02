@@ -1,0 +1,53 @@
+{% extends "base1.html" %}
+{% block base2 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Ids</title>
+
+</head>
+
+
+<body>
+<div class="jumbotron">
+<center>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ formreg.as_p }}
+
+
+    <button class='signup-button' type='submit'>ADD</button>
+
+    </form>
+</center>
+</div>
+
+<div class="container">
+<center>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Roll No.</th>
+            <th>Child Id</th>
+
+        </tr>
+        {% for ids in stid %}
+            <tr>
+            <td>{{ids.full_name}}</td>
+            <td>{{ids.roll}}</td>
+            <td>{{ids.childid}}</td>
+
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+</center>
+</div>
+</body>
+</html>
+{% endblock %}
