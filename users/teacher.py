@@ -5,7 +5,6 @@ class Teacher:
         self.first = first
         self.last = last
         self.contact = contact
-   
 
     @property
     def email(self):
