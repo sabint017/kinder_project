@@ -2,11 +2,8 @@ from django.shortcuts import render
 from second.models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-<<<<<<< HEAD
 from users.models import User_parents, User_teachers
 from django.contrib.auth.decorators import login_required
-=======
->>>>>>> b0b85583e640e0876e2688156392cc8933d9c656
 # Create your views here.
 
 
