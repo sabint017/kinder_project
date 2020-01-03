@@ -1,11 +1,13 @@
 {% extends "base1.html" %}
 {% block base2 %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Student Ids</title>
+    <script src=" {% static 'registerchild.js' %} "></script>
 
 </head>
 
@@ -18,7 +20,7 @@
         {{ formreg.as_p }}
 
 
-    <button class='signup-button' type='submit'>ADD</button>
+    <button class='btn btn-secondary' type='submit'>ADD</button>
 
     </form>
 </center>
@@ -26,13 +28,15 @@
 
 <div class="container">
 <center>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Roll No.</th>
-            <th>Child Id</th>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Child Id</th>
 
-        </tr>
+            </tr>
+        </thead>
         {% for ids in stid %}
             <tr>
             <td>{{ids.full_name}}</td>
