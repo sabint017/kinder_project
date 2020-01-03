@@ -13,7 +13,7 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
-
+@login_required
 def registerchild(request):
     formreg = StudentRegisterForm(request.POST)
     if request.method == 'POST':
