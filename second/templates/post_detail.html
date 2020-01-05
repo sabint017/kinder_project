@@ -20,7 +20,7 @@
                 displays1('none')
             }
     })
-    
+
     function displays1(i=''){
         for(j=0;j<createpost.length;j++){
             createpost[j].style.display=i
@@ -42,6 +42,8 @@
         <div>
         </div>
         <p><b>{{post.content}}</b></p>
+        <img id='postimg' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
+
         <br>
     </div>
 

@@ -1,0 +1,75 @@
+{% extends "base1.html" %}
+{% block base2 %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Student Ids</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'second.css' %}">
+    <script>
+        var vg = document.getElementId("VideoGame").checked;
+    </script>
+</head>
+
+
+<body>
+
+
+<div class="container">
+<center>
+
+
+    <table class="table table-hover" id="mytable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Status</th>
+
+
+            </tr>
+        </thead>
+
+        {% for id in students %}
+
+            <tr>
+            <td>{{id.full_name}}</td>
+            <td>{{id.roll}}</td>
+            <form>
+                <td>
+                    <input type="checkbox" name="checks" class="present" style="width: 30px; height:30px; " value="present">
+                </td>
+            </tr>
+            {% if vg == TRUE %}
+            {{id.present_days}}={{id.present_days}}+1
+            {% else %}
+            {{id.absent_days}}={{id.absent_days}}+1
+
+            {% endif %}
+
+
+        {% endfor %}
+    </table>
+                <button class='attendance-save btn btn-secondary' type='submit'>SAVE</button>
+
+                </form>
+
+
+
+
+
+</center>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+{% endblock %}
