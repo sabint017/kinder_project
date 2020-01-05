@@ -4,6 +4,10 @@ from .forms import UserRegistrationForm, User_p, User_t
 from django.contrib.auth.models import User
 #from django.contrib.auth.decorators import login_required
 
+from kinder.settings import EMAIL_HOST_USER
+from . import forms
+from django.core.mail import send_mail
+
 
 
 def register_parent(request):
@@ -51,3 +55,16 @@ def register_teacher(request):
 #@login_required
 #def profile(request):
   #  return render(request,'profile.html')
+
+def subscribe(request):
+    sub = forms.Subscribe()
+    if request.method == 'POST':
+        sub = forms.Subscribe(request.POST)
+        subject = 'Welcome to Kinder'
+        message = 'Hope you are enjoying our website! You can change your password by following the link: http://localhost:8000/password-reset-confirm/MjQ/set-password/'
+        recepient = str(sub['Email'].value())
+        send_mail(subject,
+             message, EMAIL_HOST_USER, [recepient], fail_silently = False)
+        return render(request, 'success.html',
+            {'recepient': recepient})
+    return render(request, 'reset.html', {'form':sub})

@@ -28,3 +28,4 @@ class StudentRegisterForm(forms.ModelForm):
     class Meta:
         model = StudentId
         fields = ('full_name', 'roll', 'childid')
+
