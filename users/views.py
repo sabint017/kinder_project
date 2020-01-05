@@ -61,7 +61,7 @@ def subscribe(request):
     if request.method == 'POST':
         sub = forms.Subscribe(request.POST)
         subject = 'Welcome to Kinder'
-        message = 'Hope you are enjoying our website! You can change your password by following the link: http://localhost:8000/password-reset-confirm/MjQ/set-password/'
+        message = 'Hope you are enjoying our website!! You can change your password by following the link: http://localhost:8000/password-reset-confirm/MjQ/set-password/'
         recepient = str(sub['Email'].value())
         send_mail(subject,
              message, EMAIL_HOST_USER, [recepient], fail_silently = False)
