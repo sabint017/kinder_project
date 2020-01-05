@@ -1,3 +1,37 @@
 body {
     padding-top: 65px;
 }
+
+/* #nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.navbar {
+    background-image: linear-gradient(to right, rgb(123, 114, 207), rgb(187, 17, 230));
+    padding: 20 !important;
+    padding-left: 50;
+
+}
+
+.navbar-nav {
+    margin-left: 630px;
+
+}
+
+.navbar-nav li {
+    padding: 20 0px;
+
+}
+
+.navbar-nav a {
+    color: rgb(0, 0, 0) !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 9px;
+
+} */
