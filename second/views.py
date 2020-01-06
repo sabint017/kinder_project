@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm
-
+from django.core.paginator import Paginator
 
 def home(request):
     context = {
@@ -53,6 +53,7 @@ class PostListView(ListView):
     ordering = [
         '-date_posted'
     ]
+    paginate_by = 4
 
 
 class PostDetailView(DetailView):
