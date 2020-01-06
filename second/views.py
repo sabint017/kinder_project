@@ -17,7 +17,13 @@ def home(request):
 
 @login_required
 def registerchild(request):
+    context = {
+        'stid': StudentId.objects.all(),
+    }
+    return render(request, 'registerchild.html', context)
 
+@login_required
+def addchild(request):
     formreg = StudentRegisterForm(request.POST)
     formreg1 = AttendanceForm(request.POST)
 
@@ -31,11 +37,9 @@ def registerchild(request):
             return redirect('registerchild')
 
     context = {
-        'stid': StudentId.objects.all(),
         'formreg': formreg,
     }
-    return render(request, 'registerchild.html', context)
-
+    return render(request, 'addchild.html', context)
 
 def attendance(request):
 

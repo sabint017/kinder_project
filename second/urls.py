@@ -13,5 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('registerchild/', views.registerchild, name='registerchild'),
     path('attendance/', views.attendance, name='attendance'),
-
+    path('addchild/', views.addchild, name='addchild'),
 ]

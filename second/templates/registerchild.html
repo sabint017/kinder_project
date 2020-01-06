@@ -13,24 +13,16 @@
 
 
 <body>
+
 <div class="jumbotron">
-<center>
-    <form method='POST'>
-        {% csrf_token %}
-        {{ formreg.as_p }}
 
-
-    <button class='btn btn-secondary' type='submit'>ADD</button>
-
-    </form>
-</center>
-</div>
 
 <div class="container">
 <center>
-    <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Search for names.."><br>
-    <p>Click Headers to Sort</p>
-    
+    <button class='btn btn-secondary' onclick="location.href='{% url 'addchild' %}'" style="margin-left:90%;">ADD CHILD</button>
+    <br>
+    <br>
+    <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Search for names.."><br>    
     <table class="table table-hover" id="myTable">
         <thead class="thead-dark">
             <tr>
@@ -60,6 +52,7 @@
 </div>
 
 
+</div>
 
 
 
