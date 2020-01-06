@@ -1,5 +1,5 @@
 
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView
 from . import views
 from django.urls import path
 from users import views as users_views
@@ -14,4 +14,5 @@ urlpatterns = [
     path('registerchild/', views.registerchild, name='registerchild'),
     path('attendance/', views.attendance, name='attendance'),
     path('addchild/', views.addchild, name='addchild'),
+    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),
 ]

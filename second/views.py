@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -60,6 +61,16 @@ class PostListView(ListView):
         '-date_posted'
     ]
     paginate_by = 4
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'user_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 4
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
 
 
 class PostDetailView(DetailView):
