@@ -20,9 +20,10 @@
         <center>
             <div class='form-box'>
 
-                <form method='POST'>
+                <form method='POST' enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
+                    {{formset.as_table}}
                     <div>
                         <button class='post-button' type='submit'>POST</button>
                     </div>

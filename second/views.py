@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from second.models import Post, StudentId, Attendance
+from second.models import Post, StudentId, Attendance, Images
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm
 from django.core.paginator import Paginator
+from django.forms import modelformset_factory
+
 
 def home(request):
     context = {
@@ -133,3 +135,4 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'profile.html', context)
+
