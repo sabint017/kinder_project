@@ -6,7 +6,7 @@ from .models import User_parents,User_teachers
 class UserRegistrationForm(UserCreationForm):
 
     email=forms.EmailField() 
-    first_name=forms.CharField(max_length=20)
+    first_name=forms.IntegerField()
     last_name=forms.CharField(max_length=20)
 
     

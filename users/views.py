@@ -3,7 +3,7 @@ from django.contrib import messages
 from .forms import UserRegistrationForm, User_p, User_t
 from django.contrib.auth.models import User
 #from django.contrib.auth.decorators import login_required
-
+from second import models as sm
 from kinder.settings import EMAIL_HOST_USER
 from . import forms
 from django.core.mail import send_mail
@@ -14,16 +14,21 @@ def register_parent(request):
     if request.method == 'POST':
         form1 = UserRegistrationForm(request.POST)
         form_parents = User_p(request.POST)
-
+        students=sm.StudentId.objects.all()
         if form1.is_valid() and form_parents.is_valid():
-            user=form1.save()
-            profile= form_parents.save(commit=False)
-            profile.user=user
-            profile.save()
+            access=False
+            for student in students:
+                if form1.cleaned_data.get('first_name') == student.childid:
+                    access=True
+            if access:
+                user=form1.save()
+                profile= form_parents.save(commit=False)
+                profile.user=user
+                profile.save()
 
-            username = form1.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}')
-            return redirect('login')
+                username = form1.cleaned_data.get('username')
+                messages.success(request, f'Account created for {username}')
+                return redirect('login')
     else:
         form1 = UserRegistrationForm()
         form_parents = User_p()
