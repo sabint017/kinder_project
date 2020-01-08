@@ -28,11 +28,12 @@ class Post(models.Model):
 # Create your models here.
 
 class Images(models.Model):
-    post = models.ForeignKey(Post, on_delete = models.CASCADE)
-    image = models.ImageField(upload_to='images/',blank=True,null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.post.title + "Image"
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -71,6 +72,7 @@ class Attendance(models.Model):
     def __str__(self):
         return self.full_name
 
+<<<<<<< HEAD
 class Food(models.Model):
     full_name = models.CharField(max_length=40)
     roll = models.IntegerField()
@@ -81,3 +83,17 @@ class Food(models.Model):
 
     def __str__(self):
         return self.full_name
+=======
+
+class Routine(models.Model):
+    day = models.CharField(max_length=30)
+    ten_ten45 = models.CharField(max_length=30)
+    ten45_eleven30 = models.CharField(max_length=30)
+    eleven45_twelve30 = models.CharField(max_length=30)
+    twelve30_one15 = models.CharField(max_length=30)
+    two_two45 = models.CharField(max_length=30)
+    two45_three30 = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.day
+>>>>>>> 9d6339d79500626496eef02e34ee9448514e376c
