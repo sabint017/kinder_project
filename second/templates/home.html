@@ -33,7 +33,7 @@
     </script>
 
     <a name="createpost" class='btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
-    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+    <p id="usertype" style="display:none;">{{user.user_teachers.UserType}}</p>
     <a name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
     <a name="createpost" class='btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
     <a name="createpost" class='btn btn-secondary' href="{% url 'food' %}">Food</a>
@@ -49,7 +49,7 @@
 
                     <a style="margin-top: 50px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
                     <br>
-                    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+                    <p id="usertype" style="display:none;">{{user.user_teachers.UserType}}</p>
                     <a style="margin-top: 20px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
@@ -67,7 +67,7 @@
                     <br>
                     {% for post in posts %}
                     <div style="margin-left: 70px;" name='posts'>
-                    <span style="display:none;">{{post.author.last_name}}</span>
+                    <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
                         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
                         <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>

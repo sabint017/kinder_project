@@ -28,9 +28,9 @@
     }
     </script>
     <div>
-    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+    <p id="usertype" style="display:none;">{{user.user_teachers.UserType}}</p>
         <div name='posts'>
-    <span style="display:none;">{{post.author.last_name}}</span>
+    <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
         <a href="{% url 'user-posts' post.author.username %}">{{object.author}}</a></p></b>
         <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
