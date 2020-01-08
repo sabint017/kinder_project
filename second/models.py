@@ -70,3 +70,14 @@ class Attendance(models.Model):
 
     def __str__(self):
         return self.full_name
+
+class Food(models.Model):
+    full_name = models.CharField(max_length=40)
+    roll = models.IntegerField()
+    childid = models.IntegerField()
+    food = models.CharField(max_length=50)
+    day = models.CharField(max_length=40, default="Sunday")
+
+
+    def __str__(self):
+        return self.full_name

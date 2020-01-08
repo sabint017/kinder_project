@@ -1,0 +1,74 @@
+{% extends "base1.html" %}
+{% block base2 %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang = "en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title> FOOD </title>
+    <link rel="stylesheet" type="text/css" href="{% static "second.css" %}">
+    <script>
+        var vg = document.getElementId("VideoGame").checked;
+    </script>
+    
+</head>
+
+
+<body>
+
+<div class = "container">
+<center>
+
+    <table class = "table table-hover" id="mytable">
+        
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Food</th>
+                <th>Day</th>
+                <th>Status</th>
+            </tr>
+        
+        
+        </thead>
+        {% for id in students %}
+
+            <tr>
+            <td> {{id.full_name}}</td>
+            <td> {{id.roll}}</td>
+            <td> {{ id.food }}</td>
+            <td> {{ id.day }}</td>
+            <form>
+                <td>
+                    <input type="checkbox" name="checks" class="present" style="width: 30px; height:30px; " value="present">
+                </td>
+            
+            </tr>
+
+        {% endfor %}
+    
+    
+    
+    </table>
+
+                <button class='food-save btn btn-secondary' type='submit'>SAVE</button>
+
+            </form>
+
+
+</center>
+
+
+</div>
+
+
+</body>
+</html>
+
+{% endblock %}

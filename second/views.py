@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images
+from second.models import Post, StudentId, Attendance, Images, Food
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm
+from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, FoodForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
@@ -51,6 +51,13 @@ def attendance(request):
 
     }
     return render(request, 'attendance.html', context)
+
+def food(request):
+
+    context = {
+        'students': Food.objects.all(),
+    }
+    return render(request,'food.html',context)
 
 
 class PostListView(ListView):
