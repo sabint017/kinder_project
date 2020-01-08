@@ -1,74 +1,63 @@
 {% extends "base1.html" %}
 {% block base2 %}
 
-{% load static %}
-
 <!DOCTYPE html>
-<html lang = "en">
-
-{% load static %}
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> FOOD </title>
-    <link rel="stylesheet" type="text/css" href="{% static "second.css" %}">
-    <script>
-        var vg = document.getElementId("VideoGame").checked;
-    </script>
-    
+    <title>Document</title>
+    <style>
+        table,th, td, tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        #myTable th{
+            background-color:#729FCFFF;
+        }
+    </style>
+
 </head>
+<body style="padding-top: 55px;">
 
 
-<body>
+<div class="jumbotron">
+        <center>
+        <button class='btn btn-secondary' onclick="location.href='{% url 'add_food' %}'" style="margin-left:90%;">ADD</button>
+        <br>
+        <br>
+      
+        <table class="table table-hover" id="myTable" style="width: 70%">
+          <caption>{{f.full_name}}</caption>
+            <thead class="thead-gray">
+                <tr>
+                    <th>Day</th>
+                    <th>Food</th>
+                    <th>Remarks</th>
+                </tr>
+                </thead>
+                
+                <tbody>
+                  
+                {% for f in food %}
+                  <tr>
+                      <td>{{f.day}}</td>
+                      <td>{{f.food}}</td>
+                      <td>{{f.remarks}}</td>
+                  </tr>
+                
+                  {% endfor %}
 
-<div class = "container">
-<center>
+                   
+                </tbody>
+                
+                
+        </table>
+      
+        <button class='attendance-save btn btn-secondary' type='submit'>SAVE</button>
 
-    <table class = "table table-hover" id="mytable">
-        
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Roll</th>
-                <th>Food</th>
-                <th>Day</th>
-                <th>Status</th>
-            </tr>
-        
-        
-        </thead>
-        {% for id in students %}
-
-            <tr>
-            <td> {{id.full_name}}</td>
-            <td> {{id.roll}}</td>
-            <td> {{ id.food }}</td>
-            <td> {{ id.day }}</td>
-            <form>
-                <td>
-                    <input type="checkbox" name="checks" class="present" style="width: 30px; height:30px; " value="present">
-                </td>
-            
-            </tr>
-
-        {% endfor %}
-    
-    
-    
-    </table>
-
-                <button class='food-save btn btn-secondary' type='submit'>SAVE</button>
-
-            </form>
-
-
-</center>
-
-
+        </center>
 </div>
-
 
 </body>
 </html>
-
 {% endblock %}

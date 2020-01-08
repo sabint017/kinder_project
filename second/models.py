@@ -72,18 +72,12 @@ class Attendance(models.Model):
     def __str__(self):
         return self.full_name
 
-<<<<<<< HEAD
 class Food(models.Model):
-    full_name = models.CharField(max_length=40)
-    roll = models.IntegerField()
-    childid = models.IntegerField()
-    food = models.CharField(max_length=50)
-    day = models.CharField(max_length=40, default="Sunday")
-
-
+    day = models.CharField(max_length=30,null=True)
+    food=models.CharField(max_length=30,null=True)
+    remarks=models.CharField(max_length=30,null=True)
     def __str__(self):
-        return self.full_name
-=======
+        return self.day
 
 class Routine(models.Model):
     day = models.CharField(max_length=30)
@@ -96,4 +90,3 @@ class Routine(models.Model):
 
     def __str__(self):
         return self.day
->>>>>>> 9d6339d79500626496eef02e34ee9448514e376c

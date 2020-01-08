@@ -1,19 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-<<<<<<< HEAD
 from second.models import Post, StudentId, Attendance, Images, Food
-=======
 from second.models import Post, StudentId, Attendance, Images, Routine
->>>>>>> 9d6339d79500626496eef02e34ee9448514e376c
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-<<<<<<< HEAD
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, FoodForm
-=======
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm
->>>>>>> 9d6339d79500626496eef02e34ee9448514e376c
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
@@ -42,6 +36,27 @@ def addroutine(request):
     }
     return render(request, 'addroutine.html', context)
 
+def food(request):
+    context = {
+        'food': Food.objects.all()
+    }
+
+    return render(request, 'food.html', context)
+
+@login_required
+def addfood(request):
+    formf = FoodForm(request.POST)
+
+    if request.method == 'POST':
+        if formf.is_valid():
+            formf.save()
+
+            return redirect('food')
+
+    context = {
+        'formf': formf,
+    }
+    return render(request,'add_food.html',context)
 
 def home(request):
     context = {
@@ -86,12 +101,7 @@ def attendance(request):
     }
     return render(request, 'attendance.html', context)
 
-def food(request):
 
-    context = {
-        'students': Food.objects.all(),
-    }
-    return render(request,'food.html',context)
 
 
 class PostListView(ListView):
