@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class User_parents(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-
-    age=models.IntegerField()
+    ChildID=models.IntegerField()
+    ChildGrade=models.IntegerField()
     occupation = models.CharField(max_length=200)
     ChildName=models.CharField(max_length=200)
     RelationToChild=models.CharField(max_length=200)

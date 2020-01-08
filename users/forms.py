@@ -6,7 +6,7 @@ from .models import User_parents,User_teachers
 class UserRegistrationForm(UserCreationForm):
 
     email=forms.EmailField() 
-    first_name=forms.IntegerField()
+    first_name=forms.CharField(max_length=20)
     last_name=forms.CharField(max_length=20)
 
     
@@ -31,9 +31,10 @@ class User_p(forms.ModelForm):
     class Meta:
         model= User_parents
         fields=(
-            'age',
             'occupation',
             'ChildName',
+            'ChildGrade',
+            'ChildID',
             'RelationToChild'
         )
 

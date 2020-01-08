@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm, User_p, User_t
 from django.contrib.auth.models import User
+from .models import User_parents,User_teachers
 #from django.contrib.auth.decorators import login_required
 from second import models as sm
 from kinder.settings import EMAIL_HOST_USER
@@ -15,10 +16,17 @@ def register_parent(request):
         form1 = UserRegistrationForm(request.POST)
         form_parents = User_p(request.POST)
         students=sm.StudentId.objects.all()
+        parents=User_parents.objects.all()
+            
         if form1.is_valid() and form_parents.is_valid():
+            p=True
+            for parent in parents:
+                if form_parents.cleaned_data.get('ChildID') == parent.ChildID:
+                    p=False
             access=False
+
             for student in students:
-                if form1.cleaned_data.get('first_name') == student.childid:
+                if form_parents.cleaned_data.get('ChildID') == student.childid and p:
                     access=True
             if access:
                 user=form1.save()
