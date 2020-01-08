@@ -1,14 +1,38 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images
+from second.models import Post, StudentId, Attendance, Images, Routine
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm
+from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
+
+
+def routine(request):
+    context = {
+        'routine': Routine.objects.all()
+    }
+
+    return render(request, 'routine.html', context)
+
+
+@login_required
+def addroutine(request):
+    formr = RoutineForm(request.POST)
+
+    if request.method == 'POST':
+        if formr.is_valid():
+            formr.save()
+
+            return redirect('routine')
+
+    context = {
+        'formr': formr,
+    }
+    return render(request, 'addroutine.html', context)
 
 
 def home(request):
@@ -24,6 +48,7 @@ def registerchild(request):
         'stid': StudentId.objects.all(),
     }
     return render(request, 'registerchild.html', context)
+
 
 @login_required
 def addchild(request):
@@ -44,6 +69,7 @@ def addchild(request):
     }
     return render(request, 'addchild.html', context)
 
+
 def attendance(request):
 
     context = {
@@ -61,6 +87,7 @@ class PostListView(ListView):
         '-date_posted'
     ]
     paginate_by = 4
+
 
 class UserPostListView(ListView):
     model = Post
@@ -146,4 +173,3 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'profile.html', context)
-
