@@ -1,86 +1,122 @@
 {% extends "base1.html" %}
 {% block base2 %}
-<div class="jumbotron">
-<script>
-    var createpost=document.getElementsByName("createpost")
-    var posts=document.getElementsByName("posts")
+{% load static %}
 
-    document.addEventListener('DOMContentLoaded', function(){
-        for(i=0;i<posts.length;i++){
-            if (posts[i].querySelector('span').textContent =='teacher'){
-                posts[i].style.display=''
-            }else{
-                posts[i].style.display='none'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>posts</title>
+    <script>
+        var createpost=document.getElementsByName("createpost")
+        var posts=document.getElementsByName("posts")
+
+        document.addEventListener('DOMContentLoaded', function(){
+            for(i=0;i<posts.length;i++){
+                if (posts[i].querySelector('span').textContent =='teacher'){
+                    posts[i].style.display=''
+                }else{
+                    posts[i].style.display='none'
+                }
+            }
+            if (document.getElementById("usertype").innerText=='teacher'){
+                    displays1()
+                }else{
+                    displays1('none')
+                }
+        })
+
+        function displays1(i=''){
+            for(j=0;j<createpost.length;j++){
+                createpost[j].style.display=i
             }
         }
-        if (document.getElementById("usertype").innerText=='teacher'){
-                displays1()
-            }else{
-                displays1('none')
-            }
-    })
-
-    function displays1(i=''){
-        for(j=0;j<createpost.length;j++){
-            createpost[j].style.display=i
-        }
-    }
     </script>
-    <div>
 
-    <a name="createpost" class='btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
-    <p id="usertype" style="display:none;">{{user.last_name}}</p>
-    <a name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
-    <a name="createpost" class='btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
+</head>
 
-    </div>
-    <br>
-    {% for post in posts %}
-    <div name='posts'>
-    <span style="display:none;">{{post.author.last_name}}</span>
-        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
-        <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
-        <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
 
-        <div><a href="{% url 'post-detail' post.id %}">
-                <h1>{{post.title}}</h1>
-            </a>
+<body>
+<div class="jumbotron">
+
+    <div class = "row row-height" >
+        <div class="col-lg-2">
+            <div class="col-lg-2" style="position: fixed;">
+
+                    <a style="margin-top: 50px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
+                    <br>
+                    <p id="usertype" style="display:none;">{{user.last_name}}</p>
+                    <a style="margin-top: 20px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
+                    <br>
+                    <a style="margin-top: 20px; margin-bottom: 10px;" name="createpost" class='btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
+
+            </div>
         </div>
-        <div>
+
+        <div class="col-lg-7">
+
+
+                    <br>
+                    {% for post in posts %}
+                    <div style="margin-left: 70px;" name='posts'>
+                    <span style="display:none;">{{post.author.last_name}}</span>
+                        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
+                        <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
+                        <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
+
+                        <div><a href="{% url 'post-detail' post.id %}">
+                                <h1>{{post.title}}</h1>
+                            </a>
+                        </div>
+                        <div>
+                        </div>
+                        <p><b>{{post.content}}</b></p>
+
+
+                        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
+
+                        <hr>
+                    </div>
+                    {% endfor %}
+                    <center>
+                    {% if is_paginated %}
+
+                      {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                      {% endif %}
+
+                      {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                      {% endfor %}
+
+                      {% if page_obj.has_next %}
+                        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                      {% endif %}
+
+                    {% endif %}
+                    </center>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="col-lg-3" style="position: fixed;">
+                <p>wooo</p>
+
+
+                </div>
+            </div>
         </div>
-        <p><b>{{post.content}}</b></p>
-
-       
-        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
-       
-        <hr>
     </div>
-    {% endfor %}
-
-    {% if is_paginated %}
-
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
-
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
-
-    {% endif %}         
-
-</div>
-
 <!-- Navbar Right Side -->
+</body>
+
+
+</html>
+
+
 
 {% endblock %}
