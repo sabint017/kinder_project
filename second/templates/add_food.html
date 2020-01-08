@@ -3,33 +3,27 @@
 
 {% load static %}
 
-<!DOCTYPE html>
-<html lang = "en">
-
-{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <title> FOOD </title>
     <link rel="stylesheet" type="text/css" href="{% static "second.css" %}">
-    
-    
+    <script src=" {% static 'registerchild.js' %} "></script>
+
 </head>
 
 
-<body>
-    <body style="padding-top: 65px;">
-   <form method='POST'>
+<div class='jumbotron'>
+<center>
+    <form method='POST'>
         {% csrf_token %}
         {{ formf.as_p }}
         <div>
-            <button class='post-button' type='submit'>ADD</button>
+            <button class='btn btn-secondary' type='submit'>ADD</button>
         </div>
     </form>
-</body>
-</html>
+</center>
+</div>
 
-</body>
-</html>
 
 {% endblock %}
