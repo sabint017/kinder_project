@@ -10,7 +10,7 @@
 <body style="padding-top: 65px;">
    <form method='POST'>
         {% csrf_token %}
-        {{ formr.as_p }}
+        {{ form.as_p }}
         <div>
             <button class='post-button' type='submit'>ADD</button>
         </div>

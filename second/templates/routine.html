@@ -44,7 +44,7 @@
             {% for rout in routine %}
 
                     <tr>
-                    <td><b>{{rout.day}}</b></td>
+                    <td><b><a href="#">{{rout.day}}</a></b></td>
                     <td>{{rout.ten_ten45}}</td>
                     <td>{{rout.ten45_eleven30}}</td>
                     <td>Break</td>
@@ -53,7 +53,6 @@
                     <td>Lunch</td>
                     <td>{{rout.two_two45}}</td>
                     <td>{{rout.two45_three30}}</td>
-
                     </tr>
 
             {% endfor %}

@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images, Food
 from second.models import Post, StudentId, Attendance, Images, Routine
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, FoodForm
 from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
@@ -23,40 +21,19 @@ def routine(request):
 
 @login_required
 def addroutine(request):
-    formr = RoutineForm(request.POST)
+    form = RoutineForm(request.POST)
 
     if request.method == 'POST':
-        if formr.is_valid():
-            formr.save()
+        if form.is_valid():
+            form.save()
 
             return redirect('routine')
 
     context = {
-        'formr': formr,
+        'form': form,
     }
     return render(request, 'addroutine.html', context)
 
-def food(request):
-    context = {
-        'food': Food.objects.all()
-    }
-
-    return render(request, 'food.html', context)
-
-@login_required
-def addfood(request):
-    formf = FoodForm(request.POST)
-
-    if request.method == 'POST':
-        if formf.is_valid():
-            formf.save()
-
-            return redirect('food')
-
-    context = {
-        'formf': formf,
-    }
-    return render(request,'add_food.html',context)
 
 def home(request):
     context = {
@@ -102,8 +79,6 @@ def attendance(request):
     return render(request, 'attendance.html', context)
 
 
-
-
 class PostListView(ListView):
     model = Post
     template_name = 'home.html'
@@ -112,6 +87,12 @@ class PostListView(ListView):
         '-date_posted'
     ]
     paginate_by = 4
+
+
+class RoutineListView(ListView):
+    model = Routine
+    template_name = 'routine.html'
+    context_object_name = 'routine'
 
 
 class UserPostListView(ListView):
@@ -128,6 +109,11 @@ class UserPostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+
+class RoutineDetailView(DetailView):
+    model = Routine
+    template_name = 'routine_detail.html'
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -173,8 +159,22 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 
+class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Routine
+    fields = ['day', 'ten_ten45', 'ten45_eleven30', 'eleven45_twelve30',
+              'twelve30_one15', 'two_two45', 'two45_three30']
+    template_name = 'addroutine.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def test_func(self):
+        routine = self.get_object()
+        return True
+
 # def profile(request):
     # return render(request,'users/profile.html')
+
 
 @login_required
 def profile(request):

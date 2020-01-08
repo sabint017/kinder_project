@@ -72,12 +72,15 @@ class Attendance(models.Model):
     def __str__(self):
         return self.full_name
 
+
 class Food(models.Model):
-    day = models.CharField(max_length=30,null=True)
-    food=models.CharField(max_length=30,null=True)
-    remarks=models.CharField(max_length=30,null=True)
+    day = models.CharField(max_length=30, null=True)
+    food = models.CharField(max_length=30, null=True)
+    remarks = models.CharField(max_length=30, null=True)
+
     def __str__(self):
         return self.day
+
 
 class Routine(models.Model):
     day = models.CharField(max_length=30)
@@ -90,3 +93,9 @@ class Routine(models.Model):
 
     def __str__(self):
         return self.day
+
+    def get_absolute_url(self):
+        return reverse('routine-detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super(Routine, self).save(*args, **kwargs)
