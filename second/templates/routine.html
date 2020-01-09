@@ -44,7 +44,7 @@
             {% for rout in routine %}
 
                     <tr>
-                    <td><b><a href="#">{{rout.day}}</a></b></td>
+                    <td><b><a href="{% url 'routine-detail' rout.id %}">{{rout.day}}</a></b></td>
                     <td>{{rout.ten_ten45}}</td>
                     <td>{{rout.ten45_eleven30}}</td>
                     <td>Break</td>
