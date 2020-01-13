@@ -34,7 +34,7 @@ class User_p(forms.ModelForm):
         fields=(
             'UserType',
             'occupation',
-            'ChildName',
+            'school',
             'ChildGrade',
             'ChildID',
             'RelationToChild'
@@ -48,6 +48,7 @@ class User_t(forms.ModelForm):
             'UserType',
             'age',
             'grade',
+            'school'
         )
 
 

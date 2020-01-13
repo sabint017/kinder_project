@@ -7,9 +7,9 @@ class User_parents(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     UserType=models.CharField(max_length=20)
     ChildID=models.IntegerField()
-    ChildGrade=models.IntegerField()
+    ChildGrade=models.CharField(max_length=20)
     occupation = models.CharField(max_length=200)
-    ChildName=models.CharField(max_length=200)
+    school=models.CharField(max_length=200)
     RelationToChild=models.CharField(max_length=200)
 
     def __str__(self):
@@ -22,6 +22,7 @@ class User_teachers(models.Model):
     UserType=models.CharField(max_length=20)
     age=models.IntegerField()
     grade=models.CharField(max_length=20)
+    school=models.CharField(max_length=200)
 
     def __str__(self):
         return self.user.username
