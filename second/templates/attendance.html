@@ -10,7 +10,15 @@
     <title>Student Ids</title>
     <link rel="stylesheet" type="text/css" href="{% static 'second.css' %}">
     <script>
-        var vg = document.getElementId("VideoGame").checked;
+
+        function disableBtn(id) {
+            document.getElementById(id).disabled = true;
+            setTimeout(function(){document.getElementById(id).disabled = false;},10000);
+        }
+
+        function enableBtn(id) {
+            document.getElementById(id).disabled = false;
+        }
     </script>
 </head>
 
@@ -28,32 +36,31 @@
                 <th>Name</th>
                 <th>Roll No.</th>
                 <th>Status</th>
-
+                <th>Absent Days Count</th>
 
             </tr>
         </thead>
 
-        {% for id in students %}
+        {% for i in students %}
 
             <tr>
-            <td>{{id.full_name}}</td>
-            <td>{{id.roll}}</td>
-            <form>
-                <td>
-                    <input type="checkbox" name="checks" class="present" style="width: 30px; height:30px; " value="present">
-                </td>
-            </tr>
-          
+            <td>{{i.full_name}}</td>
+            <td>{{i.roll}}</td>
 
+            <td>
+            <form>
+                <button id="btnp{{i.id}}" class="btn btn-primary" onclick='disableBtn(this.id); enableBtn("btna{{i.id}}")'/>Present</button>&nbsp;
+                <button id="btna{{i.id}}" class="btn btn-danger" onclick='disableBtn(this.id); enableBtn("btnp{{i.id}}")'/>Absent</button>&nbsp;
+            </form>
+            </td>
+            <td> 
+                {{absentdays.objects.count}} (<small><a href="#">View detail</a></small>)
+            </td>
+
+            </tr>
 
         {% endfor %}
     </table>
-                <button class='attendance-save btn btn-secondary' type='submit'>SAVE</button>
-
-                </form>
-
-
-
 
 
 </center>

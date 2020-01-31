@@ -20,6 +20,14 @@ def routine(request):
     return render(request, 'routine.html', context)
 
 
+def absentdays(request):
+
+    context = {
+        'absentdays': Absentday.objects.all(),
+    }
+    return render(request, 'attendance.html', context)
+
+
 @login_required
 def addroutine(request):
     form = RoutineForm(request.POST)

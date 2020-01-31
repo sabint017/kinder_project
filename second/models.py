@@ -99,3 +99,11 @@ class Routine(models.Model):
 
     def save(self, *args, **kwargs):
         super(Routine, self).save(*args, **kwargs)
+
+
+class Absentday(models.Model):
+    name = models.ForeignKey(StudentId, on_delete=models.CASCADE)
+    date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name.full_name + " A"
