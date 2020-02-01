@@ -15,10 +15,18 @@
     <script src=" {% static 'register.js' %} "></script>
 </head>
 
-<body>
+<body style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWgnR_7PLF7Xb8Ns-1nxRtC7sQ5Ikb0heSFc3QQRPtSer7J97C);">
+    <style>
+    .JumboHeaderImg{
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWgnR_7PLF7Xb8Ns-1nxRtC7sQ5Ikb0heSFc3QQRPtSer7J97C);
+        background-size: inherit;
+        background-position: center;
+        backface-visibility: initial;
+        background-attachment: scroll;
+    }</style>
 
 
-    <div class="jumbotron">
+    <div class="jumbotron JumboHeaderImg">
         <center>
             <div class='form-box'>
 
@@ -26,9 +34,9 @@
                 <form method='POST'>
                     {% csrf_token %}
                     {{ form1.as_p }}
-                    
+
                     {{ form_parents.as_p }}
-                
+
                     <div>
                         <button class='signup-button' type='submit'>SIGN UP</button>
                     </div>
