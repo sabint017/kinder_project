@@ -1,39 +1,173 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block base1 %}
 <html lang="en">
-{% load static %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Name of the Authors">
+        <meta name="generator" content="Platform used to build program">
+        <title>
+            Services
+        </title>
+        <link rel="icon" type="image/icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAmVBMVEX///82OI4xM4w0No0vMYsdIIYkJ4gfIoYuMIshJIcrLYr8/P4oK4kmKYj09Pm/v9kaHYXr6/RGSJbw8PaPkL1mZ6alpsgUGISEhbZ9frN2d69tbqjU1OOxstDAwNnq6vNaXJ/c3etNT5o6PJCWl8DKyt/i4u60tdLX1+cOE4KdnsQ/QZJVVpxhY6OCg7RoaqYAAHpJS5gFDIGErKCOAAAMoklEQVR4nO2daXuqPBCGJYGwCIgbWvfdtmr79vz/H/fiCgnZWETaK/e3syA8JJmZTCah0VAoFAqFQqFQKBQKhUKhUCgUCoVCoVD8GSbTMJy+F/+dVvGfqIDd5vhhexGGOQ79Ir/U6nyEZT3VE5n95wDtCgQe+mrn/qGVDbXgN0jeGFoMdMzPXL+yXRiXFxfku7xaMMkatBfZu/bkFNw7SrB5wiOy2U7yXIVL1qx1xp69HAd6fLnRy/MM+WiOB4NxnnFISNYPWVp5NzJ07HKjslbe/ThRA3nTHJcSkp1v+UvfPywNJ9jmeII8TKzrqzYXO95/m85of0tINuRf20InBINFtufOzX4A752S062Wx//o/0CYLyDbr7cGIVgblBDJyNALYPy83oHesfxe4N3sSrNL/Bsu2ZP1qytACNbHuTVkoo+w28LgjdJIM93R0K1TtxBp4nC/vJa7b8tMNTF3TJXFbu2QN3YQOV7bJyPqBsbtgUYuTElOPr0pZ35+yCa23gqrkWBmkPc9Y5wwSeHVZw6uf/JNCLQ58TsbO/HkQ5k7723iptAgf/QZbAKK3gjdjAfjewfBZG/dRo+aljx040dfydz6AIl7OlIvqhjNPvme46e2b46q2fu49YK76wjP2tKS9VjBQMJaTxF5R0QaxCfwRd4Va2bjM3qELXy0nX6LLXqXgQ8gIfkrjiZsccDa1FJNXEWE+U1GAPhLd83vjhk/2F3x21UaIMzX1IsVi03Xp0fezik0v5ZkkgoBCM0g2RCEYg0ATPI+i+KmRTQxNKuJqEdkXMsDnK4XDe/uDJfcS/RqoeIh4RIt4635JI04XUSOJg7w53rR5+NpsY6dGJiByM1s8OADBOMqHNOFT57tIrGu18ziaxKSkwPTFdw1xHwiGPQribVudGgBCIN/10vag8TTglvsHyZMgj7i3xMTDILj8rkSCSap4JZJcJ/5nhJvCRqjbXc+WyX7irfn3jIpGASriqZLMXwPFWOZj2AbDx4sG9kI6ynWF++GCcHwBXoj42XIGC8YjGJb6qfmHgQ2J15MCNZhrtRaYdKxQBoHYP4mFNk7tuSEYOdYRcxBA4oaGaacZWqiJys5KXhRjQemkE6+4DgwFVAshUPBpo7lhEV/oWBKgo3fwGdagVAypZXrIrgxZ0ySr4LprmYqlpyaC9VGcDrKjQGAFR5skSgmNwnJNRLcaLLMtfPDNqfzPjVhxGzlOgmO+ig9F+L1uU82+zGcR98GerqbJyXXSzAl6XQRLEwfb3swMD3PQ+bgNLLTTR5LDuNgvBaCqR5KLPjMbrufTlvvUe9vr9OSH2O5q90dQj0ERx4q9bTOKetv+DzJ/k1yXQTf0nUJdKkULI4P0pIfS8LX91EbwSnFQMuTS53zJeuaWxvBjT4Rd6F807g55Ek+oPoI7hJhl5ln7fzMXONJPtVGcCJbd8HKv6zJlVwj1pg/hlaBmevvkEy4Y5ta/SDLnOKkaicZt1t6Zk+MM1+np5/ktOLFEHbLKJo+rr/kDWa3HG4qUopuJy05PV9+IW7yyaBRwjquf6i15Bk2V5SraRBRb8lHzLZ+lLPoxZ1WvBg8zQUyVBlSuUdrfn3NFz6JKOaLG43RvziMTkuuh1/Gl+tFK6ECRkgz74agrpI3mKUuWH8yQsm+61Oc1GslN3fb/RFfQ5IoWuEwQvhw9TvpFO+LJPvLbTj+8Qzbwy0qREV+dXzPAscdmyK5avPl77bT744TadUpS2yi5X0u/Xh88CVXUJx3oblshaeOddGaeoob0pXCFPrJPL/Nk2xXUnLa2IEAuWytt9eff82+j1lAvmR0kdz0223/iWvII9HK/pkg988TgjHJaYuN3nbhcQ1dD2rHzbMqX8jcHQ2Qe2acEiyQbBkegFpkSSBwjcP0KfkvGcW5ZxEUwUnJlFAkCUTwGfs0xxKK3Zz76KiCI6twt1D+QbAMCY1x+c08lqhVQ/xKLBYMwcB72EHfFd3dWZdeXi2jOF/ExRKsJ6o2u47o9jos22xLKc7jnBiCdQ0rRu5SFmiIN9QpuWPLKM6T02MJXhNN1qUs0OC4xRNsGE9S3KdXVABScCSZkhXBGZRbw/ccxQzB+oFih9qUrAj+mnKs4HJ4imJWl+5QDW+7gwe5uuvi6Yig1EaW8cdZw+pvRgvTBWN7Kc57qr7DcAiS76zcXW0yMVdG7zTOKLgxTEwqnOuGKj+55xHaZZrrvkwEkimtl1lwcjdqvLiVKAPSjDLrrY8SijNNj7ML9t3HqIVe7K0TknMGfXQ6EpXjToZNR6PMghvtODOOjdjWQ3I5CyI3ZNo4Q9Inews3Gu/xcg9+ZMFDcqmmK/znCFtZdrN0PsGXXa03iO7buu3r52+xyMqktwqQIKAfSB6QkUtwcr3HJSzGPii/jc90W72ViRz2PgFJY80UzJ/++PFWo9SpENMB7UWUQnfW+0GI0cPlTFePXqorEowVvJpk1uOyhaLYAgGHdmv4YyNyf+j51R8lrt4OUtddBIuPe0lEQdAiE3qhAbXBM3ddz/dfUQ8nVcsMZGppstT5NmFiNFAkB1IvvBCR6g6+7iRx0E36VAtZwfheWJCSvP+Xt1QwE/j2VIn8bapM9yJYOIYvYHsG05Knuc80y8QQWzMYCIsiaDsdJQU33rH+kZZcDW2sKsIRJnApimUFNxpv2IQaOK+RjMWfEIr++1tqHUlecKOJp37gayS3MPdqi5YHWqQ3TiXxeCxNvOjVe4lkvKeJkk3NVLl9JnuzxUsioV3llvo7eJWiKYo0Nx4uOGPUsA3wjl24DDQH3Y9sjZzMSeowc5i063gvl4ybX1sUB3ThPSyHHmefH5sN8pKhyL/qx/KEODdOlF9rvp2XfyHw7Jwntfjh2kaODgCwPBP2KjjDiARPCUnUG7fDxWF9LHLW7by16R+Px2H4CsuFh/hn4/WaIw2qxLdxL7kuL2/sr+p5gi9xppFTpK4LY36wzFM1E4RsbIlAyi6pYbZW5Hx1u1efrV13mkReAxpl5F8im349os+1PgWal1WfUb4jNyBDp7gNnWiPYA561pDzg/7XovDdMpKe5gOtaF3GBj81xLGPId3x7r6QUfX5L++UAzIKSp6vUmfhAA+tNhOie+8+V7ZT2ZnGd5rUek1QpPpmatNWbyFwTLQabfaTC+HmBE0XaF7lNdcn+tkewMo7lpsn9rlfEOiOZ17wnMvZhaBTqhoJNqyDQuEgX2+bOVmOLKx+8rT9YD/MR46pgj8WHoGDUZbvl6bLPAr28jinrIN5mqmBNc0quBU2O4LDBS0nU9p8uTAzNXAUnVQdj73RC5QSj2T2pWfs8zdT8ty+B5U7plDiMEXd/JLazDgf0lbv+HhVbRO5M5E7WNCxh8J2nryx1mg5gEMVKhN0hYfs3TVbRn/PsWHtcBFkbt+zY6o6xbXIYFZ1ZI2mVM+5DE/IkyisSWNW7Zh6WY69PYv2jMMwnO0eE4L5svU50gzODiouVr9iwS3BKYo0oOUhw11r68Ux+hMykJujM99/y604iTnnhh7cR40AAMoaARZBwb3OmclyrvEzKLtmXojUJrcnUrljmgoHMRRu5uBfzu/zMNc2lAI0kWjTlb0er6jTehm1ug3Xa8pZgzGo8q+y0Q4PS+DAc+Xk7tvIoRkgdzSL5geTo81sZ31RteBIDcetQHN0C7AmJyOb+4ki0uP0Hp2FFiPEgc4rsvZLjyXFchLZ4/eR6wFZ0cDWsCxt95seuDOO030274yPK5gnPDLwwwVivp1kw1nGYk/OdrcaxSc41ewyTzOhnWoMaCvm/iftwXF0d0SbF/jDgLQYZa7kZWSSykhB+0gfYc2hYCbt9Fkx4+RAVCd/vHC1dktI1gfsHM8nNyrllo/0Bslmrt4xJZlhS2ysBr7C/YwM4mZvdod4mqY/vcKWzz6WDAb86SrznOszgcDdhPdmhrJbE57G/fx/iFaibBa17PZ2tSm6T/t4zXIGr/+28/VLPEDi+8Pv7FhcZk/H1LRe6JiSDG0IvY7MUgg7ZyL1zdVu39Bf55iSfBmShVnsr8hIbmvdWjUpI9pJpl/YA1nm+3u/kSnLWsPKF0Qrgvk5qFK3WNaJJmvhFb3e5TyJH8YUqvK1hcr4YgSaRi18zjNgmK7nb0Z7GUt61PVnDVcEvQLg7xquaMZIjbr+ruG6ff2YBNp/NOI6Q41B5L5q/Vuh5T+t0grQ6whtIEtNFX8ttIEs8RnvXwwtD2K8OnP1XNJT5OprZ6tlHCAMD31UXd1QMe8tjNl0/4fDD4VCoVAoFAqFQqFQKBQKhUKhUCgUCoVC8Qf4HwWtuxkadpFuAAAAAElFTkSuQmCC"/>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style>
+        .bd-placeholder-img{
+            font-size: 2em;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select:none ;
+            -ms-user-select:none ;
+            user-select: none;
+         }
+         @media (min-width: width 768px){
+             .bd-placeholder-img{
+                 font-size: 3.5em;
+             }
+         }
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-
+          </style>
 </head>
-
-<body>
-    <div class="jumbotron">
-    <h2>Report Sheet</h2>
+<body style="background: aquamarine;">
 
 
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+            <h2 class="text-black">About</h2>
+            <p class="text-muted"> The root definition of the word “service” seems to be “to provide”.  Providing your skills that are needed by the public, providing aid, providing dedications to God, providing your life to the government, providing repair of numerous items are all examples of the word service.  There are, however, many other aspects, definitions, and deeper meanings of the word service.
+                The word “service” is one that can be applied to so many different things in the world.  Every business on the market is there to provide a service.  The backbone of the United States is business and if there was no “service” then there would be no businesses, and then where would we be?  Many people dedicate their lives or a large portion of it to God, and the very word that describes the ceremony is service. Service is what basically everyone does for a living, some people do it for money, and some do it out of the kindness of their heart.  Even some animals do a service to their owners i.e. leader dogs for the blind and handicap.
+                I have never actually sat down and thought about the word service but now that I have it has vast meanings I never realized.   There are so many variations of the word that the definition of it in the Oxford English Dictionary takes up three pages.  To go into how the word itself relates to us and the world would take much more than a 500 word essay.  The word has meanings like “a set of dishes, utensils” and “to mate with” that I have never thought about or related the word too.
+                The word service also relates to an occupation called a servant.  In the past these people were classified differently.  It wasn’t an occupation, but forcing a person to work for them, often times not out of their own free will.  If you were to look in a really old dictionary that definition might actually be written down as a synonym for the word “service”; that however is no longer a use of the word because the practice has been illegal for a long time.  Many words for that reason change over time some more dramatically than others.  Even between three dictionaries the word have several different definitions and implications.  Words seem to adapt to, and with the changing times; servant is a very good example of these series of changes.  Everything in the world seems to evolve and the English language is not an exception.
+                The word service is used in so many different ways to mean so many different things in our daily lives.  Most commonly it is used to describe an action that is done for someone, often times resulting in some type of benefit, whether it is personal or monetary.  Other uses include prayer services (church), independent kindness works (community service), and various types of repair work.  The word and its many indications are used very commonly in our daily lives.
+                I haven’t thought much about the in-depth meanings of words, and their full definitions, but I know that this is one word with a vast definition almost up there with the word love. The basic definition is to provide something for or in dedication to someone, or something, but that doesn’t even begin to describe the deeper meanings and implications of the word.
+
+
+            Oxford English Dictionary
+            2nd edition
+            1989, New York
+
+            - A form of liturgy prescribed for public worship, or for a particular occasion
+            - Religious devotion; the serving of God or a god by obedience, piety, and charitable works
+            - Worshi, public worship conducted in aan order of prescribed form
+            - A postion as a servant in the employment of an individual person or household
+            - Employment by the Crown or State in an official capacity
+            - Respect, regard
+            - Provision of a facility to meet the needs or for the use of a person or thing
+            - An act of helping or benefiting another
+            - Serviceableness, usefulness
+            - The act of waiting at table or serving a meal, food, etc
+            - A set of cups, dishes, plates
+            - An application of something
+            And much much more
+
+            Websters College Dictionary
+            1991, New York
+
+            - An act of helpful activity;help;aid
+            - The supplying or supplier of utilities
+            - The providing or provider of accomidations and activities required by the public
+            - The organized system of apparatus, appliences, employees
+            - The performance of duties or the duties performed by a waiter or servant
+            - Employment in any duties or work for a person, organization, government
+            - The duty or work of public servants
+            - A branch of the armed servants
+            - The actions required in loading and firing a cannon
+
+            Random House College Dictionary
+            1975, New York
+
+            - An act of service
+            - The supplying or supplier of utilities or commodities required or demanded by the public
+            - The providing or a provider of accomidation and activities required by the public
+            - The organized system of apparattus
+             Etc. The root definition of the word “service” seems to be “to provide”.  Providing your skills that are needed by the public, providing aid, providing dedications to God, providing your life to the government, providing repair of numerous items are all examples of the word service.  There are, however, many other aspects, definitions, and deeper meanings of the word service.
+             The word “service” is one that can be applied to so many different things in the world.  Every business on the market is there to provide a service.  The backbone of the United States is business and if there was no “service” then there would be no businesses, and then where would we be?  Many people dedicate their lives or a large portion of it to God, and the very word that describes the ceremony is service. Service is what basically everyone does for a living, some people do it for money, and some do it out of the kindness of their heart.  Even some animals do a service to their owners i.e. leader dogs for the blind and handicap.
+             I have never actually sat down and thought about the word service but now that I have it has vast meanings I never realized.   There are so many variations of the word that the definition of it in the Oxford English Dictionary takes up three pages.  To go into how the word itself relates to us and the world would take much more than a 500 word essay.  The word has meanings like “a set of dishes, utensils” and “to mate with” that I have never thought about or related the word too.
+             The word service also relates to an occupation called a servant.  In the past these people were classified differently.  It wasn’t an occupation, but forcing a person to work for them, often times not out of their own free will.  If you were to look in a really old dictionary that definition might actually be written down as a synonym for the word “service”; that however is no longer a use of the word because the practice has been illegal for a long time.  Many words for that reason change over time some more dramatically than others.  Even between three dictionaries the word have several different definitions and implications.  Words seem to adapt to, and with the changing times; servant is a very good example of these series of changes.  Everything in the world seems to evolve and the English language is not an exception.
+             The word service is used in so many different ways to mean so many different things in our daily lives.  Most commonly it is used to describe an action that is done for someone, often times resulting in some type of benefit, whether it is personal or monetary.  Other uses include prayer services (church), independent kindness works (community service), and various types of repair work.  The word and its many indications are used very commonly in our daily lives.
+             I haven’t thought much about the in-depth meanings of words, and their full definitions, but I know that this is one word with a vast definition almost up there with the word love. The basic definition is to provide something for or in dedication to someone, or something, but that doesn’t even begin to describe the deeper meanings and implications of the word.
+
+
+         Oxford English Dictionary
+         2nd edition
+         1989, New York
+
+         - A form of liturgy prescribed for public worship, or for a particular occasion
+         - Religious devotion; the serving of God or a god by obedience, piety, and charitable works
+         - Worshi, public worship conducted in aan order of prescribed form
+         - A postion as a servant in the employment of an individual person or household
+         - Employment by the Crown or State in an official capacity
+         - Respect, regard
+         - Provision of a facility to meet the needs or for the use of a person or thing
+         - An act of helping or benefiting another
+         - Serviceableness, usefulness
+         - The act of waiting at table or serving a meal, food, etc
+         - A set of cups, dishes, plates
+         - An application of something
+         And much much more
+
+         Websters College Dictionary
+         1991, New York
+
+         - An act of helpful activity;help;aid
+         - The supplying or supplier of utilities
+         - The providing or provider of accomidations and activities required by the public
+         - The organized system of apparatus, appliences, employees
+         - The performance of duties or the duties performed by a waiter or servant
+         - Employment in any duties or work for a person, organization, government
+         - The duty or work of public servants
+         - A branch of the armed servants
+         - The actions required in loading and firing a cannon
+
+         Random House College Dictionary
+         1975, New York
+
+         - An act of service
+         - The supplying or supplier of utilities or commodities required or demanded by the public
+         - The providing or a provider of accomidation and activities required by the public
+         - The organized system of apparattus
+          Etc.
+          </p>
     </div>
-</body>
-<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDOgl2kfSDsz5GPnNUBmA4fOFpmaMMXNH-mbACBaN5EmBmChb8h_47U4b92Yoq3owsxZGd2evtF-4n/pubhtml width = 1500 height = 1500"><B><button onclick="//docs.google.com/spreadsheets/d/e/2PACX"><B>Download Report</B></button>
+        <div class="col-sm-4 offset-md-1 py-4">
+            <h2 class="text-white">Contact
+            </h2>
+            <ul class="list-unstyled">
+               <li> <a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="https://www.facebook.com/tplayer336" class="text-white">Follow on Facebook</a></li>
+                <li><a href="http://127.0.0.1:8000/dev.html" >Developers</a></li>
+            </ul>
+        </div>
+                </div>
+            </div>
+        </div>
+    <div class="navbar navbar-dark bg-dark shadow-lg">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center"></a>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>>Digitize
+                </strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
 
-
-<iframe src=https://docs.google.com/spreadsheets/d/e/2PACX-1vSDOgl2kfSDsz5GPnNUBmA4fOFpmaMMXNH-mbACBaN5EmBmChb8h_47U4b92Yoq3owsxZGd2evtF-4n/pubhtml width = 1500 height = 1500>
-
-        </iframe>
-
-</html>
-{% endblock %}
-
-
-
-
-
+    </header>
+    <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>Copyright &copy; 2015 | All Rights Reserved | KINDER</p>
+          <p>Wanna Visit Again || <a href="http://127.0.0.1:8000/">Visit the homepage</a> or read about Developers <a href="dev.html">Click Here !!</a></p>
+        </div>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 </body>
 
 </html>
