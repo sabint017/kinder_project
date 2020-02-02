@@ -1,11 +1,11 @@
 
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, NoticeListView
+from .views import PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView
 from . import views
 from django.urls import path
 from users import views as users_views
 
 urlpatterns = [
-    path('home/', PostListView.as_view(), name='home'),
+    path('home/', views.postsandnotices, name='home'),
 
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('post/new/', PostCreateView.as_view(), name='post-create'),

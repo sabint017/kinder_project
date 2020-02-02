@@ -10,6 +10,7 @@ from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, Atten
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 @login_required
@@ -107,23 +108,25 @@ def attendance(request):
     return render(request, 'attendance.html', context)
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = 'home.html'
-    context_object_name = 'posts'
-    ordering = [
-        '-date_posted'
-    ]
-    paginate_by = 4
+def postsandnotices(request):
+    post_list = Post.objects.all()
+    paginator = Paginator(post_list, 4)
+    page = request.GET.get('page')
 
+    try:
+        pages = paginator.page(page)
+    except PageNotAnInteger:
+        pages = paginator.page(1)
+    except EmptyPage:
+        pages = paginator.page(paginator.num_pages)
 
-class NoticeListView(ListView):
-    model = Notice
-    template_name = 'home.html'
-    context_object_name = 'notices'
-    ordering = [
-        '-date_posted'
-    ]
+    context = {
+        'posts': Post.objects.all().order_by('-date_posted'),
+        'notices': Notice.objects.all().order_by('-date_posted'),
+        'page_obj': pages,
+    }
+
+    return render(request, 'home.html', context)
 
 
 class UserPostListView(ListView):
