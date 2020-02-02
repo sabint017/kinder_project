@@ -26,7 +26,7 @@ class Post(models.Model):
 
 
 class Notice(models.Model):
-    title = models.TextField(max_length=200)
+    title = models.CharField(max_length=200)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
