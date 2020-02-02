@@ -51,6 +51,8 @@
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'food' %}">Food</a>
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'routine' %}">Class Routine</a>
+                    <br>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
 
             </div>
         </div>
@@ -137,8 +139,13 @@
 
             <div class="col-lg-3">
                 <div class="col-lg-3" style="position: fixed;">
-                <p>wooo</p>
-
+                {% for notice in notices %}
+                <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
+                <div><a href="{% url 'notice-detail' notice.id %}">
+                    <h1>{{notice.title}}</h1>
+                    </a>
+                </div>
+                {% endfor %}
 
                 </div>
             </div>

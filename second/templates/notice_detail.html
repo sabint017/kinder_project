@@ -1,0 +1,60 @@
+{% extends "base1.html" %}
+{% block base2 %}
+<div class="jumbotron">
+    <script>
+    var createpost=document.getElementsByName("createnotice")
+    var notices=document.getElementsByName("notices")
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+        for(i=0;i<notices.length;i++){
+            if (notices[i].querySelector('span').textContent =='teacher'){
+                notices[i].style.display=''
+            }else{
+                notices[i].style.display='none'
+            }
+        }
+        if (document.getElementById("usertype").innerText=='teacher'){
+                displays1()
+            }else{
+                displays1('none')
+            }
+    })
+
+    function displays1(i=''){
+        for(j=0;j<createnotice.length;j++){
+            createnotice[j].style.display=i
+        }
+    }
+    </script>
+
+
+    <div>
+    <p id="usertype" style="display:none;">{{user.user_teachers.UserType}}</p>
+    <div name='notices'>
+    <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
+        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ notice.author.profile.image.url }}" height = "45px", width="45px">
+        <a href="{% url 'user-posts' notice.author.username %}">{{object.author}}</a></p></b>
+        <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
+
+        <div><a href="{% url 'notice-detail' post.id %}">
+                <h1>{{notice.title}}</h1>
+            </a>
+        </div>
+        <div>
+        </div>
+        <p><b>{{notice.content}}</b></p>
+
+        <br>
+    </div>
+
+        <a class='btn btn-secondary' name="createpost" href="{% url 'notice-update' object.id %}">Update Post</a>
+        <a class='btn btn-outline-danger' name="createpost" href="{% url 'notice-delete' object.id %}">Delete Post</a>
+
+
+
+    </div>
+
+
+</div>
+{% endblock %}

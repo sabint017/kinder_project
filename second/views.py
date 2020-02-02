@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food
-from second.models import Post, StudentId, Attendance, Images, Routine
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -10,22 +10,6 @@ from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, Atten
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
-
-
-def routine(request):
-    context = {
-        'routine': Routine.objects.all()
-    }
-
-    return render(request, 'routine.html', context)
-
-
-def absentdays(request):
-
-    context = {
-        'absentdays': Absentday.objects.all(),
-    }
-    return render(request, 'attendance.html', context)
 
 
 @login_required
@@ -133,6 +117,15 @@ class PostListView(ListView):
     paginate_by = 4
 
 
+class NoticeListView(ListView):
+    model = Notice
+    template_name = 'home.html'
+    context_object_name = 'notices'
+    ordering = [
+        '-date_posted'
+    ]
+
+
 class UserPostListView(ListView):
     model = Post
     template_name = 'user_posts.html'
@@ -149,6 +142,11 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
 
 
+class NoticeDetailView(DetailView):
+    model = Notice
+    template_name = 'notice_detail.html'
+
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = "/home/home"
@@ -156,6 +154,17 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
+            return True
+        return False
+
+
+class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Notice
+    success_url = "/home/home"
+
+    def test_func(self):
+        notice = self.get_object()
+        if self.request.user == notice.author:
             return True
         return False
 
@@ -176,10 +185,26 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return False
 
 
+class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Notice
+    fields = ['title', 'content']
+    template_name = 'notice_form.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        if self.request.user.last_name == 'teacher':
+            return True
+        return False
+
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'photo']
-    template_name = 'post_form.html'
+    template_name = 'notice_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -188,6 +213,22 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
+            return True
+        return False
+
+
+class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Notice
+    fields = ['title', 'content']
+    template_name = 'notice_form.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        notice = self.get_object()
+        if self.request.user == notice.author:
             return True
         return False
 
