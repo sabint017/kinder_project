@@ -24,6 +24,9 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         super(Post, self).save(*args, **kwargs)
 
+    class Meta:
+        ordering = ["-date_posted"]
+
 
 class Notice(models.Model):
     title = models.CharField(max_length=200)

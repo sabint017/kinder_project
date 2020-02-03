@@ -109,21 +109,16 @@ def attendance(request):
 
 
 def postsandnotices(request):
-    post_list = Post.objects.all().order_by('-date_posted')
-    paginator = Paginator(post_list, 6)
-    page = request.GET.get('page')
+    post_list = Post.objects.all()
+    paginator = Paginator(post_list, 4)
 
-    try:
-        pages = paginator.page(page)
-    except PageNotAnInteger:
-        pages = paginator.page(1)
-    except EmptyPage:
-        pages = paginator.page(paginator.num_pages)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'posts': Post.objects.all().order_by('-date_posted'),
+        'posts': page_obj,
         'notices': Notice.objects.all().order_by('-date_posted'),
-        'page_obj': pages,
+
     }
 
     return render(request, 'home.html', context)
