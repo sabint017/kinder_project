@@ -86,8 +86,9 @@
                     </div>
                     {% endif %}
                     {% else %}
+                    
                     {% if post.author.user_teachers.school == user.user_parents.school %}
-                    {% if post.autor.user_teachers.grade == user.user_parents.ChildGrade %}
+                    {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
                     <div style="margin-left: 70px;" name='posts'>
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
                         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
