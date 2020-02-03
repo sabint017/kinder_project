@@ -109,8 +109,8 @@ def attendance(request):
 
 
 def postsandnotices(request):
-    post_list = Post.objects.all()
-    paginator = Paginator(post_list, 4)
+    post_list = Post.objects.all().order_by('-date_posted')
+    paginator = Paginator(post_list, 6)
     page = request.GET.get('page')
 
     try:
