@@ -83,11 +83,28 @@ class Attendance(models.Model):
     full_name = models.CharField(max_length=30)
     roll = models.IntegerField()
     childid = models.IntegerField()
-    present_days = models.IntegerField(default=0)
-    absent_days = models.IntegerField(default=0)
+    present_days_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.full_name
+
+    @property
+    def absentdayss(self):
+        return self.absentday_set.count()
+
+    @property
+    def presentdayss(self):
+        return self.presentday_set.count()
+
+    @property
+    def days(self):
+        return self.absentday_set.all()
+
+    def get_absolute_url(self):
+        return reverse('attendance-detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super(Attendance, self).save(*args, **kwargs)
 
 
 class Food(models.Model):
@@ -119,8 +136,16 @@ class Routine(models.Model):
 
 
 class Absentday(models.Model):
-    name = models.ForeignKey(StudentId, on_delete=models.CASCADE)
-    date = models.DateField(auto_now=True)
+    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.name.full_name + " A"
+
+
+class Presentday(models.Model):
+    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.name.full_name + " P"

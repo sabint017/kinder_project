@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile, StudentId, Attendance, Food
-from .models import Profile, StudentId, Attendance, Routine
+from .models import Profile, StudentId, Attendance, Routine, Absentday, Presentday
 
 
 class UserRegisterForm(UserCreationForm):
@@ -60,3 +60,15 @@ class RoutineForm(forms.ModelForm):
 
         fields = ('day', 'ten_ten45', 'ten45_eleven30', 'eleven45_twelve30',
                   'twelve30_one15', 'two_two45', 'two45_three30')
+
+
+class AbsentForm(forms.ModelForm):
+    class Meta:
+        model = Absentday
+        fields = ['name', ]
+
+
+class PresentForm(forms.ModelForm):
+    class Meta:
+        model = Presentday
+        fields = ['name', ]

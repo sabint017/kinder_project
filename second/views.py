@@ -1,16 +1,24 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm
+from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm, PresentForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+def routine(request):
+    context = {
+        'routine': Routine.objects.all()
+    }
+
+    return render(request, 'routine.html', context)
 
 
 @login_required
@@ -101,11 +109,28 @@ def addchild(request):
 
 def attendance(request):
 
+    forma = AbsentForm(request.POST)
+    formp = PresentForm(request.POST)
+    if 'absent' in request.POST:
+        if forma.is_valid():
+            forma.save()
+            return redirect('attendance')
+    if 'present' in request.POST:
+        if formp.is_valid():
+            formp.save()
+            return redirect('attendance')
+
     context = {
         'students': Attendance.objects.all(),
-
+        'forma': forma,
+        'formp': formp
     }
     return render(request, 'attendance.html', context)
+
+
+class AttendanceDetailView(DetailView):
+    model = Attendance
+    template_name = 'attendance_detail.html'
 
 
 def postsandnotices(request):

@@ -14,6 +14,7 @@
         function disableBtn(id) {
             document.getElementById(id).disabled = true;
             setTimeout(function(){document.getElementById(id).disabled = false;},10000);
+        
         }
 
         function enableBtn(id) {
@@ -35,7 +36,8 @@
             <tr>
                 <th>Name</th>
                 <th>Roll No.</th>
-                <th>Status</th>
+                <th>Present</th>
+                <th>Absent</th>
                 <th>Absent Days Count</th>
 
             </tr>
@@ -48,19 +50,32 @@
             <td>{{i.roll}}</td>
 
             <td>
-            <form>
-                <button id="btnp{{i.id}}" class="btn btn-primary" onclick='disableBtn(this.id); enableBtn("btna{{i.id}}")'/>Present</button>&nbsp;
-                <button id="btna{{i.id}}" class="btn btn-danger" onclick='disableBtn(this.id); enableBtn("btnp{{i.id}}")'/>Absent</button>&nbsp;
+            <form method='POST'>
+                {% csrf_token %}
+                {{formp.as_p}}
+                <button name="present" type='submit' id="btnp{{i.id}}" class="btn btn-primary" onclick='formp.submit; disableBtn(this.id); enableBtn("btna{{i.id}}")'/>Present</button>&nbsp;
             </form>
             </td>
-            <td> 
-                {{absentdays.objects.count}} (<small><a href="#">View detail</a></small>)
+            <td>
+            <form method="POST">
+                {% csrf_token %}
+                {{forma.as_p}}
+
+                <button name="absent" type='submit' id="btna{{i.id}}" class="btn btn-danger" onclick='forma.submit; disableBtn(this.id); enableBtn("btnp{{i.id}}")'/>Absent</button>&nbsp;
+            </form>
+            </td>
+            <td>
+                {{i.absentdayss}} (<small><a href="{% url 'attendance-detail' i.id %}">View Details</small></a>)
+
+
             </td>
 
             </tr>
 
         {% endfor %}
     </table>
+
+
 
 
 </center>
