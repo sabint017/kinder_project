@@ -5,11 +5,17 @@
 }
 
 .navbar {
-    background-image: linear-gradient(to right, #729FCFFF, #5C3566);
+    background-image: linear-gradient(to right, #8181F7, #5882FA);
     padding: 20 !important;
     padding-left: 50;
 
 }
+
+
+#banner {
+    background-image: linear-gradient(to right, #8181F7FE, #5882FA);
+}
+
 
 .navbar-nav {
     margin-left: 630px;
@@ -18,6 +24,7 @@
 
 .navbar-nav li {
     padding: 20 0px;
+    position: relative;
 
 }
 
@@ -48,14 +55,21 @@ body {
     padding-top: 65px;
 }
 
-.navbar-nav a:hover {
-    background-color: #4E9A06FF;
-
+.navbar-nav a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: #80dae0;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 250ms;
 }
 
-#banner {
-    background-image: linear-gradient(to right, #729FCFFF, #5C3566);
+.navbar-nav a:hover::after {
+    width: 80%;
 }
+
 
 .lft {
     color: #fff;

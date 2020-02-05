@@ -1,0 +1,51 @@
+.features_class {
+    margin-left: 200px;
+    margin-right: 200px;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+
+}
+
+.features_class h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+
+}
+
+.features_class h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+#services img {
+    margin-top: -70px;
+}
+
+#services p {
+    font-weight: 500;
+}
+
+#services .card {
+    border-radius: 0;
+    box-shadow: 5px 5px 15px #8a56a6;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+
+}
+
+#services .card:hover {
+    background: #8a56a6;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 5px #9E9E9E;
+
+}
+
+.col {
+    margin-bottom: 50px;
+}
