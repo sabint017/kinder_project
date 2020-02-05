@@ -8,11 +8,8 @@ html {
 }
 
 body {
-    margin-top: -65px;
-    word-wrap: break-word;
-    -ms-word-wrap: break-word;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    margin-top: -150px;
+    font-size: 16px;
     color: #333333;
 }
 
@@ -319,39 +316,10 @@ form textarea:focus {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
 }
 
-/*-----------------------------------------------------------------------------------*/
-/*  2.  HEADER
-/*-----------------------------------------------------------------------------------*/
-#header {
-    background-color: #ffffff;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    border-top: 5px solid #0097a7;
-}
-
-#header .logo,
-ul.menus li a,
-#header.fixedwrap ul.menus li.has-child a:hover:after,
-#header.fixedwrap ul.menus li.open a:after,
-#header.fixedwrap .sb-icon-search,
-#header.fixedwrap {
-    -webkit-transition: all 0.6s ease 0s;
-    -moz-transition: all 0.6s ease 0s;
-    -ms-transition: all 0.6s ease 0s;
-    -o-transition: all 0.6s ease 0s;
-    transition: all 0.6s ease 0s;
-}
 
 
 
 
-/*-----------------------------------------------------------------------------------*/
-/*   SLIDER
-/*-----------------------------------------------------------------------------------*/
-.tp-banner .caption {
-    z-index: 1000;
-}
 
 /*-----------------------------------------------------------------------------------*/
 /*    CONTENT
