@@ -53,6 +53,8 @@
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'routine' %}">Class Routine</a>
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
+                    <br>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url '' %}">Add Results</a>
                 {% elif user.user_parents != "" %}
                     <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url '' %}">See Result</a>
                     <br>
@@ -118,10 +120,6 @@
                     {% endif %}
                     {% endfor %}
                     <center>
-<<<<<<< HEAD
-=======
-
->>>>>>> bd85dea0c6a168f27904a1a3649988da7c041bff
                         <span class="step-links">
                             {% if posts.has_previous %}
                                 <a class = "btn btn-primary" href="?page=1">&laquo; first</a>
