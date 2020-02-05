@@ -53,6 +53,8 @@
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'routine' %}">Class Routine</a>
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
+                    <br>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="https://docs.google.com/spreadsheets/d/1ZyuCwiPnybxCmPeOjFrY0K48g4T7pdN-lJ8yxICqGmg/edit#gid=1131265563">Add Result</a>
 
             </div>
         </div>
@@ -86,7 +88,7 @@
                     </div>
                     {% endif %}
                     {% else %}
-                    
+
                     {% if post.author.user_teachers.school == user.user_parents.school %}
                     {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
                     <div style="margin-left: 70px;" name='posts'>
@@ -114,7 +116,7 @@
                     {% endif %}
                     {% endfor %}
                     <center>
-                   
+
                         <span class="step-links">
                             {% if posts.has_previous %}
                                 <a class = "btn btn-primary" href="?page=1">&laquo; first</a>
@@ -130,7 +132,7 @@
                                 <a class = "btn btn-primary"href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
                             {% endif %}
                         </span>
-                    
+
 
 
                     </center>
