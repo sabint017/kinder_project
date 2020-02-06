@@ -33,5 +33,5 @@ urlpatterns = [
      path('routine/<int:pk>/update',
           RoutineUpdateView.as_view(), name='routine-update'),
      path('result/', views.result, name='result'),
-     path('addresult/', views.addresult, name='addresult'),
+
 ]
