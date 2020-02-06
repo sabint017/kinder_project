@@ -20,6 +20,12 @@ def routine(request):
 
     return render(request, 'routine.html', context)
 
+def result(request):
+    return render(request, 'result.html')
+
+def addresult(request):
+    return render(request, 'addresult.html')
+
 
 @login_required
 def addroutine(request):
