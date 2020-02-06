@@ -1,9 +1,10 @@
 {% extends "base1.html" %}
 {% block base2 %}
+<html>
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+
 <head>
     <title>posts</title>
     <script>
@@ -36,7 +37,7 @@
 
 <body>
 <div class="jumbotron">
-
+    
     <div class = "row row-height" >
         <div class="col-lg-2">
             <div class="col-lg-2" style="position: fixed;">
@@ -86,7 +87,7 @@
                         <p><b>{{post.content}}</b></p>
 
 
-                        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
+                        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px; border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
 
                         <hr>
                     </div>
@@ -97,7 +98,7 @@
                     {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
                     <div style="margin-left: 70px;" name='posts'>
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
-                        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
+                        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="5px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
                         <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
 
@@ -110,7 +111,7 @@
                         <p><b>{{post.content}}</b></p>
 
 
-                        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
+                        <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'"></img>
 
                         <hr>
                     </div>
