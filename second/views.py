@@ -23,8 +23,7 @@ def routine(request):
 def result(request):
     return render(request, 'result.html')
 
-def addresult(request):
-    return render(request, 'addresult.html')
+
 
 
 @login_required
