@@ -27,7 +27,6 @@
 
 }
 
-
 #whatitis h3 {
     font-size: 24px;
     color: #222;
@@ -43,11 +42,26 @@ h4 {
 
 #clients p {
 
-    color: #000;
+    color: #555;
     font-weight: bold;
 }
 
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    filter: invert(1);
+}
 
+#whatitis h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+#clients h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
 
 #whatitis h4 {
     font-size: 22px;
