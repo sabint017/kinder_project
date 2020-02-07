@@ -74,7 +74,7 @@
                     {% if post.author.user_teachers.school == user.user_teachers.school %}
                     <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#b3b3b3;width:650px;" name='posts'>
                     <br>
-                    <div style="margin-left:10px;">
+                    <div style="margin-left:10px;margin-right:10px;">
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
                         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
@@ -83,8 +83,6 @@
                         <div><a href="{% url 'post-detail' post.id %}">
                                 <h1>{{post.title}}</h1>
                             </a>
-                        </div>
-                        <div>
                         </div>
                         <p><b>{{post.content}}</b></p>
                         </div>
@@ -100,8 +98,10 @@
                     {% if post.author.user_teachers.school == user.user_parents.school %}
                     {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
                     <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#969696;width:650px;" name='posts'>
+                    <br>
+                    <div style="margin-left:10px;margin-right:10px;">
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
-                        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="5px">
+                        <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
                         <small class = "text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
 
@@ -109,9 +109,8 @@
                                 <h1>{{post.title}}</h1>
                             </a>
                         </div>
-                        <div>
-                        </div>
                         <p><b>{{post.content}}</b></p>
+                        </div>
                         <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'"></img>
                         <br>
                     </div>
@@ -147,9 +146,10 @@
 
 
 
-                <div class="col-lg-4" style="position: fixed;" style=" border-radius=5px;">
+                <div class="col-lg-4" style="position: fixed;" >
                 {% if user.is_authenticated %}
-                    <table class="table table-hover" style="margin-top: 40px; width: 85%;">
+                <div style="margin-top: 40px; width: 85%;background-color:#ffffff;border-width:1px;border-color:#969696;border-style:solid;border-radius:10px;">
+                    <table class="table table-hover" >
                         <thead>
                             <tr style=" background-color:#5882FA;color:white;">
                                 <th style="border-radius:10px;"><h3>NOTICES</h3></th>
@@ -169,6 +169,8 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+                    
                 {% endif %}
 
 
