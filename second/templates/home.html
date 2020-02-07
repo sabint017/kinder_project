@@ -37,7 +37,7 @@
 
 <body>
 <div class="jumbotron">
-
+    
     <div class = "row row-height" >
         <div class="col-lg-2">
             <div class="col-lg-2" style="position: fixed;">
@@ -55,11 +55,11 @@
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'addresult' %}">Add Results</a>
-                    {% elif user.user_parents != "" %}
-                        <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url 'result' %}">See Result</a>
-                        <br>
-                    {% endif %}
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="https://docs.google.com/spreadsheets/u/1/d/1ZyuCwiPnybxCmPeOjFrY0K48g4T7pdN-lJ8yxICqGmg/edit#gid=1131265563">Add Results</a>
+                {% elif user.user_parents != "" %}
+                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url 'result' %}">See Result</a>
+                    <br>
+                {% endif %}
 
             </div>
         </div>
@@ -72,7 +72,9 @@
                     {% if post.author.user_teachers != "" %}
                     {% if user.user_teachers != ""%}
                     {% if post.author.user_teachers.school == user.user_teachers.school %}
-                    <div style="margin-left: 70px;" name='posts'>
+                    <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#b3b3b3;width:650px;" name='posts'>
+                    <br>
+                    <div style="margin-left:10px;">
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
                         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="45px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
@@ -85,18 +87,19 @@
                         <div>
                         </div>
                         <p><b>{{post.content}}</b></p>
+                        </div>
 
 
                         <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px; border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
-
-                        <hr>
+                        <br>
                     </div>
+                    <br>
                     {% endif %}
                     {% else %}
 
                     {% if post.author.user_teachers.school == user.user_parents.school %}
                     {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
-                    <div style="margin-left: 70px;" name='posts'>
+                    <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#969696;width:650px;" name='posts'>
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
                         <b><p style="font-size:25px;"><img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" height = "45px", width="5px">
                         <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a></p></b>
@@ -109,12 +112,10 @@
                         <div>
                         </div>
                         <p><b>{{post.content}}</b></p>
-
-
                         <img id='posting' style="width: 650px; height: 500px;padding-top: 20px; padding-bottom: 40px;border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'"></img>
-
-                        <hr>
+                        <br>
                     </div>
+                    <br>
                     {% endif %}
                     {% endif %}
                     {% endif %}
@@ -149,9 +150,9 @@
                 <div class="col-lg-4" style="position: fixed;" style=" border-radius=5px;">
                 {% if user.is_authenticated %}
                     <table class="table table-hover" style="margin-top: 40px; width: 85%;">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th><h3>NOTICES</h3></th>
+                        <thead>
+                            <tr style=" background-color:#5882FA;color:white;">
+                                <th style="border-radius:10px;"><h3>NOTICES</h3></th>
                             </tr>
                         </thead>
                         <tr>
