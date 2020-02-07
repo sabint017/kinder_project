@@ -37,7 +37,7 @@
 
 <body>
 <div class="jumbotron">
-    
+
     <div class = "row row-height" >
         <div class="col-lg-2">
             <div class="col-lg-2" style="position: fixed;">
@@ -55,11 +55,11 @@
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="https://docs.google.com/spreadsheets/u/1/d/1ZyuCwiPnybxCmPeOjFrY0K48g4T7pdN-lJ8yxICqGmg/edit#gid=1131265563">Add Results</a>
-                {% elif user.user_parents != "" %}
-                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url 'result' %}">See Result</a>
-                    <br>
-                {% endif %}
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'addresult' %}">Add Results</a>
+                    {% elif user.user_parents != "" %}
+                        <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url 'result' %}">See Result</a>
+                        <br>
+                    {% endif %}
 
             </div>
         </div>

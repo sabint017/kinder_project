@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images, Food
+from second.models import Post, StudentId, Attendance, Images, Food, Result
 from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm, PresentForm
+from .forms import UserUpdateForm,ResultForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm, PresentForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
@@ -20,8 +20,14 @@ def routine(request):
 
     return render(request, 'routine.html', context)
 
+
+
 def result(request):
-    return render(request, 'result.html')
+
+    context = {
+        'results': Result.objects.all()
+    }
+    return render(request, 'result.html', context)
 
 
 
@@ -40,6 +46,20 @@ def addroutine(request):
         'form': form,
     }
     return render(request, 'addroutine.html', context)
+
+def addresult(request):
+    form = ResultForm(request.POST)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            return redirect('result')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'addresult.html', context)
 
 
 def food(request):

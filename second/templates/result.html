@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block base1 %}
+{% extends "base1.html" %}
+{% block base2 %}
 <html lang="en">
 {% load static %}
 
@@ -14,16 +14,39 @@
 </head>
 
 <body>
-    <div class="jumbotron" style="width: 2000px; height: 0px;">
+<div class="jumbotron">
+    <table class="table table-hover" id="myTable" style="width: 70%">
+        <thead class="thead thead-dark">
 
-        <h1 style="padding-bottom: 90px;">RESULTS</h1>
+            <tr>
+                <td>Name</td>
+                <td>Subject-1</td>
+                <td>Subject-2</td>
+                <td>Subject-3</td>
+                <td>Subject-4</td>
+                <td>Remarks</td>
+            </tr>
+        </thead>
 
-    </div>
-    <a  href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDOgl2kfSDsz5GPnNUBmA4fOFpmaMMXNH-mbACBaN5EmBmChb8h_47U4b92Yoq3owsxZGd2evtF-4n/pubhtml" download="proposed_file_name">Download</a>
+        {% for result in results %}
+
+
+        <tr>
+            <td>{{result.name}}</td>
+            <td>{{result.subject1}}</td>
+            <td>{{result.subject2}}</td>
+            <td>{{result.subject3}}</td>
+            <td>{{result.subject4}}</td>
+            <td>{{result.remarks}}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
 </body>
-<iframe src=https://docs.google.com/spreadsheets/d/e/2PACX-1vSDOgl2kfSDsz5GPnNUBmA4fOFpmaMMXNH-mbACBaN5EmBmChb8h_47U4b92Yoq3owsxZGd2evtF-4n/pubhtml width = 1500 height = 1500>
 
-</iframe>
+
 
 </html>
 {% endblock %}

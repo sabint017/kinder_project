@@ -149,3 +149,21 @@ class Presentday(models.Model):
 
     def __str__(self):
         return self.name.full_name + " P"
+
+class Result(models.Model):
+    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+
+    subject1 = models.PositiveIntegerField()
+    subject2 = models.PositiveIntegerField()
+    subject3 = models.PositiveIntegerField()
+    subject4 = models.PositiveIntegerField()
+    remarks = models.TextField()
+
+    def __str__(self):
+        return self.name.full_name + "'s" + ' result '
+
+
+
+    def save(self, *args, **kwargs):
+        super(Result, self).save(*args, **kwargs)
+
