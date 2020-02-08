@@ -63,6 +63,18 @@ h4 {
     font-weight: bold;
 }
 
+#contacts h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+#contacts h1 {
+    font-size: 36px;
+    color: #222;
+    font-weight: bold;
+}
+
 #whatitis h4 {
     font-size: 22px;
     color: #222;
@@ -119,3 +131,39 @@ footer {
     position: absolute;
     width: 100%;
 }
+
+#contacts{
+    padding-top: 70px;
+}
+
+
+#clients{
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+}
+
+
+.contact-form{
+    padding-left: 250px;
+    margin-top: -45px;
+}
+
+
+.back-to-top {
+ background: none;
+ margin: 0;
+ position: fixed;
+ bottom: 0;
+ right: 0;
+ width: 70px;
+ height: 70px;
+ z-index: 100;
+ display: none;
+ text-decoration: none;
+ color: #fc7700;
+ background-color: transparent;
+ }
+ .back-to-top i {
+ font-size: 60px;
+ }
