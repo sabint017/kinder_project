@@ -44,7 +44,7 @@ def contact(request):
                 'email' : email,
                 'message' : message,
             }
-            
+
             content = template.render(context)
 
             email = EmailMessage(
@@ -58,4 +58,4 @@ def contact(request):
             email.send()
 
             return render(request, 'succ.html')
-    return render(request, 'contact.html', {'form':Contact_Form })
+    return render(request, 'index.html', {'form':Contact_Form })
