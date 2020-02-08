@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'firsttt.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'index1.css' %}">
@@ -28,7 +29,7 @@
                         <br>
                         <div>
 
-                              <a class="wow fadeInLeft btn btn-warning" data-wow-delay="1s" href = "#contacts">Contact Us Now </a> </div>
+                              <a class="wow fadeInLeft btn btn-warning scroll" data-wow-delay="1s" href = "#contacts">Contact Us Now </a> </div>
 
                         <br><br>
                               <div class="spinner-grow text-primary"></div>
@@ -104,7 +105,7 @@
           </ul>
         </div>
       </div>
-<hr>
+
     </section>
     <section id="services" style="margin-left: 60px; margin-right: 60px;">
          <div class="features_class my-3 py-5 text-center" >
@@ -169,11 +170,11 @@
          </div>
 
     </section>
-    <hr>
+
     <section id="clients">
       <div class="fadeIn wow" style="margin-top: 100px; margin-left: 350px; margin-right: 250px;">
-        <h3>WHAT OUR</h3>
-        <h3>CLIENTS SAY</h3><br>
+        <h3>WHAT OUR <br> CLIENTS SAY</h3>
+        <br>
       </div>
 
 
@@ -236,14 +237,14 @@
 
 
     </section>
-    <hr>
+
 
   <section id="contacts" class="single-wrapper">
       <!-- Page Title -->
       <div class="grey-background wow fadeIn">
           <div class="container">
               <div class="heading-block page-title wow fadeIn">
-                  <h1>CONTACT US</h1>
+                  <h1 id="title">CONTACT US</h1>
               </div>
           </div>
       </div>
@@ -283,11 +284,10 @@
 </footer>
 
 <a href="#" class="back-to-top" style="display: inline;">
- <i class="fa fa-chevron-circle-up" style="font-size:48px;color:red"></i>
+ <i class="fa fa-chevron-circle-up"></i>
 </a>
 
-
-
+<script type="text/javascript" src="{% static 'index.js' %}"></script>
 
 </body>
 
