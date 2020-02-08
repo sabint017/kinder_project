@@ -10,15 +10,13 @@ def index(request):
         form = Contact_Form(data=request.POST)
 
         if form.is_valid():
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
+            name = request.POST.get('last_name')
             email = request.POST.get('email')
             message = request.POST.get('message')
 
             template = get_template('contact_form.txt')
             context = {
-                'first_name': first_name,
-                'lastname': last_name,
+                'name': last_name,
                 'email': email,
                 'message': message,
             }
