@@ -251,39 +251,17 @@
       <div class="container">
           <div class="row">
 
-              <div class="contact-details col-lg-4 col-md-4">
-                  <p class="wow fadeIn">Feel free to call us directly or simply complete our form and we will follow up with you.</p>
-                    <br>
-                  <div class="visit-us wow fadeIn" data-wow-delay="0.3s">
-                      <div class="contact-icon">
-                          <span class="icon icon-pin-1"></span>
-                      </div>
-                      <div class="contact-content">
-                          <h3>Visit us</h3>
-                          <p>Kathmandu University</p>
-                          <p>Dhulikhel,Kavre</p>
-                          <p>Nepal</p>
-                      </div>
-                  </div>
-                    <br>
-                  <div class="contact-us wow fadeIn" data-wow-delay="0.6s">
-                      <div class="contact-icon">
-                          <span class="icon icon-hand-right"></span>
-                      </div>
-                      <div class="contact-content">
-                          <h3>Contact us</h3>
-                          <p>98010101010</p>
-                          <p>hyakkers@gmail.com</p>
-                          <p>www.kinder.com</p>
-                      </div>
+              <div class="contact-details col-lg-2 col-md-2">
+                  <div class="map wow fadeInLeft" style="margin-left: -60px; padding-top: 20px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3535.160409935585!2d85.53645301506015!3d27.619548182828314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb092082d99e3b%3A0xe509dafa47685dba!2sKathmandu%20University!5e0!3m2!1sen!2snp!4v1581171128689!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                   </div>
               </div>
-
-              <div class="contact-form col-lg-8 col-md-8 wow fadeInRight">
+              <div class="col-lg-3"></div>
+              <div class="contact-form col-lg-7 col-md-7 wow fadeInRight">
                   <form method= 'POST'>
                       {% csrf_token %}
                       {{ form.as_p }}
-                      <button class="submit button-normal green">Send</button>
+                      <button type="submit" class="btn btn-outline-info">Send</button>
                   </form>
               </div>
           </div>
