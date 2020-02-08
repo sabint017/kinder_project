@@ -106,3 +106,16 @@ h4 {
 .col {
     margin-bottom: 50px;
 }
+
+main {
+    padding-bottom: 100px;
+}
+
+body {
+    position: relative;
+
+}
+footer {
+    position: absolute;
+    width: 100%;
+}
