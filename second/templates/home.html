@@ -7,6 +7,23 @@
 
 <head>
     <title>posts</title>
+    <style>
+        .zoom {
+          padding: 4px;
+          background-color: none;
+          transition: transform .2s;
+          width: 150px;
+          height: 35px;
+          margin: 0 auto;
+        }
+
+        .zoom:hover {
+          -ms-transform: scale(1.2); /* IE 9 */
+          -webkit-transform: scale(1.2); /* Safari 3-8 */
+          transform: scale(1.2);
+        }
+
+    </style>
     <script>
         var createpost=document.getElementsByName("createpost")
         var posts=document.getElementsByName("posts")
@@ -42,22 +59,22 @@
         <div class="col-lg-2">
             <div class="col-lg-2" style="position: fixed;">
                 {% if user.user_teachers != "" %}
-                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
+                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'registerchild' %}">Register Children </a>
                     <br>
                     <p id="usertype" style="display:none;">{{user.user_teachers.UserType}}</p>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'post-create' %}">Create Post</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'attendance' %}">Attendance</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'food' %}">Food</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'food' %}">Food</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'routine' %}">Class Routine</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'routine' %}">Class Routine</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'notice-create' %}">Add Notice</a>
                     <br>
-                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='btn btn-secondary' href="{% url 'addresult' %}">Add Results</a>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'addresult' %}">Add Results</a>
                 {% elif user.user_parents != "" %}
-                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='btn btn-secondary' href="{% url 'result' %}">See Result</a>
+                    <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='zoom btn btn-secondary' href="{% url 'result' %}">See Result</a>
                     <br>
                 {% endif %}
 
