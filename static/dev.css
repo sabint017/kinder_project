@@ -505,6 +505,7 @@ form textarea:focus {
 
 .testimonial.with-bg-image p.text {
     color: #ffffff;
+    animation: slider infinite 20s 2s;
 }
 
 .testimonial.with-bg-image p.text:after {
@@ -538,6 +539,17 @@ form textarea:focus {
     background: #ffffff;
     border: 1px solid #ffffff;
 }
+
+@keyframes slider{
+    50%{
+        margin-left: -100%;
+    }
+    100%{
+        margin-left: 100%;
+    }
+}
+
+
 
 /*-----------------------------------------------------------------------------------*/
 /*  5.  developer PAGE
