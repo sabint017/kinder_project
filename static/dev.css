@@ -503,9 +503,11 @@ form textarea:focus {
     border-top: 2px solid #000000;
 }
 
+
+
 .testimonial.with-bg-image p.text {
     color: #ffffff;
-    animation: slider infinite 20s 2s;
+
 }
 
 .testimonial.with-bg-image p.text:after {
@@ -540,13 +542,42 @@ form textarea:focus {
     border: 1px solid #ffffff;
 }
 
+.testimonial.with-bg-image{
+    background-image: url('/media/first/abcde.jpg');
+}
+.testimonial.with-bg-image{
+    background-image: url('/media/first/aa.jpg');
+}
+
+.testimonial.with-bg-image{
+   
+    animation: slider infinite 10s 1s;
+    background-repeat: no-repeat;
+    /* width: inherit;
+    height: inherit; */
+  
+}
+
+
 @keyframes slider{
+    25%{
+      
+        background-image: url('/media/first/aa.jpg');
+    }
     50%{
-        margin-left: -100%;
+       
+        background-image: url('/media/first/abcde.jpg');
+    }
+    75%{
+       
+        background-image: url('/media/first/bb.jpg');
     }
     100%{
-        margin-left: 100%;
+       
+        background-image: url('/media/first/1.png');
+        
     }
+
 }
 
 
@@ -787,4 +818,49 @@ form textarea:focus {
 
 #copyright .social-links ul li a {
     font-size: 16px;
+}
+/* 
+#NAVBAR */
+
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.navbar {
+    background-image: linear-gradient(to right, #8181F7, #5882FA);
+    padding: 20 !important;
+    padding-left: 50;
+}
+
+#banner {
+    background-image: linear-gradient(to right, #8181F7FE, #5882FA);
+}
+
+.navbar-nav {
+    margin-left: 630px;
+}
+
+.navbar-nav li {
+    padding: 20 0px;
+    position: relative;
+}
+
+.navbar-nav a {
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 9px;
+}
+
+.navbar-brand {
+    color: #000 !important;
+    font-weight: 600;
+    font-size: 30px;
+    padding-bottom: 0px;
+    margin-left: 150px;
 }
