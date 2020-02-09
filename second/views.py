@@ -62,7 +62,7 @@ def addresult(request):
         if form.is_valid():
             form.save()
 
-            return redirect('result')
+            return redirect('result1')
 
     context = {
         'form': form,
