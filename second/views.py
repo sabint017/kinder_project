@@ -29,6 +29,14 @@ def result(request):
     }
     return render(request, 'result.html', context)
 
+def result1(request):
+
+    context = {
+        'results': Result.objects.all()
+    }
+    return render(request, 'result1.html', context)
+
+
 
 
 
