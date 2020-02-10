@@ -8,19 +8,23 @@
     <meta charset="UTF-8">
     <title>Add Result</title>
     <link rel="stylesheet" type="text/css" href="{% static "second.css" %}">
+    <link rel="stylesheet" href="{% static 'forms.css' %}" >
+
     <script src=" {% static 'registerchild.js' %} "></script>
 </head>
 <body style="padding-top: 55px;">
 <div class='jumbotron'>
 
 <center>
-   <form method='POST'>
+<div class="form-box">
+    <form method='POST'>
         {% csrf_token %}
         {{ form.as_p }}
         <div>
-            <button class='post-button' href="{% url 'result1' %}" type='submit'>ADD</button>
+            <button class='btn btn-outline-info' href="{% url 'result1' %}" type='submit'>ADD</button>
         </div>
     </form>
+</div>
 </center>
 </div>
 </body>
