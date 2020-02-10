@@ -29,6 +29,14 @@ def result(request):
     }
     return render(request, 'result.html', context)
 
+def result1(request):
+
+    context = {
+        'results': Result.objects.all()
+    }
+    return render(request, 'result1.html', context)
+
+
 
 
 
@@ -54,7 +62,7 @@ def addresult(request):
         if form.is_valid():
             form.save()
 
-            return redirect('result')
+            return redirect('result1')
 
     context = {
         'form': form,

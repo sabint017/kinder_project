@@ -11,15 +11,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel='stylesheet' href=" {% static  'register.css' %} ">
+    <link rel='stylesheet' href=" {% static  'forms.css' %} ">
 </head>
 
 
 <body>
 
 
+    <section class="login-page">
 
-    <div class="jumbotron JumboHeaderImg">
-        <div class="container-lg"></div>
         <center>
             <div class='form-box'>
 
@@ -28,23 +28,31 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div>
-                        <button class='signup-button' type='submit'>SIGN IN</button>
+                        <button class="submit button-normal green" >SIGN IN</button>
                     </div>
                     <legend class="text-muted ml-2">
                         <a href="{% url 'password_reset' %}"> Forgot Your Password?</a>
                     </small>
                 </form>
-                <div>
-                    <body>
-                        <p style="color:black;">Don't have an account?</p>
-                      </body>
-                    <a href="{% url 'signup' %}" style="color:#2ECC71;font-size:20px;">SIGN UP</a>
-        </center>
+            
+                   <div class="form-footer">
 
-    </div>
+                   </div>
+                        <p style="color:white;">Don't have an account?</p>
+                    
+                        <button class="submit button-normal green" onclick="location.href='{% url 'signup' %}">Sign Up</button>
+
+                      
+                    </div>
+                </center>
+                    </body>
+                   
+  
 
 
 
+
+    </section>
 </body>
 
 </html>

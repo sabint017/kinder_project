@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel='stylesheet' href=" {% static  'forms.css' %} ">
 
 
 
@@ -18,23 +19,21 @@
 <body>
 
 
-    <div >
+    <section class="signup-page">
+
+   
         <center>
         <h2><B>Who Are You?</B></h2>
         <br>
-        <button id="button" onclick="location.href='{% url 'register_parent' %}'">Parent</a>
+        <button class="button-normal green" onclick="location.href='{% url 'register_parent' %}'">Parent</a>
         <br>
-        <button id="button" onclick="location.href='{% url 'register_teacher' %}'">Teacher</a>
+        <button class="button-normal green" onclick="location.href='{% url 'register_teacher' %}'">Teacher</a>
 
 
         </center>
-        <center>
-            <label>
-                <input type="checkbox"  name="remember"> <B>Remember me</B>
-              </label
-        </center>
+   
 
-    </div>
+    </section>
 
 
 

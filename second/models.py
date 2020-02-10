@@ -157,6 +157,7 @@ class Result(models.Model):
     subject2 = models.PositiveIntegerField()
     subject3 = models.PositiveIntegerField()
     subject4 = models.PositiveIntegerField()
+    grade = models.CharField(max_length=2)
     remarks = models.TextField()
 
     def __str__(self):
