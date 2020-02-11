@@ -1,16 +1,13 @@
-<<<<<<< HEAD
-body{
+body {
     margin: 0;
     padding: 0;
 }
-*{
+
+* {
     box-sizing: border-box;
     outline: none!important;
 }
 
-
-=======
->>>>>>> 77bc3af8d2c0571286ad7e42ca12ad9ebdd78e0c
 form input,
 form textarea {
     background-color: #c0bae6;
@@ -37,29 +34,13 @@ form textarea:focus {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
 }
 
-<<<<<<< HEAD
-
-.form-box {
-    width: 400px;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.45);
-    margin: 0 auto;
-    margin-top: 80px;
-    margin-left: 400px;
-    color: white;
-    border: 0;
-    border-radius: 0px;
-}
-
-
-
-.login-page{
+.login-page {
     background-image: url('../media/first/image-1.jpg');
     background-size: cover;
     height: 100vh;
     position: relative;
- 
 }
+
 
 /* .login-page::after{
     content: '';
@@ -71,15 +52,17 @@ form textarea:focus {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 } */
-.login-page .form-box{
+
+.login-page .form-box {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     z-index: 2;
 }
+
 button {
     background-image: none;
     background: transparent;
@@ -128,26 +111,20 @@ button.button-normal.green:hover,
 .button-normal.green a:hover {
     background-color: transparent;
     border: 1px solid white;
-    color:white;
+    color: white;
 }
 
-
-.login-page .form-box .form-footer button{
+.login-page .form-box .form-footer button {
     height: 40px;
     border-radius: 20px;
     padding: 0px 50px;
     color: #fff;
     background-color: #f44336;
     border: none;
-    cursor: pointer
+    cursor: pointer;
     transition: box-shadow .5s ease;
 }
 
-.login-page .form-box .form-footer button:hover{
+.login-page .form-box .form-footer button:hover {
     box-shadow: 0px 0px 10px black;
-=======
-.form-box {
-    height: 50%;
-    width: 40%;
 }
->>>>>>> 77bc3af8d2c0571286ad7e42ca12ad9ebdd78e0c
