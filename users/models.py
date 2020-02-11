@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class User_parents(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    UserType=models.CharField(max_length=20)
+    UserType=models.CharField(max_length=20,default='parent')
     ChildID=models.IntegerField()
     ChildGrade=models.CharField(max_length=20)
     occupation = models.CharField(max_length=200)
@@ -19,7 +19,7 @@ class User_parents(models.Model):
 
 class User_teachers(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    UserType=models.CharField(max_length=20)
+    UserType=models.CharField(max_length=20,default='teacher')
     age=models.IntegerField()
     grade=models.CharField(max_length=20)
     school=models.CharField(max_length=200)

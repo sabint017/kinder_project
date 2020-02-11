@@ -236,7 +236,7 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def test_func(self):
-        if self.request.user.last_name == 'teacher':
+        if self.request.user.user_teachers != '':
             return True
         return False
 
@@ -252,7 +252,7 @@ class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def test_func(self):
-        if self.request.user.last_name == 'teacher':
+        if self.request.user.user_teachers != '':
             return True
         return False
 
