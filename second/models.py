@@ -151,8 +151,7 @@ class Presentday(models.Model):
         return self.name.full_name + " P"
 
 class Result(models.Model):
-    name = models.ForeignKey(StudentId, on_delete=models.CASCADE)
-
+    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
     subject1 = models.DecimalField(max_digits = 4,decimal_places=1)
     subject2 = models.DecimalField(max_digits = 4,decimal_places=1)
     subject3 = models.DecimalField(max_digits = 4,decimal_places=1)
