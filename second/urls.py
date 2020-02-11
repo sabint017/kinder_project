@@ -34,6 +34,5 @@ urlpatterns = [
           RoutineUpdateView.as_view(), name='routine-update'),
      path('result/', views.result, name='result'),
      path('addresult/', views.addresult, name='addresult'),
-     path('result1/', views.result1, name='result1'),
 
 ]
