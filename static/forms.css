@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body{
     margin: 0;
     padding: 0;
@@ -9,8 +8,6 @@ body{
 }
 
 
-=======
->>>>>>> 77bc3af8d2c0571286ad7e42ca12ad9ebdd78e0c
 form input,
 form textarea {
     background-color: #c0bae6;
@@ -37,7 +34,6 @@ form textarea:focus {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
 }
 
-<<<<<<< HEAD
 
 .form-box {
     width: 400px;
@@ -132,22 +128,28 @@ button.button-normal.green:hover,
 }
 
 
-.login-page .form-box .form-footer button{
+.login-page .form-box .form-footer a{
     height: 40px;
-    border-radius: 20px;
+  
     padding: 0px 50px;
-    color: #fff;
-    background-color: #f44336;
+    color: #ddd;
+    background-color:#0097a7;
     border: none;
     cursor: pointer
     transition: box-shadow .5s ease;
+    
+}
+.form-footer a{
+    color: black;
+    font-size: 20px;
+
 }
 
 .login-page .form-box .form-footer button:hover{
     box-shadow: 0px 0px 10px black;
-=======
-.form-box {
-    height: 50%;
-    width: 40%;
 }
->>>>>>> 77bc3af8d2c0571286ad7e42ca12ad9ebdd78e0c
+.signup-page{
+    align-items: center;
+    background-color:burlywood all;
+}
+
