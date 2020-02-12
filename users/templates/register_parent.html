@@ -32,12 +32,13 @@
                     {{ form_parents.as_p }}
 
                     <div>
-                        <button class='signup-button' type='submit'>SIGN UP</button>
+                        <button class='submit button-normal white' type='submit'>SIGN UP</button>
                     </div>
                 </form>
                 <div>
-                    <p>Already have an account?</p><a href="{% url 'login' %}"
-                        style="color:#2ECC71;font-size:20px;">SIGN IN</a>
+                    <p>Already have an account?</p>
+                    <button class="button-normal white" onclick="location.href='{% url 'login' %}'">SIGN IN</a>
+
                 </div>
             </div>
         </center>

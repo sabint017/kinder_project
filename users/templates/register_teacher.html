@@ -18,18 +18,8 @@
 
 
 
-<body style="background-image: url(https://teslathemes.com/wp-content/themes/teslathemes/assets/hero-image.jpg);">
+<body >
 
-<Style>
-
-    .JumboHeaderImg{
-        background-image: url(https://teslathemes.com/wp-content/themes/teslathemes/assets/hero-image.jpg);
-        background-size: cover;
-        backface-visibility: inherit;
-        background-repeat: repeat;
-
-    }
-    </style>
 
 
 
@@ -47,12 +37,12 @@
                     {{ form_teachers.as_p }}
 
                     <div>
-                        <button class='signup-button' type='submit'>SIGN UP</button>
+                        <button class='submit button-normal white' type='submit'>SIGN UP</button>
                     </div>
                 </form>
                 <div>
-                    <p>Already have an account?</p><a href="{% url 'login' %}"
-                        style="color:#2ECC71;font-size:20px;">SIGN IN</a>
+                    <p>Already have an account?</p>
+                    <button class="button-normal white" onclick="location.href='{% url 'login' %}'">SIGN IN</a>
 
                 </div>
             </div>
