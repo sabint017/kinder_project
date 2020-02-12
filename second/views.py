@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food, Result
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm,ResultForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm, PresentForm
+from .forms import UserUpdateForm, ResultForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import datetime
+from django.shortcuts import redirect
 
 
 def routine(request):
@@ -21,16 +23,12 @@ def routine(request):
     return render(request, 'routine.html', context)
 
 
-
 def result(request):
 
     context = {
         'results': Result.objects.all()
     }
     return render(request, 'result.html', context)
-
-
-
 
 
 @login_required
@@ -48,6 +46,7 @@ def addroutine(request):
     }
     return render(request, 'addroutine.html', context)
 
+
 def addresult(request):
     form = ResultForm(request.POST)
 
@@ -55,7 +54,7 @@ def addresult(request):
         if form.is_valid():
             form.save()
 
-            return redirect('result1')
+            return redirect('result')
 
     context = {
         'form': form,
@@ -113,6 +112,11 @@ class RoutineDetailView(DetailView):
     template_name = 'routine_detail.html'
 
 
+class ResultDetail(DetailView):
+    model = Result
+    template_name = 'resultdetail.html'
+
+
 @login_required
 def addchild(request):
     formreg = StudentRegisterForm(request.POST)
@@ -135,22 +139,34 @@ def addchild(request):
 
 def attendance(request):
 
-    forma = AbsentForm(request.POST)
-    formp = PresentForm(request.POST)
-    if 'absent' in request.POST:
-        if forma.is_valid():
-            forma.save()
-            return redirect('attendance')
-    if 'present' in request.POST:
-        if formp.is_valid():
-            formp.save()
-            return redirect('attendance')
-
     context = {
         'students': Attendance.objects.all(),
-        'forma': forma,
-        'formp': formp
     }
+    return render(request, 'attendance.html', context)
+
+
+def present(request, id):
+    student = Attendance.objects.get(id=id)
+
+    student.present_days_count += 1
+    student.save()
+    context = {
+        'students': Attendance.objects.all(),
+    }
+    return redirect('attendance')
+
+    return render(request, 'attendance.html', context)
+
+
+def absent(request, id):
+    student = Attendance.objects.get(id=id)
+    student1 = Absentday.objects.create(
+        name=student, date=datetime.date.today())
+    student1.save()
+    context = {
+        'students': Attendance.objects.all(),
+    }
+    return redirect('attendance')
     return render(request, 'attendance.html', context)
 
 
@@ -320,4 +336,18 @@ class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         routine = self.get_object()
+        return True
+
+
+class ResultUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Result
+    fields = ['name', 'subject1', 'subject2', 'subject3',
+              'subject4', 'grade', 'remarks']
+    template_name = 'addresult.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def test_func(self):
+        result = self.get_object()
         return True
