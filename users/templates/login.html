@@ -29,7 +29,7 @@
                 <form method='POST' class="login-form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                </form>
+                
                 
                     
                     <div class="forgot-link d-flex align-items-center justify-content-between">
@@ -39,11 +39,11 @@
                         </div>   
                         <a href="{% url 'password_reset' %}">Forgot Password?</a>
                     </div>
-                    <div class="submit">
+                    <div>
                         <button class="submit button-normal white" >SIGN IN</button>
                     </div>
               
-            
+                </form> 
                    <div class="form-footer">
 
                    

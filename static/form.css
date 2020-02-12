@@ -246,7 +246,7 @@ button.button-normal.green:hover,
     font-family: 'Baloo Paaji', cursive;
     animation-name: titleAnimation;
     animation-timing-function:ease;
-    animation-duration: 3s;
+    animation-duration: 1s;
   }
 
   @keyframes titleAnimation {

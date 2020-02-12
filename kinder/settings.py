@@ -148,3 +148,13 @@ EMAIL_USE_SSL = False
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 EMAIL_HOST_USER = 'kinder.mailservice@gmail.com'
 EMAIL_HOST_PASSWORD = 'shjjpvwqrgeiubgh'
+
+
+
+
+
+
+
+
+
+
