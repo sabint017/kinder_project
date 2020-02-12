@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" >
     <title>Document</title>
 </head>
 
@@ -18,6 +20,7 @@
 
     <div class="jumbotron">
         <center>
+        <div>
             <div class='form-box'>
 
                 <form method='POST' enctype="multipart/form-data">
@@ -25,11 +28,11 @@
                     {{ form.as_p }}
                     {{formset.as_table}}
                     <div>
-                        <button class='post-button' type='submit'>POST</button>
+                        <button class='btn btn-outline-info' type='submit'>POST</button>
                     </div>
                 </form>
             </div>
-
+        </div>
         </center>
     </div>
 

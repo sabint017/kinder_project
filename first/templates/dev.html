@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html dir="ltr" lang="en-US">
 
 {% load static %}
@@ -18,8 +19,9 @@
   
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" />
    
-
+    <link rel="stylesheet" type="text/css" href="{% static 'firsttt.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'responsive.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css"> -->
 
 
     <!-- External Styles
@@ -41,41 +43,8 @@
 
     <div id="main-wrapper" class="animation clearfix">
 
-                <!-- NAVIGATION START
-                    ============================================= -->
-                    
-    <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg fixed-top ">
-            <span class="navbar-brand mb-0 h1 wow bounceInRight">KINDER</span>
-            <div class="container">
-                    <ul class="navbar-nav wow fadeIn">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}" style="padding-right: 10px;padding-left: 10px;">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'services' %}" style="padding-right: 10px;padding-left: 10px;">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'dev' %}" style="padding-right: 10px;padding-left: 10px;">Developers</a>
-                        </li>
-
-                    
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}" style="padding-right: 10px;padding-left: 10px;">SignUp</a>
-                        </li>
-                      
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}" style="padding-right: 10px;padding-left: 10px;">SignIn</a>
-                        </li>
 
 
-                    </ul>
-
-            </div>
-        </nav>
-    </section>
         <!-- CONTENT START
         ============================================= -->
         <section id="content" class="single-wrapper">
@@ -597,6 +566,7 @@
 <script type="text/javascript" src="{% static 'main.js' %}"></script>
 <script type="text/javascript" src="{% static 'plugin.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="{% static 'bootstrap/js/jquery.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base1.html" %}
+{% block base2 %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Result</title>
+    <style>
+        table,th, td, tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        #myTable th{
+            background-color:#729FCFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+            <center>
+            <br>
+            <br>
+            <table class="table table-hover" id="myTable" style="width: 70%">
+                <thead class="thead-gray">
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject-1</th>
+                        <th>Subject-2</th>
+                        <th>Subject-3</th>
+                        <th>Subject-4</th>
+                        <th>Grade</th>
+                        <th>Remarks</th>
+
+
+                    </tr>
+                </thead>
+
+
+                        <tr>
+                        <td><b>{{result.name}}</b></td>
+                        <td>{{result.subject1}}</td>
+                        <td>{{result.subject2}}</td>
+                        <td>{{result.subject3}}</td>
+                        <td>{{result.subject4}}</td>
+                        <td>{{result.grade}}</td>
+                        <td>{{result.remarks}}</td>
+                        </tr>
+
+
+
+            </table>
+<a class='btn btn-secondary' href="{% url 'result-update' object.id %}">Update Result For {{result.name}}</a>
+
+            </center>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
+

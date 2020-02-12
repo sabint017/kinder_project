@@ -31,6 +31,12 @@ def result(request):
     return render(request, 'result.html', context)
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 847ff27b51c6c2d448be6e80368b1b49455fb523
 @login_required
 def addroutine(request):
     form = RoutineForm(request.POST)
@@ -54,7 +60,7 @@ def addresult(request):
         if form.is_valid():
             form.save()
 
-            return redirect('result')
+            return redirect('result1')
 
     context = {
         'form': form,
@@ -111,6 +117,9 @@ class RoutineDetailView(DetailView):
     model = Routine
     template_name = 'routine_detail.html'
 
+class ResultDetail(DetailView):
+    model = Result
+    template_name = 'resultdetail.html'
 
 @login_required
 def addchild(request):
@@ -240,7 +249,7 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def test_func(self):
-        if self.request.user.last_name == 'teacher':
+        if self.request.user.user_teachers != '':
             return True
         return False
 
@@ -256,7 +265,7 @@ class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def test_func(self):
-        if self.request.user.last_name == 'teacher':
+        if self.request.user.user_teachers != '':
             return True
         return False
 
@@ -331,4 +340,18 @@ class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         routine = self.get_object()
+        return True
+
+
+class ResultUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Result
+    fields = ['name', 'subject1', 'subject2', 'subject3',
+              'subject4', 'grade', 'remarks']
+    template_name = 'addresult.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def test_func(self):
+        result = self.get_object()
         return True

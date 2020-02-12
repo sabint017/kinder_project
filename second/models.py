@@ -144,11 +144,11 @@ class Absentday(models.Model):
 
 class Result(models.Model):
     name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
-
-    subject1 = models.PositiveIntegerField()
-    subject2 = models.PositiveIntegerField()
-    subject3 = models.PositiveIntegerField()
-    subject4 = models.PositiveIntegerField()
+    subject1 = models.DecimalField(max_digits = 4,decimal_places=1)
+    subject2 = models.DecimalField(max_digits = 4,decimal_places=1)
+    subject3 = models.DecimalField(max_digits = 4,decimal_places=1)
+    subject4 = models.DecimalField(max_digits = 4,decimal_places=1)
+    grade    = models.CharField(max_length=2)
     remarks = models.TextField()
 
     def __str__(self):

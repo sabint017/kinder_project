@@ -69,7 +69,7 @@ class ResultForm(forms.ModelForm):
         model = Result
 
         fields = ('name', 'subject1', 'subject2', 'subject3',
-                  'subject4', 'remarks', )
+                  'subject4','grade', 'remarks', )
 
 
 class AbsentForm(forms.ModelForm):
