@@ -31,12 +31,6 @@ def result(request):
     return render(request, 'result.html', context)
 
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 847ff27b51c6c2d448be6e80368b1b49455fb523
 @login_required
 def addroutine(request):
     form = RoutineForm(request.POST)
@@ -117,9 +111,11 @@ class RoutineDetailView(DetailView):
     model = Routine
     template_name = 'routine_detail.html'
 
+
 class ResultDetail(DetailView):
     model = Result
     template_name = 'resultdetail.html'
+
 
 @login_required
 def addchild(request):
