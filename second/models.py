@@ -109,7 +109,7 @@ class Attendance(models.Model):
 class Food(models.Model):
     day = models.CharField(max_length=30, null=True)
     food = models.CharField(max_length=30, null=True)
-    remarks = models.CharField(max_length=30, null=True)
+
 
     def __str__(self):
         return self.day
@@ -153,6 +153,9 @@ class Result(models.Model):
 
     def __str__(self):
         return self.name.full_name + "'s" + ' result '
+
+    def get_absolute_url(self):
+        return reverse('result-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         super(Result, self).save(*args, **kwargs)

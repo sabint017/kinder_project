@@ -66,6 +66,9 @@
 <div class="jumbotron">
     <table class="table table-hover" id="myTable" style="width: 70%">
         <thead class="thead thead-dark">
+        {%if user.user_parents != "" %}
+        <a  href="{% url 'result' %}" ></a>
+            {% endif %}
         {% if user.user_teachers != "" %}
             <a class="btn btn-primary" href="{% url 'addresult' %}" style="margin-left: 0px; margin-top: 10px; margin-bottom: 15px;">ADD Result</a>
         {% endif %}
@@ -84,17 +87,23 @@
 
 
         <tr>
-
+            {%if user.user_teachers != "" %}
             <td><b><a href="{% url 'result-detail' result.id %}">{{result.name}}</a></b></td>
+            {% else %}
+            <td>{{result.name}}</td>
+            {% endif %}
             <td>{{result.subject1}}</td>
             <td>{{result.subject2}}</td>
             <td>{{result.subject3}}</td>
             <td>{{result.subject4}}</td>
             <td>{{result.grade}}</td>
             <td>{{result.remarks}}</td>
-
         </tr>
         {% endfor %}
+
+
+
+
     </table>
 </div>
 
