@@ -14,7 +14,7 @@
         function disableBtn(id) {
             document.getElementById(id).disabled = true;
             setTimeout(function(){document.getElementById(id).disabled = false;},10000);
-        
+
         }
 
         function enableBtn(id) {
@@ -24,7 +24,7 @@
 </head>
 
 
-<body>
+<body style="margin-top: 90px;">
 
 
 <div class="container">
@@ -42,7 +42,7 @@
 
             </tr>
         </thead>
-
+        {{ error }}
         {% for i in students %}
 
             <tr>
@@ -50,19 +50,11 @@
             <td>{{i.roll}}</td>
 
             <td>
-            <form method='POST'>
-                {% csrf_token %}
-                {{formp.as_p}}
-                <button name="present" type='submit' id="btnp{{i.id}}" class="btn btn-primary" onclick='formp.submit; disableBtn(this.id); enableBtn("btna{{i.id}}")'/>Present</button>&nbsp;
-            </form>
+                <button class="btn btn-primary" onclick="window.location.href='{% url "present" i.id %}'; disableBTN(this.id)">Present</button>
+
             </td>
             <td>
-            <form method="POST">
-                {% csrf_token %}
-                {{forma.as_p}}
-
-                <button name="absent" type='submit' id="btna{{i.id}}" class="btn btn-danger" onclick='forma.submit; disableBtn(this.id); enableBtn("btnp{{i.id}}")'/>Absent</button>&nbsp;
-            </form>
+                <button class="btn btn-danger" onclick="window.location.href='{% url "absent" i.id %}'; disableBTN(this.id)">Absent</button>
             </td>
             <td>
                 {{i.absentdayss}} (<small><a href="{% url 'attendance-detail' i.id %}">View Details</small></a>)

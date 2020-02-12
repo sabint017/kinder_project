@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image
+from django.template.defaultfilters import slugify
 
 
 class Post(models.Model):
@@ -30,6 +31,7 @@ class Post(models.Model):
 
 class Notice(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField(default="notice")
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -41,6 +43,7 @@ class Notice(models.Model):
         return reverse('notice-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
         super(Notice, self).save(*args, **kwargs)
 
 
@@ -93,10 +96,6 @@ class Attendance(models.Model):
         return self.absentday_set.count()
 
     @property
-    def presentdayss(self):
-        return self.presentday_set.count()
-
-    @property
     def days(self):
         return self.absentday_set.all()
 
@@ -143,13 +142,6 @@ class Absentday(models.Model):
         return self.name.full_name + " A"
 
 
-class Presentday(models.Model):
-    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
-    date = models.DateField(default=timezone.now)
-
-    def __str__(self):
-        return self.name.full_name + " P"
-
 class Result(models.Model):
     name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
 
@@ -162,8 +154,5 @@ class Result(models.Model):
     def __str__(self):
         return self.name.full_name + "'s" + ' result '
 
-
-
     def save(self, *args, **kwargs):
         super(Result, self).save(*args, **kwargs)
-

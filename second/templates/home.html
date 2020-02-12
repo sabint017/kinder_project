@@ -176,7 +176,7 @@
                             <td>
                                 {% for notice in notices %}
                                     <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
-                                    <div><a href="{% url 'notice-detail' notice.id %}">
+                                    <div><a href="{% url 'notice-detail' notice.slug %}">
                                         <h5>{{notice.title}}</h5>
                                         </a>
 
