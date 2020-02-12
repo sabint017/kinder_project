@@ -12,8 +12,7 @@
     width: 400px;
     height: 450px;
     background-color: rgba(28, 81, 160, 0.7);
-    margin: 0 auto;
-    margin-left: 400px;
+    margin-left: 50%;
     margin-top: -10px;
     color: white;
     border: 0;
@@ -26,10 +25,6 @@
     margin-top: -45px;
     border: 0;
     border-radius: 50px;
-}
-
-.jumbotron {
-    height: 100vh;
 }
 
 button {
