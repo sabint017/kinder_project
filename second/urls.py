@@ -1,5 +1,5 @@
 
-from .views import PostDetailView, addresult, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView
+from .views import PostDetailView, addresult,ResultDetail,ResultUpdate, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView
 from . import views
 from django.urls import path
 from users import views as users_views
@@ -32,6 +32,8 @@ urlpatterns = [
      path('routine/<int:pk>/', RoutineDetailView.as_view(), name='routine-detail'),
      path('routine/<int:pk>/update',
           RoutineUpdateView.as_view(), name='routine-update'),
+      path('result/<int:pk>/update',ResultUpdate.as_view(), name='result-update'),
+     path('result/<int:pk>/', ResultDetail.as_view(), name='result-detail'),
      path('result/', views.result, name='result'),
      path('addresult/', views.addresult, name='addresult'),
 

@@ -35,7 +35,8 @@
 
 
         <tr>
-            <td>{{result.name}}</td>
+
+            <td><b><a href="{% url 'result-detail' result.id %}">{{result.name}}</a></b></td>
             <td>{{result.subject1}}</td>
             <td>{{result.subject2}}</td>
             <td>{{result.subject3}}</td>

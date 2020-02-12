@@ -112,6 +112,9 @@ class RoutineDetailView(DetailView):
     model = Routine
     template_name = 'routine_detail.html'
 
+class ResultDetail(DetailView):
+    model = Result
+    template_name = 'resultdetail.html'
 
 @login_required
 def addchild(request):
@@ -320,4 +323,18 @@ class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         routine = self.get_object()
+        return True
+
+
+class ResultUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Result
+    fields = ['name', 'subject1', 'subject2', 'subject3',
+              'subject4', 'grade', 'remarks']
+    template_name = 'addresult.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def test_func(self):
+        result = self.get_object()
         return True
