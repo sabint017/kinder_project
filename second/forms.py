@@ -49,7 +49,7 @@ class FoodForm(forms.ModelForm):
 
     class Meta:
         model = Food
-        fields = ('day', 'food', 'remarks')
+        fields = ('day', 'food')
 
 
 class RoutineForm(forms.ModelForm):
