@@ -83,6 +83,7 @@
         {% for result in results %}
 
         {% if user.user_teachers != "" %}
+        {% if user == result.name.teacher %}
         <tr>
             {% if user.user_teachers != "" %}
             <td><b><a href="{% url 'result-detail' result.id %}">{{result.name}}</a></b></td>
@@ -96,6 +97,7 @@
             <td>{{result.grade}}</td>
             <td>{{result.remarks}}</td>
         </tr>
+        {% endif %}
         {% else %}
         {% if user.user_parents.ChildID == result.name.childid %}
         <tr>

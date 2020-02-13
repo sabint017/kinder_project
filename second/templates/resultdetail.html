@@ -69,9 +69,10 @@
 </head>
 <body>
     <div class="jumbotron">
-        {%if user.user_teachers != "" %}
+        {% if user.user_teachers != "" %}
         <a class="btn btn-primary" href="{% url 'result' %}" style="margin-left: 0px; margin-top: 10px; margin-bottom: 15px;">See Result Page</a>
-           {% endif %} <center>
+        {% endif %} 
+        <center>
             <br>
             <br>
             <table class="table table-hover" id="myTable" style="width: 70%">

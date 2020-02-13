@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food, Result
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday,SID
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -96,7 +96,7 @@ def home(request):
 @login_required
 def registerchild(request):
     context = {
-        'stid': StudentId.objects.all(),
+        'stid': SID.objects.all(),
     }
     return render(request, 'registerchild.html', context)
 
@@ -115,27 +115,6 @@ class RoutineDetailView(DetailView):
 class ResultDetail(DetailView):
     model = Result
     template_name = 'resultdetail.html'
-
-
-@login_required
-def addchild(request):
-    formreg = StudentRegisterForm(request.POST)
-    formreg1 = AttendanceForm(request.POST)
-
-    if request.method == 'POST':
-        if formreg.is_valid():
-            formreg.save()
-            name = formreg.cleaned_data.get('full_name')
-            roll = formreg.cleaned_data.get('roll')
-            childid = formreg.cleaned_data.get('childid')
-            formreg1.save()
-            return redirect('registerchild')
-
-    context = {
-        'formreg': formreg,
-    }
-    return render(request, 'addchild.html', context)
-
 
 def attendance(request):
 
@@ -254,6 +233,20 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return True
         return False
 
+class SIDCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = SID
+    fields = ['full_name', 'roll', 'childid']
+    template_name = 'addchild.html'
+
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        if self.request.user.user_teachers != '':
+            return True
+        return False
 
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Notice

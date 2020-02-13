@@ -79,6 +79,22 @@ class StudentId(models.Model):
     def __str__(self):
         return self.full_name
 
+class SID(models.Model):
+    full_name = models.CharField(max_length=30)
+    roll = models.IntegerField()
+    childid = models.IntegerField()
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.full_name
+
+    def get_absolute_url(self):
+        return reverse('registerchild')
+    
+    def save(self, *args, **kwargs):
+        super(SID, self).save(*args, **kwargs)
+
+
 
 class Attendance(models.Model):
     full_name = models.CharField(max_length=30)
@@ -152,7 +168,7 @@ class Presentday(models.Model):
 
 
 class Result(models.Model):
-    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    name = models.ForeignKey(SID, on_delete=models.CASCADE)
     subject1 = models.DecimalField(max_digits=4, decimal_places=1)
     subject2 = models.DecimalField(max_digits=4, decimal_places=1)
     subject3 = models.DecimalField(max_digits=4, decimal_places=1)
