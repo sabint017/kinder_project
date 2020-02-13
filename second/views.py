@@ -186,13 +186,9 @@ class AttendanceDetailView(DetailView):
 
 def postsandnotices(request):
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, 4)
-
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
 
     context = {
-        'posts': page_obj,
+        'posts': post_list,
         'notices': Notice.objects.all().order_by('-date_posted'),
 
     }
