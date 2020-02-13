@@ -21,13 +21,7 @@
             }
     });
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  Menu Dropdown
-    /*-----------------------------------------------------------------------------------*/
-
-    $('ul.menus li ul li').hover(function() {
-        $(this).parents('li.has-child').toggleClass('open');
-    });
+  
 
 
     /*-----------------------------------------------------------------------------------*/
@@ -53,34 +47,9 @@
         overlayParentElement: 'body'
     });
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  Number Counter
-    /*-----------------------------------------------------------------------------------*/
 
-    $('.counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  GALLERY
-    /*-----------------------------------------------------------------------------------*/
 
-    $('.gallery').magnificPopup({
-        delegate: 'a',
-        type: 'image',
-        tLoading: 'Loading image #%curr%...',
-        mainClass: 'mfp-img-mobile',
-        gallery: {
-          enabled: true,
-          navigateByImgClick: true,
-          preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-        },
-        image: {
-          tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-          
-        }
-      });
 
     /*-----------------------------------------------------------------------------------*/
     /*  CAROUSEL
@@ -104,21 +73,6 @@
         }
     })
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  COUNTDOWN
-    /*-----------------------------------------------------------------------------------*/
-
-    $('#clock').countdown('2015/12/10', function(event) {
-        var $this = $(this).html(event.strftime(''
-        + 
-        '<div class="col-md-3 text-center day"><h3>Day</h3><div class="count-bg"><p>%D</p></div></div>'
-        + 
-        '<div class="col-md-3 text-center hour"><h3>Hours</h3><div class="count-bg"><p>%H</p></div></div>'
-        + 
-        '<div class="col-md-3 text-center minute"><h3>Minutes</h3><div class="count-bg"><p>%M</p></div></div>'
-        + 
-        '<div class="col-md-3 text-center second"><h3>Second</h3><div class="count-bg"><p>%S</p></div></div>'));
-    });
 
     /*-----------------------------------------------------------------------------------*/
     /*  FLEXSLIDER
@@ -189,22 +143,5 @@
         }, 4000);
     });
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  MENU MOBILE
-    /*-----------------------------------------------------------------------------------*/
-
-    var slideRight = new Menu({
-        wrapper: '#main-wrapper',
-        type: 'slide-right',
-        menuOpenerClass: '.slide-button',
-        maskId: '#slide-overlay'
-    });
-
-    var slideRightBtn = document.querySelector('#slide-buttons');
-  
-    slideRightBtn.addEventListener('click', function(e) {
-        e.preventDefault;
-        slideRight.open();
-    });
 
 })(jQuery); 

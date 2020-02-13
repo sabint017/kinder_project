@@ -20,8 +20,8 @@
 }
 
 .form-box img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-top: -45px;
     border: 0;
     border-radius: 50px;
@@ -126,7 +126,7 @@ button.button-normal.green:hover,
     color:#ddd;
     font-family: 'Baloo Paaji', cursive;
     animation-name: titleAnimation;
-    animation-timing-function:ease;
+    animation-timing-function:ease-in-out;
     animation-duration: 3s;
   }
 
@@ -137,7 +137,7 @@ button.button-normal.green:hover,
       -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
       clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
   }
-  20% {
+  40% {
       transform: translateY(0);
       opacity: 1;
       -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);

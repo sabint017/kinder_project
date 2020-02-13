@@ -234,8 +234,8 @@ button.button-normal.green:hover,
 
 @import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
 /* text */
-.text-block {
-    /* background-image: url('../media/users/activity.svg'); */
+ .text-block { 
+    background-image: url('../media/users/activity.svg'); 
     position: absolute;
     bottom: 350px;
     left: 200px;
@@ -246,7 +246,7 @@ button.button-normal.green:hover,
     color:#ddd;
     font-family: 'Baloo Paaji', cursive;
     animation-name: titleAnimation;
-    animation-timing-function:ease;
+    animation-timing-function:ease-in-out;
     animation-duration: 3s;
   }
 
@@ -256,18 +256,21 @@ button.button-normal.green:hover,
       opacity: 0;
       -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
       clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+      letter-spacing: 40px;
   }
   20% {
       transform: translateY(0);
       opacity: 1;
       -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
       clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+      letter-spacing: 30px;
   }
   80% {
        transform: translateY(0);
        opacity: 1;
       -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
       clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+      letter-spacing: 20px;
   }
   100% {
        transform: translateY(50px);
@@ -277,6 +280,7 @@ button.button-normal.green:hover,
     
   }
 }
+
 
 
 

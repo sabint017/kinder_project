@@ -1,35 +1,56 @@
-{% extends "base.html" %}
-{% block base1 %}
 
-<html lang="en">
 
-    {% load static %}
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en-US">
+
+{% load static %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developers</title>
-    
-        <!-- Google Fonts
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Fonts
     ============================================= -->
     <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Stylesheets
+    ============================================= -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dev.css' %}" />
 
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'first1.css' %}">
-        
-    <link rel="stylesheet" type="text/css" href="{% static 'dev.css' %}">
-    
+  
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" />
+   
+    <link rel="stylesheet" type="text/css" href="{% static 'firsttt.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'responsive.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css"> -->
+
+
+    <!-- External Styles
+    ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Developers</title>
 
 </head>
+
 <body>
-    
-    <div  id="main-wrapper">
-        <section id="content">
+
+
+    <div id="main-wrapper" class="animation clearfix">
+
+
+
+        <!-- CONTENT START
+        ============================================= -->
+        <section id="content" class="single-wrapper">
+            <!-- Page Title -->
             <div class="grey-background wow fadeIn">
                 <div class="container">
                     <div class="heading-block page-title wow fadeInUp">
@@ -38,6 +59,8 @@
                 </div>
             </div>
 
+            <!-- OUR DEVELOPERS SECTION START
+            ============================================= -->
             <div class="devs">
                 <div class="container">
                     <div class="row">
@@ -51,21 +74,18 @@
                                 </li>
 
                                 <li role="presentation" class="col-md-3 active">
-                                    <li role="presentation" class="col-md-3 " >
                                     <a href="#sajanmahat" aria-controls="sajanmahat" role="tab" data-toggle="tab">
                                         <img src="/media/first/p2.png" alt=""  style="width: 300px; height: 400px;"/>
                                     </a>
                                 </li>
 
                                 <li role="presentation" class="col-md-3 active">
-                                    <li role="presentation" class="col-md-3 ">
                                     <a href="#nripeshkarmacharya" aria-controls="nripeshkarmacharya" role="tab" data-toggle="tab">
                                         <img src="/media/first/p3.png" alt="" style="width: 300px; height: 400px;" />
                                     </a>
                                 </li>
 
                                 <li role="presentation" class="col-md-3 active">
-                                    <li role="presentation" class="col-md-3 ">
                                     <a href="#rojanuprety" aria-controls="rojanuprety" role="tab" data-toggle="tab">
                                         <img src="/media/first/p4.png" alt="" style="width: 300px; height: 430px;" />
                                     </a>
@@ -75,13 +95,8 @@
                         <!-- Nav Tabs End -->
                     </div>
 
-
-
-
-
-
-                       <!-- Tab panes -->
-                       <div role="tabpanel" class="developer-desc fade in active" id="sabinthapa">
+                    <!-- Tab panes -->
+                    <div role="tabpanel" class="developer-desc fade in active" id="sabinthapa">
                         <div class="heading-block clearfix">
                             <h3>Sabin Thapa</h3>
                             <p class="position">Senior Developer</p>
@@ -104,14 +119,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-4">
                                     <div class="heading-block clearfix">
                                         <h4>About</h4>
                                     </div>
                                     <p>Sed ut perspiciatiytttttttyhfgs unde omnis iste natus error sit voluptatem accusantium doloremque lada tum, totam rem aperiam,</p>
                                     <p>eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit vluptatem accusantium doloremque lada tum, totam rem aperam, eaque ipsa quae ab illo inventore verttis et quasi architecto beatae vitae dicta sunt excabo. accusantium doloremque lada tum, totam rem aperam.</p>
-                                    <br>
-                                    <br>
                                 </div>
 
                                 <div class="col-md-4">
@@ -175,13 +188,7 @@
                         </div>
                     </div>
 
-
-
-
-
-
-                    
-                    <div role="tabpanel" class="developer-desc fade in active" id="sajanmahat">
+                    <div role="tabpanel" class="developer-desc fade in " id="sajanmahat">
                         <div class="heading-block clearfix">
                             <h3>Sajan Mahat</h3>
                             <p class="position">Senior Developer</p>
@@ -204,15 +211,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-4">
                                     <div class="heading-block clearfix">
                                         <h4>About</h4>
                                     </div>
                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lada tum, totam rem aperiam,</p>
                                     <p>eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit vluptatem accusantium doloremque lada tum, totam rem aperam, eaque ipsa quae ab illo inventore verttis et quasi architecto beatae vitae dicta sunt excabo. accusantium doloremque lada tum, totam rem aperam.</p>
-                                
-                                <br>
-                                <br>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="heading-block clearfix">
@@ -275,7 +279,7 @@
                         </div>
                     </div>
 
-                    <div role="tabpanel" class="developer-desc fade in active" id="nripeshkarmacharya">
+                    <div role="tabpanel" class="developer-desc fade in " id="nripeshkarmacharya">
                         <div class= "heading-block clearfix">
                             <h3>nripeshkarmacharya</h3>
                             <p class="position">Senior Developer</p>
@@ -298,16 +302,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-4">
                                     <div class="heading-block clearfix">
                                         <h4>About</h4>
                                     </div>
                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lada tum, totam rem aperiam,</p>
                                     <p>eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit vluptatem accusantium doloremque lada tum, totam rem aperam, eaque ipsa quae ab illo inventore verttis et quasi architecto beatae vitae dicta sunt excabo. accusantium doloremque lada tum, totam rem aperam.</p>
-                                
-                                
-                                    <br>
-                                    <br>
                                 </div>
 
                                 <div class="col-md-4">
@@ -370,9 +370,7 @@
 
                         </div>
                     </div>
-
-
-                    <div role="tabpanel" class="developer-desc fade in active" id="rojanuprety">
+                    <div role="tabpanel" class="developer-desc fade in " id="rojanuprety">
                         <div class="heading-block clearfix">
                             <h3>rojan uprety</h3>
                             <p class="position">Senior Developer</p>
@@ -395,15 +393,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-4">
                                     <div class="heading-block clearfix">
                                         <h4>About</h4>
                                     </div>
                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lada tum, totam rem aperiam,</p>
                                     <p>eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit vluptatem accusantium doloremque lada tum, totam rem aperam, eaque ipsa quae ab illo inventore verttis et quasi architecto beatae vitae dicta sunt excabo. accusantium doloremque lada tum, totam rem aperam.</p>
-                                
-                                    <br>
-                                    <br>
                                 </div>
 
                                 <div class="col-md-4">
@@ -466,15 +461,16 @@
 
                             <!-- Section 2 End -->
                         </div>
-                        </div>
-                        </div>           
+
+            <!-- Tab Panes End -->
+
+                </div>
+            </div>
             </div>
 
+            <!-- CLASS AND COURSE SECTION END -->
 
-
-
-
-               <!-- BANNER SECTION START
+            <!-- BANNER SECTION START
             ============================================= -->
             <div class="banner small wow fadeIn">
                 <div class="container">
@@ -494,11 +490,9 @@
 
             <!-- BANNER SECTION END -->
 
-
-
-                   <!-- TESTIMONIAL SECTION START
+            <!-- TESTIMONIAL SECTION START
             ============================================= -->
-            <div class="testimonial with-bg-image"  >
+            <div class="testimonial with-bg-image">
                 <div class="container">
                     <div class="row">
                         <div class="testimonial-wrap text-center wow fadeIn">
@@ -526,16 +520,13 @@
                 <div class="overlay dark"></div>
             </div>
             <!-- TESTIMONIAL SECTION END -->
-            
-
-            
 
         </section>
         <!-- CONTENT END -->
 
 
 
-        
+
 
 
         <!-- COPYRIGHT START
@@ -568,66 +559,25 @@
         <!-- COPYRIGHT END -->
 
     </div>
-<!-- 
-        Main wrapper end -->
+    <!-- MAIN WRAPPER END -->
 
+    <!-- Footer Scripts
+    ============================================= -->
 
-                   
+    <!-- JavaScripts
+    ============================================= -->
 
+<script type="text/javascript" src="{% static 'main.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugin.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-          
-
-        </section>
-
-    </div>
-
-
-
-
-<!-- 
-    <script type="text/javascript" src="{% static 'main.js' %}"></script> -->
-    <script type="text/javascript" src="{% static 'plugin.js' %}"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 </body>
 </html>
-{% endblock %}
+
+
