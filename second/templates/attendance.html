@@ -20,6 +20,9 @@
         function enableBtn(id) {
             document.getElementById(id).disabled = false;
         }
+
+
+
     </script>
 </head>
 
@@ -42,7 +45,7 @@
 
             </tr>
         </thead>
-        {{ error }}
+     
         {% for i in students %}
 
             <tr>
@@ -50,11 +53,14 @@
             <td>{{i.roll}}</td>
 
             <td>
-                <button class="btn btn-primary" onclick="window.location.href='{% url "present" i.id %}'; disableBTN(this.id)">Present</button>
+                <a class="present-btn btn btn-primary" href='{% url "present" i.id %}'>Present</a>&emsp;
+                <small><a href='{% url "presentdecrease" i.id %}'>Undo</a></small>
 
             </td>
-            <td>
-                <button class="btn btn-danger" onclick="window.location.href='{% url "absent" i.id %}'; disableBTN(this.id)">Absent</button>
+            <td id="CC">
+                <a class="absent-btn btn btn-danger" href='{% url "absent" i.id %}' onclick="worker()">Absent</a>&emsp;
+                <small><a href='{% url "absentdecrease" i.id %}'>Undo</a></small>
+
             </td>
             <td>
                 {{i.absentdayss}} (<small><a href="{% url 'attendance-detail' i.id %}">View Details</small></a>)
@@ -72,10 +78,6 @@
 
 </center>
 </div>
-
-
-
-
 
 
 

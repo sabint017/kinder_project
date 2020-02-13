@@ -31,7 +31,6 @@ class Post(models.Model):
 
 class Notice(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(default="notice")
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -43,7 +42,6 @@ class Notice(models.Model):
         return reverse('notice-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
         super(Notice, self).save(*args, **kwargs)
 
 
@@ -86,7 +84,6 @@ class Attendance(models.Model):
     full_name = models.CharField(max_length=30)
     roll = models.IntegerField()
     childid = models.IntegerField()
-    present_days_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.full_name
@@ -94,6 +91,10 @@ class Attendance(models.Model):
     @property
     def absentdayss(self):
         return self.absentday_set.count()
+
+    @property
+    def presentdayss(self):
+        return self.presentday_set.count()
 
     @property
     def days(self):
@@ -140,6 +141,14 @@ class Absentday(models.Model):
 
     def __str__(self):
         return self.name.full_name + " A"
+
+
+class Presentday(models.Model):
+    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.name.full_name + " P"
 
 
 class Result(models.Model):
