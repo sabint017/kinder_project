@@ -235,6 +235,7 @@ button.button-normal.green:hover,
 @import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
 /* text */
 .text-block {
+    /* background-image: url('../media/users/activity.svg'); */
     position: absolute;
     bottom: 350px;
     left: 200px;
