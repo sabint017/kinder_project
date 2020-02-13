@@ -15,7 +15,7 @@ def register_parent(request):
     if request.method == 'POST':
         form1 = UserRegistrationForm(request.POST)
         form_parents = User_p(request.POST)
-        students=sm.StudentId.objects.all()
+        students=sm.SID.objects.all()
         parents=User_parents.objects.all()
             
         if form1.is_valid() and form_parents.is_valid():
