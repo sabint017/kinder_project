@@ -22,7 +22,9 @@
 
 <div class="jumbotron">
         <center>
+        {% if user.user_teachers != "" %}
         <button class='btn btn-secondary' onclick="location.href='{% url 'addroutine' %}'" style="margin-left:90%;">ADD</button>
+        {% endif %}
         <br>
         <br>
         <table class="table table-hover" id="myTable" style="width: 70%">
@@ -44,7 +46,11 @@
             {% for rout in routine %}
 
                     <tr>
+                    {% if user.user_teachers != "" %}
                     <td><b><a href="{% url 'routine-detail' rout.id %}">{{rout.day}}</a></b></td>
+                    {% else %}
+                    <td><b>{{rout.day}}</b></td>
+                    {% endif %}
                     <td>{{rout.ten_ten45}}</td>
                     <td>{{rout.ten45_eleven30}}</td>
                     <td>Break</td>

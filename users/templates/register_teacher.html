@@ -18,27 +18,20 @@
 
 
 
-<body style="background-image: url(https://teslathemes.com/wp-content/themes/teslathemes/assets/hero-image.jpg);">
-
-<Style>
-
-    .JumboHeaderImg{
-        background-image: url(https://teslathemes.com/wp-content/themes/teslathemes/assets/hero-image.jpg);
-        background-size: cover;
-        backface-visibility: inherit;
-        background-repeat: repeat;
-
-    }
-    </style>
+<body >
 
 
 
 
-    <div class="jumbotron JumboHeaderImg">
+
+    <div class="jumbotron ">
+
+        <section class="login-page">
+
         <center>
 
 
-            <div class='form-box'>
+            <div class='form-box' style="height: 350px;">
 
                 <img src="{% static 'profile.png' %}">
                 <form method='POST'>
@@ -47,18 +40,24 @@
                     {{ form_teachers.as_p }}
 
                     <div>
-                        <button class='signup-button' type='submit'>SIGN UP</button>
+                        <button class='submit button-normal white' type='submit'>SIGN UP</button>
                     </div>
                 </form>
-                <div>
-                    <p>Already have an account?</p><a href="{% url 'login' %}"
-                        style="color:#2ECC71;font-size:20px;">SIGN IN</a>
+                <div class="form-footer">
+                    <p>Already have an account? <a href='{% url 'login' %}'"><strong> SIGN IN </strong></a>
 
                 </div>
             </div>
         </center>
-
+        <div class="text-block">
+            <h4><strong> Dear teacher,</strong> </h4>
+            <h4><strong> Welcome to Kinder.</strong> </h4>
+            <p>Please fill the signup form given aside and stay</p>
+            <p> connected with us.</p>
+          </div
+        </section>
     </div>
+
 
 
 

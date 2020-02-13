@@ -10,7 +10,56 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Result</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var tr = document.querySelector('table').querySelectorAll('tr');
+            var stdata=[];
+            for(i=1;i<tr.length;i++){
+                stdata[i-1]=tr[i].querySelectorAll('td')
+            }
+            for(i=0;i<stdata.length;i++){
+                var percent=0;
+                var pass=0;
+                for(j=1;j<5;j++){
+                    if(stdata[i][j].textContent<40) pass = 0;
+                    percent+=stdata[i][j].textContent/4
+                }
 
+                stdata[i][5].textContent=grade(percent)
+            }
+            for(i=0;i<stdata.length;i++){
+                var pass=1
+                for(j=1;j<5;j++){
+                    if(stdata[i][j].textContent<40){
+                        pass=0
+                    }
+                }
+                if(pass){
+                    stdata[i][6].textContent='PASS'
+                }else{
+                    stdata[i][6].textContent="FAIL"
+                }
+            
+            }
+            
+        })
+        function grade(percent){
+            if(percent>=90) return "A+"
+            else if(percent>=80) return 'A'
+            else if(percent>=70)    return 'B+'
+            else if(percent>=60)    return 'B'
+            else if(percent>=50)    return 'C+'
+            else if(percent>=40)    return 'C'
+            else if(percent>=30)    return 'D+'
+            else if(percent>=20)    return 'D'
+            else if(percent>=10)    return 'E+'
+            else return 'E'
+
+        }
+        function pass(marks){
+            
+        }
+    </script>
 </head>
 
 <body>
@@ -33,19 +82,40 @@
 
         {% for result in results %}
 
-
+        {% if user.user_teachers != "" %}
         <tr>
-
+            {% if user.user_teachers != "" %}
             <td><b><a href="{% url 'result-detail' result.id %}">{{result.name}}</a></b></td>
+            {% else %}
+            <td>{{result.name}}</td>
+            {% endif %}
             <td>{{result.subject1}}</td>
             <td>{{result.subject2}}</td>
             <td>{{result.subject3}}</td>
             <td>{{result.subject4}}</td>
             <td>{{result.grade}}</td>
             <td>{{result.remarks}}</td>
-
         </tr>
+        {% else %}
+        {% if user.user_parents.ChildID == result.name.childid %}
+        <tr>
+            {% if user.user_teachers != "" %}
+            <td><b><a href="{% url 'result-detail' result.id %}">{{result.name}}</a></b></td>
+            {% else %}
+            <td>{{result.name}}</td>
+            {% endif %}
+            <td>{{result.subject1}}</td>
+            <td>{{result.subject2}}</td>
+            <td>{{result.subject3}}</td>
+            <td>{{result.subject4}}</td>
+            <td>{{result.grade}}</td>
+            <td>{{result.remarks}}</td>
+        </tr>
+        {% endif %}
+        {% endif %}
         {% endfor %}
+
+
     </table>
 </div>
 
