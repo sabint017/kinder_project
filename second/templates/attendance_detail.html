@@ -8,7 +8,7 @@
     <title>Student Ids</title>
     <script type="text/javascript">
         window.onload = function(){
-        var a = {{attendance.present_days_count}} + {{attendance.absentdayss}}
+        var a = {{attendance.presentdayss}} + {{attendance.absentdayss}}
         document.getElementById('pd').innerHTML = a;
         };
 
@@ -24,7 +24,7 @@
 
         <center>
         <h5>Total School Days:<p id="pd"></p></h5>
-        <h5>Total Days Present: {{attendance.present_days_count}}</h5>
+        <h5>Total Days Present: {{attendance.presentdayss}}</h5>
         <h5>Total Days Absent: {{attendance.absentdayss}}</h5>
         <h3><b>{{attendance.full_name}}</b> was absent on the following day(s):</h3>
         <table class="table table-hover" style="margin-top: 30px; width: 20%">

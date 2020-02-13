@@ -141,26 +141,6 @@
                     {% endif %}
                     {% endif %}
                     {% endfor %}
-                    <center>
-                        <span class="step-links">
-                            {% if posts.has_previous %}
-                                <a class = "btn btn-primary" href="?page=1">&laquo; first</a>
-                                <a class = "btn btn-primary" href="?page={{ posts.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                            </span>
-
-                            {% if posts.has_next %}
-                                <a class = "btn btn-primary" href="?page={{ posts.next_page_number }}">next</a>
-                                <a class = "btn btn-primary"href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-                            {% endif %}
-                        </span>
-
-
-
-                    </center>
             </div>
 
             <div class="col-lg-4" style="padding-left: 70px;">
@@ -180,7 +160,7 @@
                             <td>
                                 {% for notice in notices %}
                                     <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
-                                    <div><a href="{% url 'notice-detail' notice.slug %}">
+                                    <div><a href="{% url 'notice-detail' notice.id %}">
                                         <h5>{{notice.title}}</h5>
                                         </a>
 

@@ -1,5 +1,5 @@
 
-from .views import PostDetailView, addresult, ResultDetail, ResultUpdate, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView, present, absent
+from .views import PostDetailView, absentdecrease, presentdecrease, addresult, ResultDetail, ResultUpdate, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView, present, absent
 from . import views
 from django.urls import path
 from users import views as users_views
@@ -12,7 +12,7 @@ urlpatterns = [
     path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'),
 
-    path('notice/<slug>/', NoticeDetailView.as_view(), name='notice-detail'),
+    path('notice/<int:pk>/', NoticeDetailView.as_view(), name='notice-detail'),
     path('notice/new/', NoticeCreateView.as_view(), name='notice-create'),
     path('notice/<int:pk>/update', NoticeUpdateView.as_view(), name='notice-update'),
     path('notice/<int:pk>/delete', NoticeDeleteView.as_view(), name='notice-delete'),
@@ -34,8 +34,10 @@ urlpatterns = [
          RoutineUpdateView.as_view(), name='routine-update'),
     path('result/', views.result, name='result'),
     path('addresult/', views.addresult, name='addresult'),
-    path('present/<id>/', present, name="present"),
+    path('presentdecrease/<id>/', views.presentdecrease, name="presentdecrease"),
     path('absent/<id>/', absent, name="absent"),
+    path('present/<id>/', present, name="present"),
+    path('absentdecrease/<id>/', views.absentdecrease, name="absentdecrease"),
     path('result/<int:pk>/update', ResultUpdate.as_view(), name='result-update'),
     path('result/<int:pk>/', ResultDetail.as_view(), name='result-detail'),
 

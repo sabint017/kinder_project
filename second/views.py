@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food, Result
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -147,15 +147,19 @@ def attendance(request):
 
 def present(request, id):
     student = Attendance.objects.get(id=id)
+    student1 = Presentday.objects.create(
+        name=student, date=datetime.date.today())
+    student1.save()
 
-    student.present_days_count += 1
-    student.save()
-    context = {
-        'students': Attendance.objects.all(),
-    }
     return redirect('attendance')
 
-    return render(request, 'attendance.html', context)
+
+def presentdecrease(request, id):
+    student = Attendance.objects.get(id=id)
+    student1 = Presentday.objects.filter(
+        name=student, date=datetime.date.today())
+    student1.delete()
+    return redirect('attendance')
 
 
 def absent(request, id):
@@ -163,11 +167,16 @@ def absent(request, id):
     student1 = Absentday.objects.create(
         name=student, date=datetime.date.today())
     student1.save()
-    context = {
-        'students': Attendance.objects.all(),
-    }
+
     return redirect('attendance')
-    return render(request, 'attendance.html', context)
+
+
+def absentdecrease(request, id):
+    student = Attendance.objects.get(id=id)
+    student1 = Absentday.objects.filter(
+        name=student, date=datetime.date.today())
+    student1.delete()
+    return redirect('attendance')
 
 
 class AttendanceDetailView(DetailView):
@@ -177,13 +186,9 @@ class AttendanceDetailView(DetailView):
 
 def postsandnotices(request):
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, 4)
-
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
 
     context = {
-        'posts': page_obj,
+        'posts': post_list,
         'notices': Notice.objects.all().order_by('-date_posted'),
 
     }
