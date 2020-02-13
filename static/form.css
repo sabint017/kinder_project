@@ -69,7 +69,7 @@ form textarea:focus {
 .form-box {
     width: 400px;
     height: 450px;
-    background-color: rgba(28, 81, 160, 0.7);
+    background-color: #3b5998;
     margin: 0 auto;
     margin-top: 80px;
     margin-left: 400px;
@@ -246,7 +246,7 @@ button.button-normal.green:hover,
     font-family: 'Baloo Paaji', cursive;
     animation-name: titleAnimation;
     animation-timing-function:ease;
-    animation-duration: 1s;
+    animation-duration: 3s;
   }
 
   @keyframes titleAnimation {

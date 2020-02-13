@@ -10,8 +10,8 @@
 
 .form-box {
     width: 400px;
-    height: 450px;
-    background-color: rgba(28, 81, 160, 0.7);
+    height: 350px;
+    background-color:#3b5998;
     margin-left: 50%;
     margin-top: -10px;
     color: white;
@@ -76,4 +76,38 @@ button.button-normal.green:hover,
     background-color: transparent;
     border: 1px solid white;
     color: white;
+}
+
+
+.login-page{
+    background-image: url('../media/first/image-1.jpg');
+  background-size: cover;
+    height: 100vh;
+    position: relative;
+    padding: 0;
+ 
+}
+
+.login-page .form-box{
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.jumbotron{
+    padding: 0;
+    height: 100vh;
+}
+
+.form-footer a{
+    color: #ffffff;
+}
+
+.form-footer a:hover{
+    color:black;
+    text-decoration: none;
 }

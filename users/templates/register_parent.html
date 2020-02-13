@@ -20,6 +20,7 @@
 
 
     <div class="jumbotron ">
+        <section class="login-page"> 
         
         <center>
             <div class='form-box'>
@@ -35,14 +36,13 @@
                         <button class='submit button-normal white' type='submit'>SIGN UP</button>
                     </div>
                 </form>
-                <div>
-                    <p>Already have an account?</p>
-                    <button class="button-normal white" onclick="location.href='{% url 'login' %}'">SIGN IN</a>
+                <div class="form-footer">
+                    <p>Already have an account? <a href='{% url 'login' %}'"><strong> SIGN IN </strong></a>
 
                 </div>
             </div>
         </center>
-  
+    </section>
     </div>
 
 
