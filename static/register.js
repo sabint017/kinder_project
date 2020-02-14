@@ -31,4 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelectorAll('div')[1].style.height = boxlength;
+
+    var select = document.querySelector('select')
+    var option = document.querySelector('option')
+    option.textContent = 'School:'
+    select.style.height = '30px';
+    select.style.width = '300px';
+    select.style.backgroundColor = '#e8ebf3';
+    select.style.color = '#757575';
+    select.style.textIndent = '35px';
+
+
+
+
 })

@@ -11,7 +11,7 @@
 .form-box {
     width: 400px;
     height: 350px;
-    background-color:#3b5998;
+    background-color: #3b5998;
     margin-left: 50%;
     margin-top: -10px;
     color: white;
@@ -78,43 +78,42 @@ button.button-normal.green:hover,
     color: white;
 }
 
-
-.login-page{
+.login-page {
     background-image: url('../media/first/image-1.jpg');
-  background-size: cover;
+    background-size: cover;
     height: 100vh;
     position: relative;
     padding: 0;
- 
 }
 
-.login-page .form-box{
+.login-page .form-box {
     position: absolute;
     left: 30%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     z-index: 2;
 }
 
-.jumbotron{
+.jumbotron {
     padding: 0;
     height: 100vh;
 }
 
-.form-footer a{
+.form-footer a {
     color: #ffffff;
 }
 
-.form-footer a:hover{
-    color:black;
+.form-footer a:hover {
+    color: black;
     text-decoration: none;
 }
 
-
 @import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
+
 /* text */
+
 .text-block {
     position: absolute;
     bottom: 350px;
@@ -123,40 +122,36 @@ button.button-normal.green:hover,
     padding-left: 20px;
     padding-right: 20px;
     font-size: 20px;
-    color:#ddd;
+    color: #ddd;
     font-family: 'Baloo Paaji', cursive;
     animation-name: titleAnimation;
-    animation-timing-function:ease-in-out;
+    animation-timing-function: ease-in-out;
     animation-duration: 3s;
-  }
-
-  @keyframes titleAnimation {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-  40% {
-      transform: translateY(0);
-      opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-  }
-  80% {
-       transform: translateY(0);
-       opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-  }
-  100% {
-       transform: translateY(50px);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-    
-  }
 }
 
-
-
+@keyframes titleAnimation {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+        -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    }
+    40% {
+        transform: translateY(0);
+        opacity: 1;
+        -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    }
+    80% {
+        transform: translateY(0);
+        opacity: 1;
+        -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+        -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
+        clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
+    }
+}
