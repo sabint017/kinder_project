@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var list = document.querySelectorAll('div')[0].querySelectorAll('li')
 
-    for (i = 0; i < list.length; i++) {
+    for (i = 0; i < list.length - 1; i++) {
         list[i].style.display = 'none'
     }
 
