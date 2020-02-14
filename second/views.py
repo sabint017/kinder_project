@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food, Result
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday,SID
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 from django.shortcuts import redirect
+from django.contrib import messages
 
 
 def routine(request):
@@ -116,6 +117,7 @@ class ResultDetail(DetailView):
     model = Result
     template_name = 'resultdetail.html'
 
+
 def attendance(request):
 
     context = {
@@ -126,9 +128,14 @@ def attendance(request):
 
 def present(request, id):
     student = Attendance.objects.get(id=id)
-    student1 = Presentday.objects.create(
+    student1 = Presentday.objects.filter(
         name=student, date=datetime.date.today())
-    student1.save()
+    if student1.exists():
+        messages.error(request, 'Attendance already done for today!')
+
+    else:
+        student1 = Presentday.objects.create(
+            name=student, date=datetime.date.today())
 
     return redirect('attendance')
 
@@ -143,9 +150,13 @@ def presentdecrease(request, id):
 
 def absent(request, id):
     student = Attendance.objects.get(id=id)
-    student1 = Absentday.objects.create(
+    student1 = Absentday.objects.filter(
         name=student, date=datetime.date.today())
-    student1.save()
+    if student1.exists():
+        messages.error(request, 'Attendance already done for today!')
+    else:
+        student1 = Absentday.objects.create(
+            name=student, date=datetime.date.today())
 
     return redirect('attendance')
 
@@ -233,6 +244,7 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return True
         return False
 
+
 class SIDCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = SID
     fields = ['full_name', 'roll', 'childid']
@@ -247,6 +259,7 @@ class SIDCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         if self.request.user.user_teachers != '':
             return True
         return False
+
 
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Notice
