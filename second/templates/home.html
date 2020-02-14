@@ -118,7 +118,7 @@
 
                     {% if post.author.user_teachers.school == user.user_parents.school %}
                     {% if post.author.user_teachers.grade == user.user_parents.ChildGrade %}
-                    <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#969696;width:650px;" name='posts'>
+                    <div style="margin-left: 70px;background-color:white;border-style:solid;border-radius:5px;border-width:1px;border-color:#969696;width:100%;" name='posts'>
                     <br>
                     <div style="margin-left:10px;margin-right:10px;">
                     <span style="display:none;">{{post.author.user_teachers.UserType}}</span>
@@ -132,7 +132,9 @@
                         </div>
                         <p><b>{{post.content}}</b></p>
                         </div>
-                        <img id='posting' style="width: 100%; height: 100%;padding-top: 20px; padding-bottom: 40px;border-radius:50px;" src="/media/{{post.photo}}" onerror="this.style.display='none'"></img>
+
+
+                        <img id='posting' style="width: 100%; height: 100%;padding-top: 20px; padding-bottom: -40px;" src="/media/{{post.photo}}" onerror="this.style.display='none'">
                         <br>
                     </div>
                     <br>

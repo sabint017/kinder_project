@@ -34,10 +34,10 @@ class User_p(forms.ModelForm):
         fields=(
             'UserType',
             'occupation',
-            'school',
             'ChildGrade',
             'ChildID',
-            'RelationToChild'
+            'RelationToChild',
+            'school'
         )
 
 class User_t(forms.ModelForm):
