@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     var list = document.querySelectorAll('div')[0].querySelectorAll('li')
 
-    for (i = 0; i < list.length - 1; i++) {
+    for (i = 0; i < list.length; i++) {
         list[i].style.display = 'none'
     }
-
+    var l = document.querySelectorAll('div')[0].querySelectorAll('.errorlist')
+    if (l.length) {
+        list[list.length - 1].style.display = ''
+    }
     var sp = document.querySelectorAll('div')[0].querySelectorAll('span')
-
     for (i = 0; i < sp.length; i++) {
         sp[i].textContent = ''
     }
+
 
     var labels = document.querySelectorAll('label')
     for (i = 0; i < labels.length; i++) {
