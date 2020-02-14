@@ -22,7 +22,9 @@
 
 <div class="jumbotron">
         <center>
+        {% if user.user_teachers != '' %}
         <button class='btn btn-secondary' onclick="location.href='{% url 'add_food' %}'" style="margin-left:90%;">ADD</button>
+        {% endif %}
         <br>
         <br>
       

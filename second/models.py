@@ -8,6 +8,11 @@ from django.urls import reverse
 from PIL import Image
 from django.template.defaultfilters import slugify
 
+class School(models.Model):
+    sch=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.sch
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
