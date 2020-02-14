@@ -159,12 +159,25 @@
                         <tr>
                             <td>
                                 {% for notice in notices %}
+                                {% if user.user_teachers != '' %}
+                                {% if notice.author.user_teachers.school == user.user_teachers.school %}
                                     <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
                                     <div><a href="{% url 'notice-detail' notice.id %}">
                                         <h5>{{notice.title}}</h5>
                                         </a>
 
                                     </div>
+                                {% endif %}
+                                {% elif user.user_parents != '' %}
+                                {% if user.user_parents.school == notice.author.user_teachers.school and user.user_parents.ChildGrade == notice.author.user_teachers.grade %}
+                                    <small class = "text-muted">{{ notice.date_posted|date:"F d, Y"}}</small>
+                                    <div><a href="{% url 'notice-detail' notice.id %}">
+                                        <h5>{{notice.title}}</h5>
+                                        </a>
+
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
                                 {% endfor %}
 
                             </td>
