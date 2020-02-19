@@ -3,183 +3,131 @@
 {% block base1 %}
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="Name of the Authors">
-        <meta name="generator" content="Platform used to build program">
-        <title>
-            Services
-        </title>
-        <link rel="icon" type="image/icon" href="data:image/png;base64,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"/>
-        <style>
-        .float-image{
-          float: left;
-          clear: left;
-          margin-right:15px;
-          margin-left: -15px;
-          margin-bottom: 20px;
-          border: solid black 1px;
-          padding: 2px;}</style>
-        <style>
-          .float-image1{
-            float: right;
-            clear: right;
-            margin-left:15px;
-            margin-bottom: 20px;
-            margin-right: -15px;
-            border:solid black 1px;
-            padding:2px;
-          }</style>
-      <style>  .bd-placeholder-img{
-            font-size: 2em;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select:none ;
-            -ms-user-select:none ;
-            user-select: none;
-         }
-         @media (min-width: width 768px){
-             .bd-placeholder-img{
-                 font-size: 3.5em;
-             }
-         }
-
-          </style>
-</head>
-<body style="background-color:white;">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
 
 
-    <header>
-
-        <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-            <h2 class="text-black">About</h2>
-            <p class="text-muted"> writeee
-          </p>
-
-    </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-            <h2 class="text-white">Contact
-            </h2>
-            <ul class="list-unstyled">
-
-                <li><a href="http://127.0.0.1:8000/dev.html" style="margin-left: 12px;">Developers</a></li>
-            </ul>
-        </div>
-                </div>
-            </div>
-        </div>
-    <div class="navbar navbar-dark bg-dark shadow-lg">
-        <div class="container d-flex justify-content-between">
-          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <strong><font size="14">Digital Environment</font></strong>
-        </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </div>
 
 
     </header>
 
     <main role="main">
 
-        <section class="jumbotron text-center">
-          <div class="container">
-            <h1><B>SMART WEB</B>
 
-            </h1>
-            <p class="lead text-muted">Make The Smart Move To Monitor Children</p>
-            <p>
-              <a href="http://127.0.0.1:8000/" class="btn btn-primary my-2">Home</a>
-              <a href="{% url 'login' %}" class="btn btn-secondary my-2">Sign In</a>
-            </p>
+
+        <div class="jumbotron" style="width:device-width;height: 500px;">
+          <h3 style="margin-top: -55px;margin-left: 10px;" >Smart Attendance</h3>
+          <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="width:450px;height: 400px;margin-top: 25px;margin-left: -10px;float: left;">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-interval="10000">
+                <img src="media\first\3.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-interval="2000">
+                <img src="media\first\2.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="media\first\1.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
-        </section>
-
-        <div class="jumbotron">
-          <h3 style="margin-top: -55px;" >Smart Attendance</h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
-
-        <div class="jumbotron">
-          <h3 style="float: right; margin-top: -55px;">Digital Monitoring </h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image1">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
-
-        <div class="jumbotron">
-          <h3 style="margin-top: -55px;">Smart Attendance</h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores iure, sit esse adipisci vero et distinctio ex maxime dolorum ipsa natus sapiente, ipsum odio reiciendis itaque corporis dolor quam quod!</p>
         </div>
 
 
-        <div class="jumbotron">
-          <h3 style="float: right; margin-top: -55px;">Digital Monitoring </h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image1">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
+
+          <div class="jumbotron" style="width:device-width;height: 500px;">
+            <h3 style="margin-top: -55px;float: right;margin-right: 100px;" >Digital Monitoring</h3>
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="width:450px;height: 400px;margin-top: 3px;float: right;margin-bottom: 20px;margin-right: -10px;">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="10000">
+                  <img src="media\first\3.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                  <img src="media\first\2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="media\first\1.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut laudantium cumque cum quod commodi eaque deleniti quibusdam explicabo aliquid adipisci, quaerat, impedit tenetur perferendis dolore, eligendi ducimus consectetur assumenda minima.</p>
+            </div>
+
+            <div class="jumbotron" style="width:device-width;height: 500px;">
+              <h3 style="margin-top: -55px;margin-left: 10px;" >Smart Attendance</h3>
+          <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="width:450px;height: 400px;margin-top: 25px;margin-left: -10px;float: left;">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-interval="10000">
+                    <img src="media\first\3.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-interval="2000">
+                    <img src="media\first\2.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="media\first\1.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quis tempore voluptatem aliquid quasi delectus iusto ea ipsum rerum asperiores neque doloribus atque eos amet voluptate velit, nulla assumenda quidem?</p>
+            </div>
 
 
-        <div class="jumbotron">
-          <h3 style="margin-top: -55px;">Smart Attendance</h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
 
-        <div class="jumbotron">
-          <h3 style="float: right; margin-top: -55px;">Digital Monitoring </h3>
-          <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPQWwS2Uxp5rASdxbUV8vfUl3PccY_Mbbr7fuhzBUycIXjTbHM" width="260px" height="250px" class="float-image1">
-        </figure>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
+              <div class="jumbotron" style="width:device-width;height: 500px;">
+                <h3 style="margin-top: -55px;float: right;margin-right: 100px;" >Digital Monitoring</h3>
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="width:450px;height: 400px;margin-top: 3px;float: right;margin-bottom: 20px;margin-right: -10px;clear: right;">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" data-interval="10000">
+                      <img src="media\first\3.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="2000">
+                      <img src="media\first\2.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="media\first\1.png" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, dolorum. Vero, autem quia nihil aperiam magni sit vel, mollitia tempora voluptatibus, quaerat ducimus consectetur incidunt id asperiores officia in alias.</p>
+                </div>
+
+
+
+
+
 
 
 
@@ -187,19 +135,7 @@
 
 
 
-    <footer class="text-muted" style="background-color:white;">
-        <div class="container">
-          <p class="float-right">
 
-            <a href="#">Back to top</a>
-          </p>
-          <p>Copyright &copy; 2015 | All Rights Reserved | KINDER</p>
-          <p>Wanna Visit Again || <a href="http://127.0.0.1:8000/">Visit the homepage</a> or read about Developers <a href="dev.html">Click Here !!</a></p>
-        </div>
-      </footer>
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-            <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-</body>
 
 </html>
 {% endblock %}
