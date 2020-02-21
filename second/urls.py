@@ -1,5 +1,6 @@
 
 from .views import PostDetailView,SIDCreateView, absentdecrease, presentdecrease, addresult, ResultDetail, ResultUpdate, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView, present, absent
+from .views import EventsCreateView, EventsDetailView, EventsUpdateView, EventsDeleteView
 from . import views
 from django.urls import path
 from users import views as users_views
@@ -16,6 +17,12 @@ urlpatterns = [
     path('notice/new/', NoticeCreateView.as_view(), name='notice-create'),
     path('notice/<int:pk>/update', NoticeUpdateView.as_view(), name='notice-update'),
     path('notice/<int:pk>/delete', NoticeDeleteView.as_view(), name='notice-delete'),
+
+
+    path('events/<int:pk>/', EventsDetailView.as_view(), name='events-detail'),
+    path('events/new/', EventsCreateView.as_view(), name='events-create'),
+    path('events/<int:pk>/update', EventsUpdateView.as_view(), name='events-update'),
+    path('events/<int:pk>/delete', EventsDeleteView.as_view(), name='events-delete'),
 
 
     path('profile/', views.profile, name='profile'),

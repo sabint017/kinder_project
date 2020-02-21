@@ -16,6 +16,7 @@
     {% if user.user_teachers != '' %}
     <a class='btn btn-secondary' name="createpost" href="{% url 'notice-update' object.id %}">Update Notice</a>
     <a class='btn btn-outline-danger' name="createpost" href="{% url 'notice-delete' object.id %}">Delete Notice</a>
+
     {% endif %}
 
 
