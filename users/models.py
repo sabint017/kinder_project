@@ -10,8 +10,8 @@ class User_parents(models.Model):
     ChildID=models.IntegerField()
     ChildGrade=models.CharField(max_length=20)
     occupation = models.CharField(max_length=200)
-    school=models.ForeignKey(School,on_delete=models.CASCADE)
     RelationToChild=models.CharField(max_length=200)
+    school=models.ForeignKey(School,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
@@ -23,6 +23,7 @@ class User_teachers(models.Model):
     UserType=models.CharField(max_length=20,default='teacher')
     age=models.IntegerField()
     grade=models.CharField(max_length=20)
+    schoolCode=models.CharField(max_length=20)
     school=models.ForeignKey(School,on_delete=models.CASCADE)
 
     def __str__(self):

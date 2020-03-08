@@ -48,6 +48,7 @@ class User_t(forms.ModelForm):
             'UserType',
             'age',
             'grade',
+            'schoolCode',
             'school'
         )
 

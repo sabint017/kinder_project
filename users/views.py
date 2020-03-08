@@ -48,19 +48,26 @@ def register_teacher(request):
     if request.method == 'POST':
         form2 = UserRegistrationForm(request.POST)
         form_teachers = User_t(request.POST)
-        if form2.is_valid():
-            user=form2.save()
-            profile1= form_teachers.save(commit=False)
-            profile1.user=user
-            profile1.save()
+        schools=sm.School.objects.all()
 
-            username = form2.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}')
-            return redirect('login')
+        if form2.is_valid() and form_teachers.is_valid():
+            access=False
+            for school in schools:
+                
+                if school.schcode == form_teachers.cleaned_data.get('schoolCode') and str(form_teachers.cleaned_data.get('school')) == school.sch:
+                    access=True
+            if access:
+                user=form2.save()
+                profile1= form_teachers.save(commit=False)
+                profile1.user=user
+                profile1.save()
+
+                username = form2.cleaned_data.get('username')
+                messages.success(request, f'Account created for {username}')
+                return redirect('login')
     else:
         form2 = UserRegistrationForm()
         form_teachers = User_t()
-
 
     return render(request, 'register_teacher.html', {'form2': form2, 'form_teachers':form_teachers})
 
@@ -77,7 +84,7 @@ def subscribe(request):
         message = 'Hope you are enjoying our website!! You can change your password by following the link: http://localhost:8000/password-reset-confirm/MjQ/set-password/'
         recepient = str(sub['Email'].value())
         send_mail(subject,
-             message, EMAIL_HOST_USER, [recepient], fail_silently = False)
+            message, EMAIL_HOST_USER, [recepient], fail_silently = False)
         return render(request, 'success.html',
             {'recepient': recepient})
     return render(request, 'reset.html', {'form':sub})

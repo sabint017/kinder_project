@@ -10,6 +10,7 @@ from django.template.defaultfilters import slugify
 
 class School(models.Model):
     sch=models.CharField(max_length=50)
+    schcode=models.CharField(max_length=20,default='school')
 
     def __str__(self):
         return self.sch
