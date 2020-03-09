@@ -1,6 +1,6 @@
 
 from .views import PostDetailView,SIDCreateView, absentdecrease, presentdecrease, addresult, ResultDetail, ResultUpdate, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, RoutineDetailView, RoutineListView, RoutineUpdateView, NoticeCreateView, NoticeDeleteView, NoticeDetailView, NoticeUpdateView, AttendanceDetailView, present, absent
-from .views import EventsCreateView, EventsDetailView, EventsUpdateView, EventsDeleteView
+from .views import EventsCreateView, EventsDetailView, EventsUpdateView, EventsDeleteView, ROUTINESCreateView, FoodsCreateView
 from . import views
 from django.urls import path
 from users import views as users_views
@@ -31,9 +31,9 @@ urlpatterns = [
     path('attendance/<int:pk>', AttendanceDetailView.as_view(),
          name='attendance-detail'),
     path('food/', views.food, name='food'),
-    path('addfood/', views.addfood, name='add_food'),
+    path('addfood/', FoodsCreateView.as_view(), name='add_food'),
     path('routine/', RoutineListView.as_view(), name='routine'),
-    path('addroutine/', views.addroutine, name='addroutine'),
+    path('addroutine/', ROUTINESCreateView.as_view(), name='addroutine'),
     path('addchild/', SIDCreateView.as_view(), name='addchild'),
     path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),
     path('routine/<int:pk>/', RoutineDetailView.as_view(), name='routine-detail'),

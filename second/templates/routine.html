@@ -44,7 +44,25 @@
             </thead>
 
             {% for rout in routine %}
-
+                {% if user == rout.teacher %}
+                <tr>
+                    {% if user.user_teachers != "" %}
+                    <td><b><a href="{% url 'routine-detail' rout.id %}">{{rout.day}}</a></b></td>
+                    {% else %}
+                    <td><b>{{rout.day}}</b></td>
+                    {% endif %}
+                    <td>{{rout.ten_ten45}}</td>
+                    <td>{{rout.ten45_eleven30}}</td>
+                    <td>Break</td>
+                    <td>{{rout.eleven45_twelve30}}</td>
+                    <td>{{rout.twelve30_one15}}</td>
+                    <td>Lunch</td>
+                    <td>{{rout.two_two45}}</td>
+                    <td>{{rout.two45_three30}}</td>
+                    </tr>
+                {% endif %}
+                {% if rout.teacher.user_teachers.school == user.user_parents.school %}
+                {% if rout.teacher.user_teachers.grade == user.user_parents.ChildGrade %}
                     <tr>
                     {% if user.user_teachers != "" %}
                     <td><b><a href="{% url 'routine-detail' rout.id %}">{{rout.day}}</a></b></td>
@@ -60,7 +78,8 @@
                     <td>{{rout.two_two45}}</td>
                     <td>{{rout.two45_three30}}</td>
                     </tr>
-
+                {% endif%}
+                {% endif %}
             {% endfor %}
 
 

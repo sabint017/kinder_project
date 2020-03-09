@@ -153,6 +153,17 @@ class Food(models.Model):
     def __str__(self):
         return self.day
 
+class Foods(models.Model):
+    day = models.CharField(max_length=30, null=True)
+    food = models.CharField(max_length=30, null=True)
+    teacher=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.day
+
+    def save(self, *args, **kwargs):
+        super(Foods,self).save(*args, **kwargs)
+
 
 class Routine(models.Model):
     day = models.CharField(max_length=30)
@@ -171,6 +182,25 @@ class Routine(models.Model):
 
     def save(self, *args, **kwargs):
         super(Routine, self).save(*args, **kwargs)
+
+class ROUTINES(models.Model):
+    day = models.CharField(max_length=30)
+    ten_ten45 = models.CharField(max_length=30)
+    ten45_eleven30 = models.CharField(max_length=30)
+    eleven45_twelve30 = models.CharField(max_length=30)
+    twelve30_one15 = models.CharField(max_length=30)
+    two_two45 = models.CharField(max_length=30)
+    two45_three30 = models.CharField(max_length=30)
+    teacher=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.day
+
+    def get_absolute_url(self):
+        return reverse('routine-detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super(ROUTINES, self).save(*args, **kwargs)
 
 
 class Absentday(models.Model):

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images, Food, Result
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID, Events
+from second.models import Post, StudentId, Attendance, Images, Food, Result, Foods
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID, Events,ROUTINES
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -15,7 +15,7 @@ import datetime
 from django.shortcuts import redirect
 from django.contrib import messages
 
-
+@login_required
 def routine(request):
     context = {
         'routine': Routine.objects.all()
@@ -23,7 +23,7 @@ def routine(request):
 
     return render(request, 'routine.html', context)
 
-
+@login_required
 def result(request):
 
     context = {
@@ -33,21 +33,14 @@ def result(request):
 
 
 @login_required
-def addroutine(request):
-    form = RoutineForm(request.POST)
-
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-
-            return redirect('routine')
-
+def food(request):
     context = {
-        'form': form,
+        'food': Foods.objects.all()
     }
-    return render(request, 'addroutine.html', context)
 
+    return render(request, 'food.html', context)
 
+@login_required
 def addresult(request):
     form = ResultForm(request.POST)
 
@@ -63,36 +56,6 @@ def addresult(request):
     return render(request, 'addresult.html', context)
 
 
-def food(request):
-    context = {
-        'food': Food.objects.all()
-    }
-
-    return render(request, 'food.html', context)
-
-
-@login_required
-def addfood(request):
-    formf = FoodForm(request.POST)
-
-    if request.method == 'POST':
-        if formf.is_valid():
-            formf.save()
-
-            return redirect('food')
-
-    context = {
-        'formf': formf,
-    }
-    return render(request, 'add_food.html', context)
-
-
-def home(request):
-    context = {
-        'posts': Post.objects.all(),
-    }
-    return render(request, 'home.html', context)
-
 
 @login_required
 def registerchild(request):
@@ -103,13 +66,13 @@ def registerchild(request):
 
 
 class RoutineListView(ListView):
-    model = Routine
+    model = ROUTINES
     template_name = 'routine.html'
     context_object_name = 'routine'
 
 
 class RoutineDetailView(DetailView):
-    model = Routine
+    model = ROUTINES
     template_name = 'routine_detail.html'
 
 
@@ -184,6 +147,12 @@ def postsandnotices(request):
 
     }
 
+    return render(request, 'home.html', context)
+
+def home(request):
+    context = {
+        'posts': Post.objects.all(),
+    }
     return render(request, 'home.html', context)
 
 
@@ -261,6 +230,36 @@ class SIDCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return True
         return False
 
+class ROUTINESCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = ROUTINES
+    fields = ['day', 'ten_ten45', 'ten45_eleven30', 'eleven45_twelve30',
+                'twelve30_one15', 'two_two45', 'two45_three30']
+    template_name = 'addroutine.html'
+
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        if self.request.user.user_teachers != '':
+            return True
+        return False
+
+class FoodsCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Foods
+    fields = ['day','food']
+    template_name = 'add_food.html'
+    success_url='/../home/food'
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        if self.request.user.user_teachers != '':
+            return True
+        return False
 
 
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -385,7 +384,7 @@ def profile(request):
 
 
 class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Routine
+    model = ROUTINES
     fields = ['day', 'ten_ten45', 'ten45_eleven30', 'eleven45_twelve30',
               'twelve30_one15', 'two_two45', 'two45_three30']
     template_name = 'addroutine.html'
