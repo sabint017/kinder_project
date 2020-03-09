@@ -232,7 +232,7 @@ class Absentday(models.Model):
     date = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.name.full_name + " A"
+        return self.name.student.full_name + " A"
 
 
 class Presentday(models.Model):
@@ -240,7 +240,7 @@ class Presentday(models.Model):
     date = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.name.full_name + " P"
+        return self.name.student.full_name + " P"
 
 
 class Result(models.Model):
