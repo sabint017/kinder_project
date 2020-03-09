@@ -115,7 +115,8 @@ class SID(models.Model):
     
     def save(self, *args, **kwargs):
         super(SID, self).save(*args, **kwargs)
-
+        Attend.objects.create(
+            student=self)
 
 
 class Attendance(models.Model):
@@ -144,6 +145,29 @@ class Attendance(models.Model):
     def save(self, *args, **kwargs):
         super(Attendance, self).save(*args, **kwargs)
 
+class Attend(models.Model):
+    student=models.ForeignKey(SID, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.student.full_name
+
+    @property
+    def absentdayss(self):
+        return self.absentday_set.count()
+
+    @property
+    def presentdayss(self):
+        return self.presentday_set.count()
+
+    @property
+    def days(self):
+        return self.absentday_set.all()
+
+    def get_absolute_url(self):
+        return reverse('attendance-detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super(Attend, self).save(*args, **kwargs)
 
 class Food(models.Model):
     day = models.CharField(max_length=30, null=True)
@@ -204,7 +228,7 @@ class ROUTINES(models.Model):
 
 
 class Absentday(models.Model):
-    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    name = models.ForeignKey(Attend, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)
 
     def __str__(self):
@@ -212,7 +236,7 @@ class Absentday(models.Model):
 
 
 class Presentday(models.Model):
-    name = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    name = models.ForeignKey(Attend, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)
 
     def __str__(self):

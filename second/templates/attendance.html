@@ -47,10 +47,10 @@
         </thead>
      
         {% for i in students %}
-
+        {% if i.student.teacher == user %}
             <tr>
-            <td>{{i.full_name}}</td>
-            <td>{{i.roll}}</td>
+            <td>{{i.student.full_name}}</td>
+            <td>{{i.student.roll}}</td>
 
             <td>
                 <a class="present-btn btn btn-primary" href='{% url "present" i.id %}'>Present</a>&emsp;
@@ -71,7 +71,8 @@
             </tr>
 
             
-
+        
+        {% endif%}
         {% endfor %}
     </table>
 

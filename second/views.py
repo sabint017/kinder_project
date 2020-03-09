@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from second.models import Post, StudentId, Attendance, Images, Food, Result, Foods
+from second.models import Post, StudentId, Attendance, Images, Food, Result, Foods,Attend
 from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID, Events,ROUTINES
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -84,13 +84,13 @@ class ResultDetail(DetailView):
 def attendance(request):
 
     context = {
-        'students': Attendance.objects.all(),
+        'students': Attend.objects.all(),
     }
     return render(request, 'attendance.html', context)
 
 
 def present(request, id):
-    student = Attendance.objects.get(id=id)
+    student = Attend.objects.get(id=id)
     student1 = Presentday.objects.filter(
         name=student, date=datetime.date.today())
     if student1.exists():
@@ -104,7 +104,7 @@ def present(request, id):
 
 
 def presentdecrease(request, id):
-    student = Attendance.objects.get(id=id)
+    student = Attend.objects.get(id=id)
     student1 = Presentday.objects.filter(
         name=student, date=datetime.date.today())
     student1.delete()
@@ -112,7 +112,7 @@ def presentdecrease(request, id):
 
 
 def absent(request, id):
-    student = Attendance.objects.get(id=id)
+    student = Attend.objects.get(id=id)
     student1 = Absentday.objects.filter(
         name=student, date=datetime.date.today())
     if student1.exists():
@@ -125,7 +125,7 @@ def absent(request, id):
 
 
 def absentdecrease(request, id):
-    student = Attendance.objects.get(id=id)
+    student = Attend.objects.get(id=id)
     student1 = Absentday.objects.filter(
         name=student, date=datetime.date.today())
     student1.delete()
@@ -133,7 +133,7 @@ def absentdecrease(request, id):
 
 
 class AttendanceDetailView(DetailView):
-    model = Attendance
+    model = Attend
     template_name = 'attendance_detail.html'
 
 
