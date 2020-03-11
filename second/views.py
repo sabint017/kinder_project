@@ -400,7 +400,7 @@ class RoutineUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class ResultUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Result
     fields = ['name', 'subject1', 'subject2', 'subject3',
-              'subject4', 'grade', 'remarks']
+              'subject4']
     template_name = 'addresult.html'
 
     def form_valid(self, form):
