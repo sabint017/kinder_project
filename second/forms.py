@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile, Result, StudentId, Attendance, Food, Foods
+from .models import Profile, Result, StudentId, Attendance, Food, Foods, Contacts
 from .models import Profile, StudentId, Attendance, Routine, Absentday
 
 
@@ -76,3 +76,14 @@ class AbsentForm(forms.ModelForm):
     class Meta:
         model = Absentday
         fields = ['name', ]
+
+
+
+
+
+
+
+class ContactsForm(forms.ModelForm):
+    class Meta:
+        model = Contacts
+        fields = {'email', 'message'}

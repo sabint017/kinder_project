@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "base1.html" %}
+{% block base2 %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'responsive.css' %}">
+   
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+         <div class="jumbotron">
+            <div class="grey-background wow fadeIn">
+                <div class="container">
+                    <div class="heading-block page-title wow fadeInUp">
+                        <h1>Contact Parent</h1>
+                    </div>
+                </div>
+            </div>
+           
+    
+<div class="contact-section">
+    <div class="container">
+        <div class="row">
+
+        
+            <div class="contact-form col-md-8 wow fadeIn" style="margin-top: 70px;">
+                <form method= 'POST'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-success">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

@@ -260,3 +260,8 @@ class Result(models.Model):
 
     def save(self, *args, **kwargs):
         super(Result, self).save(*args, **kwargs)
+
+
+class Contacts(models.Model):
+    email = models.EmailField()
+    message = models.TextField()
