@@ -16,7 +16,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
-
+from users.models import User_parents,User_teachers
 @login_required
 def routine(request):
     context = {
