@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from second.models import Post, StudentId, Attendance, Images, Food, Result, Foods,Attend
-from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID, Events,ROUTINES
+from second.models import Post, StudentId, Attendance, Images, Routine, Notice, Absentday, Presentday, SID, Events,ROUTINES, Contacts
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from .forms import UserUpdateForm, ResultForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm
+from .forms import UserUpdateForm, ResultForm, ProfileUpdateForm, StudentRegisterForm, AttendanceForm, RoutineForm, FoodForm, AbsentForm, ContactsForm
 from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.contrib.auth.models import User
@@ -14,6 +14,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
 
 @login_required
 def routine(request):
@@ -22,6 +24,20 @@ def routine(request):
     }
 
     return render(request, 'routine.html', context)
+
+@login_required
+def parentprofiles(request):
+    students=[]
+    students=SID.objects.filter(teacher=request.user)
+    parents=[]
+    for student in students:
+        print(student.childid)
+        parents.append(User_parents.objects.filter(ChildID=student.childid).first())
+        print(parents)
+    parentlist={
+        'parents': parents
+    }
+    return render(request, 'parentprofiles.html', parentlist)
 
 @login_required
 def result(request):
@@ -409,3 +425,38 @@ class ResultUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         result = self.get_object()
         return True
+
+
+
+
+
+
+def contacts(request):
+    Contact_Form = ContactsForm
+    if request.method == 'POST':
+        form = Contact_Form(data=request.POST)
+
+        if form.is_valid():
+            email = request.POST.get('email')
+            message = request.POST.get('message')
+
+            template = get_template('contacts_form.txt')
+            context = {
+                'message': message,
+            }
+
+            content = template.render(context)
+
+            email = EmailMessage(
+                "Kinder",
+                content,
+                "Class Teacher" + '',
+                [email],
+                headers={'Reply To': email},
+    
+            )
+
+            email.send()
+
+            return render(request, 'suc.html')
+    return render(request, 'sendemail.html', {'form': Contact_Form})

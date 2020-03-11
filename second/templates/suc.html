@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block base1 %}
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Email sent successfully!</h1>
+   
+
+    <button type="button" class="btn btn-dark">
+        <a href={% url 'home' %}> Home </a>
+     </button>
+    </div>
+</body>
+</html>
+
+{% endblock %}

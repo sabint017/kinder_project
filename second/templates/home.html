@@ -75,6 +75,9 @@
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'events-create' %}">Add Event</a>
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'result' %}">Add Results</a>
+                    <br>
+                    <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'send-email' %}">Contact </a>
+                    <br>
                 
                 {% elif user.user_parents != "" %}
                     <a style="margin-top: 50px; margin-bottom: 10px; width:100%;" class='zoom btn btn-secondary' href="{% url 'result' %}">See Result</a>
@@ -83,6 +86,7 @@
                     <br>
                     <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'food' %}">Food Routine</a>
                     <br>
+                  
                 {% endif %}
 
             </div>
