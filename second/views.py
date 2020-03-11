@@ -24,6 +24,20 @@ def routine(request):
     return render(request, 'routine.html', context)
 
 @login_required
+def parentprofiles(request):
+    students=[]
+    students=SID.objects.filter(teacher=request.user)
+    parents=[]
+    for student in students:
+        print(student.childid)
+        parents.append(User_parents.objects.filter(ChildID=student.childid).first())
+        print(parents)
+    parentlist={
+        'parents': parents
+    }
+    return render(request, 'parentprofiles.html', parentlist)
+
+@login_required
 def result(request):
 
     context = {
