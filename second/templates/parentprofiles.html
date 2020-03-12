@@ -19,7 +19,7 @@
 </center>
     {% for p in parents%}
     <div class='container' style='background-color:white;width:20%;border-style:solid;border-radius:5px;border-width:1px;border-color:#969696;'>
-        <h1>{{p.user.username}}</h1>
+        <img class="rounded-circle account-img" src="{{ p.user.profile.image.url }}" height = "45px", width="45px"><h1>{{p.user.username}}</h1>
         <p><b>{{p.user.email}}</b></p>
         <p>ChildID: {{p.ChildID}}</p>
 
