@@ -10,6 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Result</title>
+    <script src="http://cdn.zingchart.com/zingchart.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             var tr = document.querySelector('table').querySelectorAll('tr');
@@ -24,7 +25,6 @@
                     if(stdata[i][j].textContent<40) pass = 0;
                     percent+=stdata[i][j].textContent/4
                 }
-
                 stdata[i][5].textContent=grade(percent)
             }
             for(i=0;i<stdata.length;i++){
@@ -41,7 +41,18 @@
                 }
             
             }
-            
+            var avg=[]
+            var avgp=0;
+            for(var i=1;i<5;i++){
+                var sum=0
+                for(var j=0;j<stdata.length;j++){
+                    sum+=stdata[j][i].textContent/stdata.length
+                }
+                avg[i-1]=sum;
+                avgp+=avg[i-1]/4;
+            }
+            avg[4]=avgp;
+            chart(avg)
         })
         function grade(percent){
             if(percent>=90) return "A+"
@@ -56,8 +67,28 @@
             else return 'E'
 
         }
-        function pass(marks){
-            
+        function chart(avg){
+            var chartData={
+                "type":"bar",
+                "scale-x":{
+                    "values":[
+                        "Subject-1",
+                        "Subject-2",
+                        "Subject-3",
+                        "Subject-4",
+                        "Percent"
+                    ]
+                },
+                "series":[
+                    {
+                        "values":avg
+                    }
+                ]
+            }
+            zingchart.render({
+                id:"mychart",
+                data: chartData,
+            })
         }
     </script>
 </head>
@@ -90,8 +121,8 @@
             {% else %}
             <td>{{result.name}}</td>
             {% endif %}
-            <td style='background-color:red;height:200px;width:30px;'>{{result.subject1}}</td>
-            <td style='background-color:red;height:100px;width:30px;'>{{result.subject2}}</td>
+            <td>{{result.subject1}}</td>
+            <td>{{result.subject2}}</td>
             <td>{{result.subject3}}</td>
             <td>{{result.subject4}}</td>
             <td>{{result.grade}}</td>
@@ -119,6 +150,8 @@
 
 
     </table>
+    <h1>Average Bar Graph</h1>
+    <div id='mychart'></div>
 </div>
 
 </body>
