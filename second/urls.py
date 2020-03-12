@@ -18,6 +18,7 @@ urlpatterns = [
     path('notice/<int:pk>/update', NoticeUpdateView.as_view(), name='notice-update'),
     path('notice/<int:pk>/delete', NoticeDeleteView.as_view(), name='notice-delete'),
     path('parent-profiles/', views.parentprofiles, name='parent-profiles'),
+    path('teacher-profile/', views.teacherprofile, name='teacher-profile'),
 
 
     path('events/<int:pk>/', EventsDetailView.as_view(), name='events-detail'),

@@ -43,13 +43,15 @@
                     {{ form.as_p }}
                     <button class="btn btn-outline-info">Send</button>
                 </form>
-                <a style="margin-top: 20px; margin-bottom: 10px; width:100%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'parent-profiles' %}">Parent Profiles </a>
-     
-                
+                {% if user.user_teacher != '' %}
+                <a style="margin-top: 20px; margin-bottom: 10px; width:50%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'parent-profiles' %}">Parent Profiles </a>
+                {% endif %}
+                <a style="margin-top: 20px; margin-bottom: 10px; width:50%;" name="createpost" class='zoom btn btn-secondary' href="{% url 'teacher-profile' %}">Teacher Profiles </a>
+
             </div>
 
             
-           
+        
 
 
         </div>

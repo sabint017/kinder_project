@@ -26,6 +26,18 @@ def routine(request):
     return render(request, 'routine.html', context)
 
 @login_required
+def teacherprofile(request):
+    if(hasattr(request.user,'user_teachers')):
+        teachers=User_teachers.objects.filter(school=request.user.user_teachers.school)
+    else:
+        teachers=User_teachers.objects.filter(school=request.user.user_parents.school,grade=request.user.user_parents.ChildGrade)
+    
+    teacherlist={
+        'teachers': teachers
+    }
+    return render(request, 'teacherprofile.html', teacherlist)
+
+@login_required
 def parentprofiles(request):
     students=[]
     students=SID.objects.filter(teacher=request.user)
