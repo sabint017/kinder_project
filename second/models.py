@@ -8,16 +8,18 @@ from django.urls import reverse
 from PIL import Image
 from django.template.defaultfilters import slugify
 
+
 class School(models.Model):
-    sch=models.CharField(max_length=50)
-    schcode=models.CharField(max_length=20,default='school')
+    sch = models.CharField(max_length=50)
+    schcode = models.CharField(max_length=20, default='school')
 
     def __str__(self):
         return self.sch
 
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     photo = models.ImageField(upload_to='posts', blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -50,7 +52,7 @@ class Notice(models.Model):
     def save(self, *args, **kwargs):
         super(Notice, self).save(*args, **kwargs)
 
-    
+
 class Events(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -101,6 +103,7 @@ class StudentId(models.Model):
     def __str__(self):
         return self.full_name
 
+
 class SID(models.Model):
     full_name = models.CharField(max_length=30)
     roll = models.IntegerField()
@@ -112,7 +115,7 @@ class SID(models.Model):
 
     def get_absolute_url(self):
         return reverse('registerchild')
-    
+
     def save(self, *args, **kwargs):
         super(SID, self).save(*args, **kwargs)
         Attend.objects.create(
@@ -145,9 +148,10 @@ class Attendance(models.Model):
     def save(self, *args, **kwargs):
         super(Attendance, self).save(*args, **kwargs)
 
+
 class Attend(models.Model):
-    student=models.ForeignKey(SID, on_delete=models.CASCADE)
-    
+    student = models.ForeignKey(SID, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.student.full_name
 
@@ -169,24 +173,25 @@ class Attend(models.Model):
     def save(self, *args, **kwargs):
         super(Attend, self).save(*args, **kwargs)
 
+
 class Food(models.Model):
     day = models.CharField(max_length=30, null=True)
     food = models.CharField(max_length=30, null=True)
 
-
     def __str__(self):
         return self.day
+
 
 class Foods(models.Model):
     day = models.CharField(max_length=30, null=True)
     food = models.CharField(max_length=30, null=True)
-    teacher=models.ForeignKey(User,on_delete=models.CASCADE)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.day
 
     def save(self, *args, **kwargs):
-        super(Foods,self).save(*args, **kwargs)
+        super(Foods, self).save(*args, **kwargs)
 
 
 class Routine(models.Model):
@@ -207,6 +212,7 @@ class Routine(models.Model):
     def save(self, *args, **kwargs):
         super(Routine, self).save(*args, **kwargs)
 
+
 class ROUTINES(models.Model):
     day = models.CharField(max_length=30)
     ten_ten45 = models.CharField(max_length=30)
@@ -215,7 +221,7 @@ class ROUTINES(models.Model):
     twelve30_one15 = models.CharField(max_length=30)
     two_two45 = models.CharField(max_length=30)
     two45_three30 = models.CharField(max_length=30)
-    teacher=models.ForeignKey(User,on_delete=models.CASCADE)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.day
@@ -249,8 +255,7 @@ class Result(models.Model):
     subject2 = models.DecimalField(max_digits=4, decimal_places=1)
     subject3 = models.DecimalField(max_digits=4, decimal_places=1)
     subject4 = models.DecimalField(max_digits=4, decimal_places=1)
-    grade = models.CharField(max_length=2)
-    remarks = models.TextField()
+    term = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name.full_name + "'s" + ' result '

@@ -69,18 +69,13 @@ class ResultForm(forms.ModelForm):
         model = Result
 
         fields = ('name', 'subject1', 'subject2', 'subject3',
-                  'subject4', )
+                  'subject4', 'term')
 
 
 class AbsentForm(forms.ModelForm):
     class Meta:
         model = Absentday
         fields = ['name', ]
-
-
-
-
-
 
 
 class ContactsForm(forms.ModelForm):
