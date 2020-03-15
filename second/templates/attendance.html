@@ -39,15 +39,20 @@
             <tr>
                 <th>Name</th>
                 <th>Roll No.</th>
+                {% if user.user_teachers != "" %}
                 <th>Present</th>
                 <th>Absent</th>
+                {% endif %}
                 <th>Absent Days Count</th>
 
             </tr>
         </thead>
      
         {% for i in students %}
+        {% if user.user_teachers != "" %}
         {% if i.student.teacher == user %}
+
+        
             <tr>
             <td>{{i.student.full_name}}</td>
             <td>{{i.student.roll}}</td>
@@ -69,9 +74,26 @@
             </td>
 
             </tr>
+            {% endif%}
+            {% endif%}
+        {% if user.user_parents != "" %}
+        {% if user.user_parents.ChildID == i.student.childid %}
+            <tr>
+            <td>{{i.student.full_name}}</td>
+            <td>{{i.student.roll}}</td>
 
+           
+            <td>
+                {{i.absentdayss}} (<small><a href="{% url 'attendance-detail' i.id %}">View Details</small></a>)
+
+
+            </td>
+
+            </tr>
             
         
+        
+        {% endif%}
         {% endif%}
         {% endfor %}
     </table>
